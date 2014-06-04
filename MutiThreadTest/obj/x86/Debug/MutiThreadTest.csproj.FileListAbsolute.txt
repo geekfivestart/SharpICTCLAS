@@ -1,0 +1,14 @@
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\bin\Debug\MutiThreadTest.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\bin\Debug\MutiThreadTest.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\bin\Debug\SharpICTCLAS.dll
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\bin\Debug\SharpICTCLAS.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\obj\x86\Debug\MutiThreadTest.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\obj\x86\Debug\MutiThreadTest.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\obj\x86\Debug\MutiThreadTest.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\obj\x86\Debug\MutiThreadTest.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\bin\Debug\MutiThreadTest.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\bin\Debug\MutiThreadTest.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\bin\Debug\SharpICTCLAS.dll
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\bin\Debug\SharpICTCLAS.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\MutiThreadTest\obj\x86\Debug\ResolveAssemblyReference.cache

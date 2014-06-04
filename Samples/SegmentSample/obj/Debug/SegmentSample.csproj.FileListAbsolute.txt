@@ -1,0 +1,10 @@
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\bin\SegmentSample.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\bin\SegmentSample.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\SegmentSample\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\SegmentSample\obj\Debug\SegmentSample.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\SegmentSample\obj\Debug\SegmentSample.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\bin\SegmentSample.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\bin\SegmentSample.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\SegmentSample\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\SegmentSample\obj\Debug\SegmentSample.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\SegmentSample\obj\Debug\SegmentSample.pdb

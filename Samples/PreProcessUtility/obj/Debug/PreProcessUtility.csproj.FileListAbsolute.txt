@@ -1,0 +1,10 @@
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\bin\PreProcessUtility.dll
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\bin\PreProcessUtility.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\PreProcessUtility\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\PreProcessUtility\obj\Debug\PreProcessUtility.dll
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\PreProcessUtility\obj\Debug\PreProcessUtility.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\bin\PreProcessUtility.dll
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\bin\PreProcessUtility.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\PreProcessUtility\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\PreProcessUtility\obj\Debug\PreProcessUtility.dll
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\PreProcessUtility\obj\Debug\PreProcessUtility.pdb

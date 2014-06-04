@@ -1,0 +1,9 @@
+支持多线程的分词
+在SharpICTCLAS 1.0基础上有以下改动
+NShortPath类中所有static 成员变量改为 非静态变量
+所有的成员函数改为非静态成员函数
+
+在Segment类中增加两个private类型的NShortPath 对象实例rawNShortPath ,optNShortPath 
+
+将88，89 行处原NShortPath静态函数的调用改为对实例rawNShortPath对应方法的调用
+将122，123行处原NShortPath静态函数的调用改为对实例optNShortPath 对应方法的调用

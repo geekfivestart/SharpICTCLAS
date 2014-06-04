@@ -1,0 +1,10 @@
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\bin\AddWords2Dict.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\bin\AddWords2Dict.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\AddWords2Dict\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\AddWords2Dict\obj\Debug\AddWords2Dict.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\Samples\AddWords2Dict\obj\Debug\AddWords2Dict.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\bin\AddWords2Dict.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\bin\AddWords2Dict.pdb
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\AddWords2Dict\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\AddWords2Dict\obj\Debug\AddWords2Dict.exe
+C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\Samples\AddWords2Dict\obj\Debug\AddWords2Dict.pdb

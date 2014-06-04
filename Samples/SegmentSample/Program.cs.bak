@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using SharpICTCLAS;
+
+class Program
+{
+   static void Main(string[] args)
+   {
+      List<WordResult[]> result;
+
+      string DictPath = Path.Combine(Environment.CurrentDirectory, "Data") + Path.DirectorySeparatorChar;
+      Console.WriteLine("正在初始化字典库，请稍候...");
+      WordSegmentSample sample = new WordSegmentSample(DictPath, 5);
+
+      result = sample.Segment(@"  pCur != NULL && (pCur->row < nRow || (pCur->row == nRow && pCur->col < nCol))");
+
+      //---------- 输出结果 ----------
+      //Console.WriteLine("\r\n==== 最终识别结果：\r\n");
+      //for (int i = 0; i < result.Count; i++)
+      //{
+      //    for (int j = 0; j < result[i].Length; j++)
+      //        Console.Write("{0} /{1} ", result[i][j].sWord, Utility.GetPOSString(result[i][j].nPOS));
+      //    Console.WriteLine();
+      //}
+
+      Console.Write("按下回车键退出......");
+      Console.ReadLine();
+   }
+}
