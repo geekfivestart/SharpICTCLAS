@@ -46,9 +46,20 @@ namespace SharpICTCLAS
         static Utility()
         {
             CC_ID_Init();
+            CtoArray();
         }
         private Utility()
         {
+        }
+
+        static List<byte[]> C_Array = new List<byte[]>();
+        private static void CtoArray()
+        {
+            for (char i = (char)0; i < 0xffff; i++)
+            {
+                byte[] b = gb2312.GetBytes(i.ToString());
+                C_Array.Add(b);
+            }
         }
 
         /// <summary>
@@ -123,7 +134,6 @@ namespace SharpICTCLAS
                 {
                     CC_ID_Dict.Add((Convert.ToInt32(b[0]) - 176) * 94 + (Convert.ToInt32(b[1]) - 161));
                 }
-
             }
         }
         //====================================================================
@@ -179,6 +189,14 @@ namespace SharpICTCLAS
         }
 
         //====================================================================
+        // 将字符串转换为字节数组（用于将汉字需要拆分成2字节）只转换首字符
+        //====================================================================
+        public static byte[] String2ByteArrayFirst(string s)
+        {
+            return C_Array[s[0]];
+        }
+
+        //====================================================================
         // 将字节数组重新转换为字符串
         //====================================================================
         public static string ByteArray2String(byte[] byteArray)
@@ -211,7 +229,7 @@ namespace SharpICTCLAS
                 return Predefine.CT_SINGLE;
             }
 
-            byte[] byteArray = gb2312.GetBytes(c.ToString());
+            byte[] byteArray = C_Array[c];
 
             if (byteArray.Length != 2)
                 return Predefine.CT_OTHER;
@@ -299,21 +317,23 @@ namespace SharpICTCLAS
             return true;
         }
 
+        static Regex IsAllNumRegex = new Regex(@"^[±+－\-＋]?[０１２３４５６７８９\d]*[∶·．／./]?[０１２３４５６７８９\d]*[百千万亿佰仟％‰%]?$", RegexOptions.Compiled);
         //====================================================================
         //Judge the string is all made up of Num Char
         //====================================================================
         public static bool IsAllNum(string sString)
         {
-            return Regex.IsMatch(sString, @"^[±+－\-＋]?[０１２３４５６７８９\d]*[∶·．／./]?[０１２３４５６７８９\d]*[百千万亿佰仟％‰%]?$");
+            return IsAllNumRegex.IsMatch(sString );
         }
 
+        static Regex IsAllChineseNumRegex = new Regex(@"^[几数第上成]?[零○一二两三四五六七八九十廿百千万亿壹贰叁肆伍陆柒捌玖拾佰仟∶·．／点]*[分之]?[零○一二两三四五六七八九十廿百千万亿壹贰叁肆伍陆柒捌玖拾佰仟]*$", RegexOptions.Compiled);
         //====================================================================
         //Decide whether the word is Chinese Num word
         //====================================================================
         public static bool IsAllChineseNum(string sWord)
         {
             //百分之五点六的人早上八点十八分起床
-            return Regex.IsMatch(sWord, @"^[几数第上成]?[零○一二两三四五六七八九十廿百千万亿壹贰叁肆伍陆柒捌玖拾佰仟∶·．／点]*[分之]?[零○一二两三四五六七八九十廿百千万亿壹贰叁肆伍陆柒捌玖拾佰仟]*$");
+            return IsAllChineseNumRegex.IsMatch(sWord);
         }
 
         //====================================================================
@@ -383,34 +403,39 @@ namespace SharpICTCLAS
         //====================================================================
         // 按照CC_ID的大小比较两个字符串，例如 超－“声 < 生 < 现”
         //====================================================================
-        public static int CCStringCompare(string str1, string str2)
+        public static int CCStringCompare(string ca1, string ca2)
         {
-            //char[] ca1 = str1.ToCharArray();
-            //char[] ca2 = str2.ToCharArray();
 
-            var ca1 = str1;
-            var ca2 = str2;
 
             int minLength = Math.Min(ca1.Length, ca2.Length);
 
             for (int i = 0; i < minLength; i++)
             {
-                if (Convert.ToInt32(ca1[i]) < 128 && Convert.ToInt32(ca2[i]) < 128) //如果两个字符都是半角
+                //假设都是全角字符
+                int cc1 = CC_ID(ca1[i]);
+                int cc2 = CC_ID(ca2[i]);
+                if (cc1 != -1 && cc2 != -1)
                 {
-                    if (ca1[i] < ca2[i])
+                    if (cc1 < cc2)
                         return -1;
-                    else if (ca1[i] > ca2[i])
+                    if (cc1 > cc2)
                         return 1;
                 }
-                else if (Convert.ToInt32(ca1[i]) < 128)
-                    return -1;
-                else if (Convert.ToInt32(ca2[i]) < 128)
-                    return 1;
-                else //两个字符全部是全角
+                else
                 {
-                    if (CC_ID(ca1[i]) < CC_ID(ca2[i]))
+
+                    int ca1int = Convert.ToInt32(ca1[i]);
+                    int ca2int = Convert.ToInt32(ca2[i]);
+                    if (ca1int < 128 && ca2int < 128) //如果两个字符都是半角
+                    {
+                        if (ca1[i] < ca2[i])
+                            return -1;
+                        else if (ca1[i] > ca2[i])
+                            return 1;
+                    }
+                    else if (ca1int < 128)
                         return -1;
-                    if (CC_ID(ca1[i]) > CC_ID(ca2[i]))
+                    else if (ca2int < 128)
                         return 1;
                 }
             }

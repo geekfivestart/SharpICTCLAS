@@ -849,7 +849,7 @@ namespace SharpICTCLAS
             sWord = sWord.Trim();
 
             //Position for the delimeters
-            int nType = Utility.charType(sWord.ToCharArray()[0]);
+            int nType = Utility.charType(sWord[0]);
 
             if (sWord.Length != 0)
             {
@@ -857,7 +857,7 @@ namespace SharpICTCLAS
                 if (nType == Predefine.CT_CHINESE)
                 {
                     //Get the inner code of the first Chinese Char
-                    byte[] byteArray = Utility.String2ByteArray(sWord);
+                    byte[] byteArray = Utility.String2ByteArrayFirst(sWord);
                     nId = Utility.CC_ID(byteArray[0], byteArray[1]);
 
                     //store the word,not store the first Chinese Char
