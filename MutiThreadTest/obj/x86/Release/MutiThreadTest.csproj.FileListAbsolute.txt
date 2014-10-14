@@ -5,3 +5,10 @@ C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1
 C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\obj\x86\Release\ResolveAssemblyReference.cache
 C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\obj\x86\Release\MutiThreadTest.exe
 C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.0\SharpICTCLAS\MutiThreadTest\obj\x86\Release\MutiThreadTest.pdb
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\obj\x86\Release\MutiThreadTest.exe
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\obj\x86\Release\MutiThreadTest.pdb
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\bin\Release\MutiThreadTest.exe
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\bin\Release\MutiThreadTest.pdb
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\bin\Release\SharpICTCLAS.dll
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\bin\Release\SharpICTCLAS.pdb
+D:\work14\ht\SharpICTCLAS\MutiThreadTest\obj\x86\Release\MutiThreadTest.csprojResolveAssemblyReference.cache

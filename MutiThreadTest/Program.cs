@@ -40,16 +40,16 @@ namespace MutiThreadTest
     {
 
         const string path = @"ICTCLAS50.dll";
-      
+
         [DllImport(path, CharSet = CharSet.Ansi, EntryPoint = "ICTCLAS_Init")]
         public static extern bool ICTCLAS_Init(String sInitDirPath);
 
         [DllImport(path, CharSet = CharSet.Ansi, EntryPoint = "ICTCLAS_Exit")]
         public static extern bool ICTCLAS_Exit();
 
-        [DllImport(path, CharSet = CharSet.Ansi, EntryPoint = "ICTCLAS_ParagraphProcessAW",CallingConvention=CallingConvention.Winapi)]
-        public static extern int ICTCLAS_ParagraphProcessAW(String sParagraph,  [Out, MarshalAs(UnmanagedType.LPArray)]result_t[] result,eCodeType eCT, int bPOSTagged);
-        
+        [DllImport(path, CharSet = CharSet.Ansi, EntryPoint = "ICTCLAS_ParagraphProcessAW", CallingConvention = CallingConvention.Winapi)]
+        public static extern int ICTCLAS_ParagraphProcessAW(String sParagraph, [Out, MarshalAs(UnmanagedType.LPArray)]result_t[] result, eCodeType eCT, int bPOSTagged);
+
         [DllImport(path, CharSet = CharSet.Ansi, EntryPoint = "ICTCLAS_FileProcess")]
         public static extern double ICTCLAS_FileProcess(String sSrcFilename, eCodeType eCt, String sDsnFilename, int bPOStagged);
 
@@ -65,7 +65,7 @@ namespace MutiThreadTest
         {
             string[] fileStrings = Directory.GetFiles(testFileDir);  //获取文本文件
 
-            
+
             //计算文本文件总大小
             foreach (string fi in fileStrings)
             {
@@ -86,34 +86,36 @@ namespace MutiThreadTest
 
             Stopwatch threadSp = new Stopwatch();
             threadSp.Start();
+
             thread0.Start(p0);
-            thread1.Start(p1);
+    
 
             thread0.Join();
+            thread1.Start(p1);
             thread1.Join();
 
-           threadSp.Stop();
+            threadSp.Stop();
 
-           Console.WriteLine("SharpICTCLAS" + ":" + threadSp.ElapsedMilliseconds + "ms"+ " Word Segmentation Speed: "+(float)totalFileSizeInByte/1024/threadSp.ElapsedMilliseconds*1000+" KB/s");
+            Console.WriteLine("SharpICTCLAS" + ":" + threadSp.ElapsedMilliseconds + "ms" + " Word Segmentation Speed: " + (float)totalFileSizeInByte / 1024 / threadSp.ElapsedMilliseconds * 1000 + " KB/s");
 
-           Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
             //单线程使用C++版ICTCLAS分词
-           CPPictclas();     
-    
+            //CPPictclas();
+
         }
 
-        
+
         private static void CPPictclas()
         {
             if (!ICTCLAS_Init(null))
             {
-                System.Console.WriteLine("Init ICTCLAS failed!"); 
+                System.Console.WriteLine("Init ICTCLAS failed!");
                 System.Console.Read();
             }
 
             StreamReader sr = null;
-            StreamWriter sw = new StreamWriter(outDir+".txt",false,System.Text.Encoding.Default);
+            StreamWriter sw = new StreamWriter(outDir + ".txt", false, System.Text.Encoding.Default);
             Stopwatch sp = new Stopwatch();
             sp.Start();
             int nWrdcnt;
@@ -124,7 +126,7 @@ namespace MutiThreadTest
                 sr = new StreamReader(fileList[i], System.Text.Encoding.Default);
                 string input = "";
                 input = sr.ReadLine();
-                result_t []result;
+                result_t[] result;
 
                 while (input != null)
                 {
@@ -135,7 +137,7 @@ namespace MutiThreadTest
                     }
                     try
                     {
-                        result = new result_t[input.Length];                      
+                        result = new result_t[input.Length];
                         nWrdcnt = ICTCLAS_ParagraphProcessAW(input, result, eCodeType.CODE_TYPE_GB, 1);
                     }
                     catch (Exception e)
@@ -144,7 +146,7 @@ namespace MutiThreadTest
                         continue;
                     }
                     byte[] mybyte = System.Text.Encoding.Default.GetBytes(input);
-                    byte[] byteWord = new byte[1] ;
+                    byte[] byteWord = new byte[1];
                     for (int j = 0; j < nWrdcnt; ++j)
                     {
                         try
@@ -159,7 +161,7 @@ namespace MutiThreadTest
                         string watch = System.Text.Encoding.Default.GetString(byteWord);
                         if (watch == " ")
                             continue;
-                        sw.Write(System.Text.Encoding.Default.GetString(byteWord)+" ");
+                        sw.Write(System.Text.Encoding.Default.GetString(byteWord) + " ");
 
                     }
                     sw.WriteLine("");
@@ -180,11 +182,11 @@ namespace MutiThreadTest
             WordSegment wordSegment = new WordSegment();
             wordSegment.InitWordSegment(DictPath);
             StreamReader sr = null;
-            StreamWriter sw = new StreamWriter(outDir+num+".txt",false,System.Text.Encoding.Default);
+            StreamWriter sw = new StreamWriter(outDir + num + ".txt", false, System.Text.Encoding.Default);
 
             for (int i = num; i < fileList.Count; i += 2)
             {
-                sr = new StreamReader(fileList[i],System.Text.Encoding.Default);
+                sr = new StreamReader(fileList[i], System.Text.Encoding.Default);
                 string input = "";
                 input = sr.ReadLine();
                 List<WordResult[]> result = null;
@@ -214,7 +216,7 @@ namespace MutiThreadTest
                 sr.Close();
             }
 
-           sw.Close();
+            sw.Close();
 
         }
     }
@@ -226,7 +228,7 @@ namespace MutiThreadTest
         public int Num
         {
             get { return num; }
-            set { num=value;}
+            set { num = value; }
         }
     }
 }
