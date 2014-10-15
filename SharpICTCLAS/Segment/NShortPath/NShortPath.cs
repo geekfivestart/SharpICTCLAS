@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓĞ£ºÖĞÎÄ·Ö´Ê£»´ÊĞÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ğ¡£
- *              ·Ö´ÊÕıÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ğÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖĞÖĞ¹úÈËÃûµÄÊ¶±ğÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖĞ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ğ­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ğí¿ÉÖ¤1.0
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®ç‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›ç‡å‡é«˜äº90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›ç‡æ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕğÓî¸ù¾İFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓĞ´úÂë×öÁË²¿·ÖÖØĞ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸è°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -35,10 +35,10 @@
  ***********************************************************************************/
 /************************************************************************************
 This file was modified by Zhangjinchao , April 2012
-NShortPathÀàÖĞËùÓĞstatic ³ÉÔ±±äÁ¿¸ÄÎª ·Ç¾²Ì¬±äÁ¿
-ËùÓĞµÄ³ÉÔ±º¯Êı¸ÄÎª·Ç¾²Ì¬³ÉÔ±º¯Êı
+NShortPathç±»ä¸­æ‰€æœ‰static æˆå‘˜å˜é‡æ”¹ä¸º éé™æ€å˜é‡
+æ‰€æœ‰çš„æˆå‘˜å‡½æ•°æ”¹ä¸ºéé™æ€æˆå‘˜å‡½æ•°
  
-ÕÅ½ğ³¬  ÖĞ¹ú¿ÆÑ§Ôº¼ÆËã¼¼ÊõÑĞ¾¿Ëù
+å¼ é‡‘è¶…  ä¸­å›½ç§‘å­¦é™¢è®¡ç®—æŠ€æœ¯ç ”ç©¶æ‰€
 Blog: http://www.hackerforward.com
  **************************************************************************************/
 using System;
@@ -56,7 +56,7 @@ namespace SharpICTCLAS
       private  CQueue[][] m_pParent; //The 2-dimension array for the nodes
       private  double[][] m_pWeight; //The weight of node
 
-      #region ¹¹Ôìº¯Êı
+      #region æ„é€ å‡½æ•°
 
       public NShortPath()
       {
@@ -71,10 +71,10 @@ namespace SharpICTCLAS
          m_apCost = apCost; //Set the cost
          m_nValueKind = nValueKind; //Set the value kind
 
-         // »ñÈ¡¶¥µãµÄÊıÄ¿
-         // ----------------- ×¢£ºby zhenyulu ------------------
-         // Ô­À´³ÌĞòÎªm_nNode = Math.Max(apCost.ColumnCount, apCost.RowCount) + 1;
-         // µ«apCost.ColumnCountÓ¦¸ÃÒ»¶¨´óÓÚapCost.RowCount£¬ËùÒÔ¸Ä³ÉÕâÑù¡£
+         // è·å–é¡¶ç‚¹çš„æ•°ç›®
+         // ----------------- æ³¨ï¼šby zhenyulu ------------------
+         // åŸæ¥ç¨‹åºä¸ºm_nNode = Math.Max(apCost.ColumnCount, apCost.RowCount) + 1;
+         // ä½†apCost.ColumnCountåº”è¯¥ä¸€å®šå¤§äºapCost.RowCountï¼Œæ‰€ä»¥æ”¹æˆè¿™æ ·ã€‚
          m_nNode = apCost.ColumnCount + 1;
 
          m_pParent = new CQueue[m_nNode - 1][]; //not including the first node
@@ -96,7 +96,7 @@ namespace SharpICTCLAS
       #region Calculate Method
 
       //====================================================================
-      // ¼ÆËã³öËùÓĞ½áµãÉÏ¿ÉÄÜµÄÂ·¾¶£¬ÎªÂ·¾¶Êı¾İÌá¹©Êı¾İ×¼±¸
+      // è®¡ç®—å‡ºæ‰€æœ‰ç»“ç‚¹ä¸Šå¯èƒ½çš„è·¯å¾„ï¼Œä¸ºè·¯å¾„æ•°æ®æä¾›æ•°æ®å‡†å¤‡
       //====================================================================
       public  void Calculate(ColumnFirstDynamicArray<ChainContent> apCost, int nValueKind)
       {
@@ -108,14 +108,14 @@ namespace SharpICTCLAS
 
          for (int nCurNode = 1; nCurNode < m_nNode; nCurNode++)
          {
-            // ½«ËùÓĞµ½µ±Ç°½áµã£¨nCurNode)¿ÉÄÜµÄ±ß¸ù¾İeWeightÅÅĞò²¢Ñ¹Èë¶ÓÁĞ
+            // å°†æ‰€æœ‰åˆ°å½“å‰ç»“ç‚¹ï¼ˆnCurNode)å¯èƒ½çš„è¾¹æ ¹æ®eWeightæ’åºå¹¶å‹å…¥é˜Ÿåˆ—
             EnQueueCurNodeEdges(ref queWork, nCurNode);
 
-            // ³õÊ¼»¯µ±Ç°½áµãËùÓĞ±ßµÄeWeightÖµ
+            // åˆå§‹åŒ–å½“å‰ç»“ç‚¹æ‰€æœ‰è¾¹çš„eWeightå€¼
             for (int i = 0; i < m_nValueKind; i++)
                m_pWeight[nCurNode - 1][i] = Predefine.INFINITE_VALUE;
 
-            // ½«queWorkÖĞµÄÄÚÈİ×°Èëm_pWeightÓëm_pParent
+            // å°†queWorkä¸­çš„å†…å®¹è£…å…¥m_pWeightä¸m_pParent
             tmpElement = queWork.DeQueue();
             if (tmpElement != null)
             {
@@ -138,7 +138,7 @@ namespace SharpICTCLAS
       }
 
       //====================================================================
-      // ½«ËùÓĞµ½µ±Ç°½áµã£¨nCurNode£©¿ÉÄÜµÄ±ß¸ù¾İeWeightÅÅĞò²¢Ñ¹Èë¶ÓÁĞ
+      // å°†æ‰€æœ‰åˆ°å½“å‰ç»“ç‚¹ï¼ˆnCurNodeï¼‰å¯èƒ½çš„è¾¹æ ¹æ®eWeightæ’åºå¹¶å‹å…¥é˜Ÿåˆ—
       //====================================================================
       private  void EnQueueCurNodeEdges(ref CQueue queWork, int nCurNode)
       {
@@ -152,19 +152,19 @@ namespace SharpICTCLAS
          // Get all the edges
          while (pEdgeList != null && pEdgeList.col == nCurNode)
          {
-            nPreNode = pEdgeList.row;  // ºÜÌØ±ğµÄÃüÁî£¬ÀûÓÃÁËrowÓëcolµÄ¹ØÏµ
+            nPreNode = pEdgeList.row;  // å¾ˆç‰¹åˆ«çš„å‘½ä»¤ï¼Œåˆ©ç”¨äº†rowä¸colçš„å…³ç³»
             eWeight = pEdgeList.Content.eWeight; //Get the eWeight of edges
 
             for (int i = 0; i < m_nValueKind; i++)
             {
-               // µÚÒ»¸ö½áµã£¬Ã»ÓĞPreNode£¬Ö±½Ó¼ÓÈë¶ÓÁĞ
+               // ç¬¬ä¸€ä¸ªç»“ç‚¹ï¼Œæ²¡æœ‰PreNodeï¼Œç›´æ¥åŠ å…¥é˜Ÿåˆ—
                if (nPreNode == 0)
                {
                   queWork.EnQueue(new QueueElement(nPreNode, i, eWeight));
                   break;
                }
 
-               // Èç¹ûPreNodeµÄWeight == Predefine.INFINITE_VALUE£¬ÔòÃ»ÓĞ±ØÒª¼ÌĞøÏÂÈ¥ÁË
+               // å¦‚æœPreNodeçš„Weight == Predefine.INFINITE_VALUEï¼Œåˆ™æ²¡æœ‰å¿…è¦ç»§ç»­ä¸‹å»äº†
                if (m_pWeight[nPreNode - 1][i] == Predefine.INFINITE_VALUE)
                   break;
 
@@ -179,8 +179,8 @@ namespace SharpICTCLAS
       #region GetPaths Method
 
       //====================================================================
-      // ×¢£ºindex £½ 0 : ×î¶ÌµÄÂ·¾¶£» index = 1 £º ´Î¶ÌµÄÂ·¾¶
-      //     ÒÀ´ËÀàÍÆ¡£index <= this.m_nValueKind
+      // æ³¨ï¼šindex ï¼ 0 : æœ€çŸ­çš„è·¯å¾„ï¼› index = 1 ï¼š æ¬¡çŸ­çš„è·¯å¾„
+      //     ä¾æ­¤ç±»æ¨ã€‚index <= this.m_nValueKind
       //====================================================================
       public  List<int[]> GetPaths(int index)
       {
@@ -196,7 +196,7 @@ namespace SharpICTCLAS
          element = m_pParent[curNode - 1][curIndex].GetFirst();
          while (element != null)
          {
-            // ---------- Í¨¹ıÑ¹Õ»µÃµ½Â·¾¶ -----------
+            // ---------- é€šè¿‡å‹æ ˆå¾—åˆ°è·¯å¾„ -----------
             stack.Push(new PathNode(curNode, curIndex));
             stack.Push(new PathNode(element.nParent, element.nIndex));
             curNode = element.nParent;
@@ -208,7 +208,7 @@ namespace SharpICTCLAS
                curNode = element.nParent;
             }
 
-            // -------------- Êä³öÂ·¾¶ --------------
+            // -------------- è¾“å‡ºè·¯å¾„ --------------
             PathNode[] nArray = stack.ToArray();
             aPath = new int[nArray.Length];
 
@@ -217,7 +217,7 @@ namespace SharpICTCLAS
 
             result.Add(aPath);
 
-            // -------------- ³öÕ»ÒÔ¼ì²éÊÇ·ñ»¹ÓĞÆäËüÂ·¾¶ --------------
+            // -------------- å‡ºæ ˆä»¥æ£€æŸ¥æ˜¯å¦è¿˜æœ‰å…¶å®ƒè·¯å¾„ --------------
             do
             {
                node = stack.Pop();
@@ -237,7 +237,7 @@ namespace SharpICTCLAS
       #region GetBestPath Method
 
       //====================================================================
-      // »ñÈ¡Î¨Ò»Ò»Ìõ×î¶ÌÂ·¾¶£¬µ±È»×î¶ÌÂ·¾¶¿ÉÄÜ²»Ö»Ò»Ìõ
+      // è·å–å”¯ä¸€ä¸€æ¡æœ€çŸ­è·¯å¾„ï¼Œå½“ç„¶æœ€çŸ­è·¯å¾„å¯èƒ½ä¸åªä¸€æ¡
       //====================================================================
       public  int[] GetBestPath()
       {
@@ -268,7 +268,7 @@ namespace SharpICTCLAS
       #region GetNPaths Method
 
       //====================================================================
-      // ´Ó¶Ìµ½³¤»ñÈ¡ÖÁ¶à n ÌõÂ·¾¶
+      // ä»çŸ­åˆ°é•¿è·å–è‡³å¤š n æ¡è·¯å¾„
       //====================================================================
       public  List<int[]> GetNPaths(int n)
       {
@@ -294,7 +294,7 @@ namespace SharpICTCLAS
 
       #endregion
 
-      #region ÓÃÓÚÊä³öÖĞ¼ä½á¹ûµÄ²âÊÔ´úÂë
+      #region ç”¨äºè¾“å‡ºä¸­é—´ç»“æœçš„æµ‹è¯•ä»£ç 
 
       public  void printResultByIndex()
       {
@@ -324,7 +324,7 @@ namespace SharpICTCLAS
 
          for (int nCurNode = 1; nCurNode < m_nNode; nCurNode++)
          {
-            Console.WriteLine("\n\r============ µÚ {0} ¸ö½áµã ============", nCurNode);
+            Console.WriteLine("\n\r============ ç¬¬ {0} ä¸ªç»“ç‚¹ ============", nCurNode);
             for (int i = 0; i < m_nValueKind; i++)
             {
                Console.WriteLine("N: {0}", i);

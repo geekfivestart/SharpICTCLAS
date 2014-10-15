@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓĞ£ºÖĞÎÄ·Ö´Ê£»´ÊĞÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ğ¡£
- *              ·Ö´ÊÕıÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ğÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖĞÖĞ¹úÈËÃûµÄÊ¶±ğÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖĞ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ğ­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ğí¿ÉÖ¤1.0 
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®ç‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›ç‡å‡é«˜äº90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›ç‡æ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0 
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕğÓî¸ù¾İFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓĞ´úÂë×öÁË²¿·ÖÖØĞ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸è°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -36,12 +36,12 @@
 
 /************************************************************************************
 This file was modified by Zhangjinchao , April 2012
-ÔÚSegmentÀàÖĞÔö¼ÓÁ½¸öprivateÀàĞÍµÄNShortPath ¶ÔÏóÊµÀırawNShortPath ,optNShortPath 
+åœ¨Segmentç±»ä¸­å¢åŠ ä¸¤ä¸ªprivateç±»å‹çš„NShortPath å¯¹è±¡å®ä¾‹rawNShortPath ,optNShortPath 
 
-½«88£¬89 ĞĞ´¦Ô­NShortPath¾²Ì¬º¯ÊıµÄµ÷ÓÃ¸ÄÎª¶ÔÊµÀırawNShortPath¶ÔÓ¦·½·¨µÄµ÷ÓÃ
-½«122£¬123ĞĞ´¦Ô­NShortPath¾²Ì¬º¯ÊıµÄµ÷ÓÃ¸ÄÎª¶ÔÊµÀıoptNShortPath ¶ÔÓ¦·½·¨µÄµ÷ÓÃ
+å°†88ï¼Œ89 è¡Œå¤„åŸNShortPathé™æ€å‡½æ•°çš„è°ƒç”¨æ”¹ä¸ºå¯¹å®ä¾‹rawNShortPathå¯¹åº”æ–¹æ³•çš„è°ƒç”¨
+å°†122ï¼Œ123è¡Œå¤„åŸNShortPathé™æ€å‡½æ•°çš„è°ƒç”¨æ”¹ä¸ºå¯¹å®ä¾‹optNShortPath å¯¹åº”æ–¹æ³•çš„è°ƒç”¨
  
-ÕÅ½ğ³¬  ÖĞ¹ú¿ÆÑ§Ôº¼ÆËã¼¼ÊõÑĞ¾¿Ëù
+å¼ é‡‘è¶…  ä¸­å›½ç§‘å­¦é™¢è®¡ç®—æŠ€æœ¯ç ”ç©¶æ‰€
 Blog: http://www.hackerforward.com
  **************************************************************************************/
 using System;
@@ -51,838 +51,869 @@ using System.Text.RegularExpressions;
 
 namespace SharpICTCLAS
 {
-   public class Segment
-   {
-      private WordDictionary biDict, coreDict;
+    public class Segment
+    {
+        private WordDictionary biDict, coreDict;
 
-      public List<AtomNode> atomSegment;
-      public RowFirstDynamicArray<ChainContent> segGraph;
-      public ColumnFirstDynamicArray<ChainContent> biGraphResult;
-      public RowFirstDynamicArray<ChainContent> m_graphOptimum;
-      public List<WordResult[]> m_pWordSeg;  //´æ·Å¶à¸ö·Ö´Ê½á¹û
+        public List<AtomNode> atomSegment;
+        public RowFirstDynamicArray<ChainContent> segGraph;
+        public ColumnFirstDynamicArray<ChainContent> biGraphResult;
+        public RowFirstDynamicArray<ChainContent> m_graphOptimum;
+        public List<WordResult[]> m_pWordSeg;  //å­˜æ”¾å¤šä¸ªåˆ†è¯ç»“æœ
 
-      public event SegmentEventHandler OnSegmentEvent;
+        public event SegmentEventHandler OnSegmentEvent;
 
-      private NShortPath rawNShortPath;
-      private NShortPath optNShortPath;
-      #region ¹¹Ôìº¯Êı
+        public bool IsSendSegmentEvent { get; set; }
 
-      public Segment(WordDictionary biDict, WordDictionary coreDict)
-      {
-         this.biDict = biDict;
-         this.coreDict = coreDict;
-         rawNShortPath = new NShortPath();
-         optNShortPath = new NShortPath();
-      }
-        
-      #endregion
+        private NShortPath rawNShortPath;
+        private NShortPath optNShortPath;
+        #region æ„é€ å‡½æ•°
 
-      #region BiSegment Method
+        public Segment(WordDictionary biDict, WordDictionary coreDict)
+        {
+            this.biDict = biDict;
+            this.coreDict = coreDict;
+            rawNShortPath = new NShortPath();
+            optNShortPath = new NShortPath();
+            IsSendSegmentEvent = false;
+        }
 
-      public int BiSegment(string sSentence, double smoothPara, int nKind)
-      {
-         WordResult[] tmpResult;
-         WordLinkedArray linkedArray;
+        #endregion
 
-         if (biDict == null || coreDict == null)
-            throw new Exception("biDict »ò coreDict ÉĞÎ´³õÊ¼»¯£¡");
+        #region BiSegment Method
 
-         //---Ô­×Ó·Ö´Ê
-         atomSegment = AtomSegment(sSentence);
-         OnAtomSegment(atomSegment);
+        public int BiSegment(string sSentence, double smoothPara, int nKind)
+        {
+            WordResult[] tmpResult;
+            WordLinkedArray linkedArray;
 
-         //---¼ìË÷´Ê¿â£¬¼ÓÈëËùÓĞ¿ÉÄÜ·Ö´Ê·½°¸²¢´æÈëÁ´±í½á¹¹
-         segGraph = GenerateWordNet(atomSegment, coreDict);
-         OnGenSegGraph(segGraph);
+            if (biDict == null || coreDict == null)
+                throw new Exception("biDict æˆ– coreDict å°šæœªåˆå§‹åŒ–ï¼");
 
-         //---¼ìË÷ËùÓĞ¿ÉÄÜµÄÁ½Á½×éºÏ
-         biGraphResult = BiGraphGenerate(segGraph, smoothPara, biDict, coreDict);
-         OnGenBiSegGraph(biGraphResult);
+            //---åŸå­åˆ†è¯
+            atomSegment = AtomSegment(sSentence);
+            OnAtomSegment(atomSegment);
 
-         //---N ×î¶ÌÂ·¾¶¼ÆËã³ö¶à¸ö·Ö´Ê·½°¸
-         rawNShortPath.Calculate(biGraphResult, nKind);
-         List<int[]> spResult = rawNShortPath.GetNPaths(Predefine.MAX_SEGMENT_NUM);
-         OnNShortPath(spResult, segGraph);
+            //---æ£€ç´¢è¯åº“ï¼ŒåŠ å…¥æ‰€æœ‰å¯èƒ½åˆ†è¯æ–¹æ¡ˆå¹¶å­˜å…¥é“¾è¡¨ç»“æ„
+            segGraph = GenerateWordNet(atomSegment, coreDict);
+            OnGenSegGraph(segGraph);
 
-         m_pWordSeg = new List<WordResult[]>();
-         m_graphOptimum = new RowFirstDynamicArray<ChainContent>();
+            //---æ£€ç´¢æ‰€æœ‰å¯èƒ½çš„ä¸¤ä¸¤ç»„åˆ
+            biGraphResult = BiGraphGenerate(segGraph, smoothPara, biDict, coreDict);
+            OnGenBiSegGraph(biGraphResult);
 
-         for (int i = 0; i < spResult.Count; i++)
-         {
-            linkedArray = BiPath2LinkedArray(spResult[i], segGraph, atomSegment);
-            tmpResult = GenerateWord(spResult[i], linkedArray, m_graphOptimum);
+            //---N æœ€çŸ­è·¯å¾„è®¡ç®—å‡ºå¤šä¸ªåˆ†è¯æ–¹æ¡ˆ
+            rawNShortPath.Calculate(biGraphResult, nKind);
+            List<int[]> spResult = rawNShortPath.GetNPaths(Predefine.MAX_SEGMENT_NUM);
+            OnNShortPath(spResult, segGraph);
 
-            if (tmpResult != null)
-               m_pWordSeg.Add(tmpResult);
-         }
+            m_pWordSeg = new List<WordResult[]>();
+            m_graphOptimum = new RowFirstDynamicArray<ChainContent>();
 
-         OnBeforeOptimize(m_pWordSeg);
-
-         return m_pWordSeg.Count;
-      }
-
-      #endregion
-
-      #region BiOptimumSegment Method
-
-      public int BiOptimumSegment(int nResultCount, double dSmoothingPara)
-      {
-         WordResult[] tmpResult;
-         WordLinkedArray linkedArray;
-
-         //Generate the biword link net
-         ColumnFirstDynamicArray<ChainContent> aBiwordsNet = BiGraphGenerate(m_graphOptimum, dSmoothingPara, biDict, coreDict);
-         OnGenBiOptimumSegGraph(aBiwordsNet);
-
-         optNShortPath.Calculate(aBiwordsNet, nResultCount);
-         List<int[]> spResult = optNShortPath.GetNPaths(Predefine.MAX_SEGMENT_NUM);
-
-         m_pWordSeg = new List<WordResult[]>();
-         segGraph = m_graphOptimum;
-         m_graphOptimum = new RowFirstDynamicArray<ChainContent>();
-
-         for (int i = 0; i < spResult.Count; i++)
-         {
-            linkedArray = BiPath2LinkedArray(spResult[i], segGraph, atomSegment);
-            tmpResult = GenerateWord(spResult[i], linkedArray, m_graphOptimum);
-
-            if (tmpResult != null)
-               m_pWordSeg.Add(tmpResult);
-         }
-
-         return m_pWordSeg.Count;
-      }
-
-      #endregion
-
-      #region AtomSegment Method
-
-      //====================================================================
-      // ¶ÔsSentence½øĞĞµ¥¸öºº×ÖµÄÇĞ¸î
-      //====================================================================
-      public static List<AtomNode> AtomSegment(string sSentence)
-      {
-         List<AtomNode> atomSegment = new List<AtomNode>();
-         AtomNode tmpEnd = null;
-         int startIndex = 0, length = sSentence.Length, pCur = 0, nCurType, nNextType;
-         StringBuilder sb = new StringBuilder();
-         char c;
-
-         // Èç¹ûÊÇ¿ªÊ¼·ûºÅ
-         if (sSentence.StartsWith(Predefine.SENTENCE_BEGIN))
-         {
-            atomSegment.Add(new AtomNode(Predefine.SENTENCE_BEGIN, Predefine.CT_SENTENCE_BEGIN));
-            startIndex = Predefine.SENTENCE_BEGIN.Length;
-            length -= startIndex;
-         }
-
-         // Èç¹ûÊÇ½áÊø·ûºÅ
-         if (sSentence.EndsWith(Predefine.SENTENCE_END))
-         {
-            tmpEnd = new AtomNode(Predefine.SENTENCE_END, Predefine.CT_SENTENCE_END);
-            length -= Predefine.SENTENCE_END.Length;
-         }
-
-         //==============================================================================================
-         // by zhenyulu:
-         //
-         // TODO: Ê¹ÓÃÒ»ÏµÁĞÕıÔò±í´ïÊ½½«¾ä×ÓÖĞµÄÍêÕû³É·Ö£¨°Ù·Ö±È¡¢ÈÕÆÚ¡¢µç×ÓÓÊ¼ş¡¢URLµÈ£©Ô¤ÏÈÌáÈ¡³öÀ´
-         //==============================================================================================
-
-         char[] charArray = sSentence.ToCharArray(startIndex, length);
-         int[] charTypeArray = new int[charArray.Length];
-
-         // Éú³É¶ÔÓ¦µ¥¸öºº×ÖµÄ×Ö·ûÀàĞÍÊı×é
-         for (int i = 0; i < charArray.Length; i++)
-         {
-            c = charArray[i];
-            charTypeArray[i] = Utility.charType(c);
-
-            if (c == '.' && i < (charArray.Length - 1) && Utility.charType(charArray[i + 1]) == Predefine.CT_NUM)
-               charTypeArray[i] = Predefine.CT_NUM;
-            else if (c == '.' && i < (charArray.Length - 1) && charArray[i + 1] >= '0' && charArray[i + 1] <= '9')
-               charTypeArray[i] = Predefine.CT_SINGLE;
-            else if (charTypeArray[i] == Predefine.CT_LETTER)
-               charTypeArray[i] = Predefine.CT_SINGLE;
-         }
-
-         // ¸ù¾İ×Ö·ûÀàĞÍÊı×éÖĞµÄÄÚÈİÍê³ÉÔ­×ÓÇĞ¸î
-         while (pCur < charArray.Length)
-         {
-            nCurType = charTypeArray[pCur];
-
-            if (nCurType == Predefine.CT_CHINESE || nCurType == Predefine.CT_INDEX ||
-               nCurType == Predefine.CT_DELIMITER || nCurType == Predefine.CT_OTHER)
+            for (int i = 0; i < spResult.Count; i++)
             {
-               if (charArray[pCur].ToString().Trim().Length != 0)
-                  atomSegment.Add(new AtomNode(charArray[pCur].ToString(), nCurType));
-               pCur++;
+                linkedArray = BiPath2LinkedArray(spResult[i], segGraph, atomSegment);
+                tmpResult = GenerateWord(spResult[i], linkedArray, m_graphOptimum);
+
+                if (tmpResult != null)
+                    m_pWordSeg.Add(tmpResult);
             }
-            //Èç¹ûÊÇ×Ö·û¡¢Êı×Ö»òÕßºóÃæ¸úËæÁËÊı×ÖµÄĞ¡Êıµã¡°.¡±ÔòÒ»Ö±È¡ÏÂÈ¥¡£
-            else if (pCur < charArray.Length - 1 && (nCurType == Predefine.CT_SINGLE || nCurType == Predefine.CT_NUM))
+
+            OnBeforeOptimize(m_pWordSeg);
+
+            return m_pWordSeg.Count;
+        }
+
+        #endregion
+
+        #region BiOptimumSegment Method
+
+        public int BiOptimumSegment(int nResultCount, double dSmoothingPara)
+        {
+            WordResult[] tmpResult;
+            WordLinkedArray linkedArray;
+
+            //Generate the biword link net
+            ColumnFirstDynamicArray<ChainContent> aBiwordsNet = BiGraphGenerate(m_graphOptimum, dSmoothingPara, biDict, coreDict);
+            OnGenBiOptimumSegGraph(aBiwordsNet);
+
+            optNShortPath.Calculate(aBiwordsNet, nResultCount);
+            List<int[]> spResult = optNShortPath.GetNPaths(Predefine.MAX_SEGMENT_NUM);
+
+            m_pWordSeg = new List<WordResult[]>();
+            segGraph = m_graphOptimum;
+            m_graphOptimum = new RowFirstDynamicArray<ChainContent>();
+
+            for (int i = 0; i < spResult.Count; i++)
             {
-               sb.Remove(0, sb.Length);
-               sb.Append(charArray[pCur]);
+                linkedArray = BiPath2LinkedArray(spResult[i], segGraph, atomSegment);
+                tmpResult = GenerateWord(spResult[i], linkedArray, m_graphOptimum);
 
-               bool reachEnd = true;
-               while (pCur < charArray.Length - 1)
-               {
-                  nNextType = charTypeArray[++pCur];
-
-                  if (nNextType == nCurType)
-                     sb.Append(charArray[pCur]);
-                  else
-                  {
-                     reachEnd = false;
-                     break;
-                  }
-               }
-               atomSegment.Add(new AtomNode(sb.ToString(), nCurType));
-               if (reachEnd)
-                  pCur++;
+                if (tmpResult != null)
+                    m_pWordSeg.Add(tmpResult);
             }
-            // ¶ÔÓÚËùÓĞÆäËüÇé¿ö
+
+            return m_pWordSeg.Count;
+        }
+
+        #endregion
+
+        #region AtomSegment Method
+
+        //====================================================================
+        // å¯¹sSentenceè¿›è¡Œå•ä¸ªæ±‰å­—çš„åˆ‡å‰²
+        //====================================================================
+        public static List<AtomNode> AtomSegment(string sSentence)
+        {
+            List<AtomNode> atomSegment = new List<AtomNode>();
+            AtomNode tmpEnd = null;
+            int startIndex = 0, length = sSentence.Length, pCur = 0, nCurType, nNextType;
+            StringBuilder sb = new StringBuilder();
+            char c;
+
+            // å¦‚æœæ˜¯å¼€å§‹ç¬¦å·
+            if (sSentence.StartsWith(Predefine.SENTENCE_BEGIN))
+            {
+                atomSegment.Add(new AtomNode(Predefine.SENTENCE_BEGIN, Predefine.CT_SENTENCE_BEGIN));
+                startIndex = Predefine.SENTENCE_BEGIN.Length;
+                length -= startIndex;
+            }
+
+            // å¦‚æœæ˜¯ç»“æŸç¬¦å·
+            if (sSentence.EndsWith(Predefine.SENTENCE_END))
+            {
+                tmpEnd = new AtomNode(Predefine.SENTENCE_END, Predefine.CT_SENTENCE_END);
+                length -= Predefine.SENTENCE_END.Length;
+            }
+
+            //==============================================================================================
+            // by zhenyulu:
+            //
+            // TODO: ä½¿ç”¨ä¸€ç³»åˆ—æ­£åˆ™è¡¨è¾¾å¼å°†å¥å­ä¸­çš„å®Œæ•´æˆåˆ†ï¼ˆç™¾åˆ†æ¯”ã€æ—¥æœŸã€ç”µå­é‚®ä»¶ã€URLç­‰ï¼‰é¢„å…ˆæå–å‡ºæ¥
+            //==============================================================================================
+
+            char[] charArray = sSentence.ToCharArray(startIndex, length);
+            int[] charTypeArray = new int[charArray.Length];
+
+            // ç”Ÿæˆå¯¹åº”å•ä¸ªæ±‰å­—çš„å­—ç¬¦ç±»å‹æ•°ç»„
+            for (int i = 0; i < charArray.Length; i++)
+            {
+                c = charArray[i];
+                charTypeArray[i] = Utility.charType(c);
+
+                if (c == '.' && i < (charArray.Length - 1) && Utility.charType(charArray[i + 1]) == Predefine.CT_NUM)
+                    charTypeArray[i] = Predefine.CT_NUM;
+                else if (c == '.' && i < (charArray.Length - 1) && charArray[i + 1] >= '0' && charArray[i + 1] <= '9')
+                    charTypeArray[i] = Predefine.CT_SINGLE;
+                else if (charTypeArray[i] == Predefine.CT_LETTER)
+                    charTypeArray[i] = Predefine.CT_SINGLE;
+            }
+
+            // æ ¹æ®å­—ç¬¦ç±»å‹æ•°ç»„ä¸­çš„å†…å®¹å®ŒæˆåŸå­åˆ‡å‰²
+            while (pCur < charArray.Length)
+            {
+                nCurType = charTypeArray[pCur];
+
+                if (nCurType == Predefine.CT_CHINESE || nCurType == Predefine.CT_INDEX ||
+                   nCurType == Predefine.CT_DELIMITER || nCurType == Predefine.CT_OTHER)
+                {
+                    if (charArray[pCur].ToString().Trim().Length != 0)
+                        atomSegment.Add(new AtomNode(charArray[pCur].ToString(), nCurType));
+                    pCur++;
+                }
+                //å¦‚æœæ˜¯å­—ç¬¦ã€æ•°å­—æˆ–è€…åé¢è·Ÿéšäº†æ•°å­—çš„å°æ•°ç‚¹â€œ.â€åˆ™ä¸€ç›´å–ä¸‹å»ã€‚
+                else if (pCur < charArray.Length - 1 && (nCurType == Predefine.CT_SINGLE || nCurType == Predefine.CT_NUM))
+                {
+                    sb.Remove(0, sb.Length);
+                    sb.Append(charArray[pCur]);
+
+                    bool reachEnd = true;
+                    while (pCur < charArray.Length - 1)
+                    {
+                        nNextType = charTypeArray[++pCur];
+
+                        if (nNextType == nCurType)
+                            sb.Append(charArray[pCur]);
+                        else
+                        {
+                            reachEnd = false;
+                            break;
+                        }
+                    }
+                    atomSegment.Add(new AtomNode(sb.ToString(), nCurType));
+                    if (reachEnd)
+                        pCur++;
+                }
+                // å¯¹äºæ‰€æœ‰å…¶å®ƒæƒ…å†µ
+                else
+                {
+                    atomSegment.Add(new AtomNode(charArray[pCur].ToString(), nCurType));
+                    pCur++;
+                }
+            }
+
+            // å¢åŠ ç»“æŸæ ‡å¿—
+            if (tmpEnd != null)
+                atomSegment.Add(tmpEnd);
+
+            return atomSegment;
+        }
+
+        #endregion
+
+        #region GenerateWordNet Method
+
+        //====================================================================
+        // Func Name  : GenerateWordNet
+        // Description: Generate the segmentation word net according 
+        //              the original sentence
+        // Parameters : sSentence: the sentence
+        //              dictCore : core dictionary
+        //              bOriginalFreq=false: output original frequency
+        // Returns    : bool
+        //====================================================================
+        public static RowFirstDynamicArray<ChainContent> GenerateWordNet(List<AtomNode> atomSegment, WordDictionary coreDict)
+        {
+            string sWord = "", sMaxMatchWord;
+            int nPOSRet, nPOS, nTotalFreq;
+            double dValue = 0;
+
+            RowFirstDynamicArray<ChainContent> m_segGraph = new RowFirstDynamicArray<ChainContent>();
+            m_segGraph.SetEmpty();
+
+            // å°†åŸå­éƒ¨åˆ†å­˜å…¥m_segGraph
+            for (int i = 0; i < atomSegment.Count; i++)//Init the cost array
+            {
+                if (atomSegment[i].nPOS == Predefine.CT_CHINESE)
+                    m_segGraph.SetElement(i, i + 1, new ChainContent(0, 0, atomSegment[i].sWord));
+                else
+                {
+                    sWord = atomSegment[i].sWord;//init the word 
+                    dValue = Predefine.MAX_FREQUENCE;
+                    switch (atomSegment[i].nPOS)
+                    {
+                        case Predefine.CT_INDEX:
+                        case Predefine.CT_NUM:
+                            nPOS = -27904;//'m'*256
+                            sWord = "æœª##æ•°";
+                            dValue = 0;
+                            break;
+                        case Predefine.CT_DELIMITER:
+                            nPOS = 30464;//'w'*256;
+                            break;
+                        case Predefine.CT_LETTER:
+                            nPOS = -28280; // -'n' * 256 - 'x';
+                            dValue = 0;
+                            sWord = "æœª##ä¸²";
+                            break;
+                        case Predefine.CT_SINGLE://12021-2129-3121
+                            if (Regex.IsMatch(atomSegment[i].sWord, @"^(-?\d+)(\.\d+)?$"))ã€€ã€€//åŒ¹é…æµ®ç‚¹æ•°
+                            {
+                                nPOS = -27904;//'m'*256
+                                sWord = "æœª##æ•°";
+                            }
+                            else
+                            {
+                                nPOS = -28280; // -'n' * 256 - 'x'
+                                sWord = "æœª##ä¸²";
+                            }
+                            dValue = 0;
+                            break;
+                        default:
+                            nPOS = atomSegment[i].nPOS;//'?'*256;
+                            break;
+                    }
+                    m_segGraph.SetElement(i, i + 1, new ChainContent(dValue, nPOS, sWord));//init the link with minimum
+                }
+            }
+
+            // å°†æ‰€æœ‰å¯èƒ½çš„ç»„è¯å­˜å…¥m_segGraph
+            for (int i = 0; i < atomSegment.Count; i++)//All the word
+            {
+                sWord = atomSegment[i].sWord;//Get the current atom
+                int j = i + 1;
+
+                while (j < atomSegment.Count && coreDict.GetMaxMatch(sWord, out sMaxMatchWord, out nPOSRet))
+                {
+                    if (sMaxMatchWord == sWord)  // å°±æ˜¯æˆ‘ä»¬è¦æ‰¾çš„è¯
+                    {
+                        WordInfo info = coreDict.GetWordInfo(sWord); // è¯¥è¯å¯èƒ½å°±æœ‰å¤šç§è¯æ€§
+
+                        // è®¡ç®—è¯¥è¯çš„æ‰€æœ‰è¯é¢‘ä¹‹å’Œ
+                        nTotalFreq = 0;
+                        for (int k = 0; k < info.Count; k++)
+                            nTotalFreq += info.Frequencies[k];
+
+                        // é™åˆ¶å‡ºç°æŸäº›ç‰¹æ®Šè¯
+                        if (sWord.Length == 2 && (sWord.StartsWith("å¹´") || sWord.StartsWith("æœˆ")) && i >= 1 &&
+                           (Utility.IsAllNum(atomSegment[i - 1].sWord) ||
+                           Utility.IsAllChineseNum(atomSegment[i - 1].sWord)))
+                        {
+                            //1å¹´å†…ã€1999å¹´æœ«
+                            if ("æœ«å†…ä¸­åº•å‰é—´åˆ".IndexOf(sWord.Substring(1)) >= 0)
+                                break;
+                        }
+
+                        // å¦‚æœè¯¥è¯åªæœ‰ä¸€ä¸ªè¯æ€§ï¼Œåˆ™å­˜å‚¨ï¼Œå¦åˆ™è¯æ€§è®°å½•ä¸º 0
+                        if (info.Count == 1)
+                            m_segGraph.SetElement(i, j, new ChainContent(nTotalFreq, info.POSs[0], sWord));
+                        else
+                            m_segGraph.SetElement(i, j, new ChainContent(nTotalFreq, 0, sWord));
+                    }
+
+                    sWord += atomSegment[j++].sWord;
+                }
+            }
+            return m_segGraph;
+        }
+
+        #endregion
+
+        #region BiGraphGenerate Method
+
+        //====================================================================
+        // ç”Ÿæˆä¸¤ä¸¤è¯ä¹‹é—´çš„äºŒå‰å›¾è¡¨
+        //====================================================================
+        public static ColumnFirstDynamicArray<ChainContent> BiGraphGenerate(
+           RowFirstDynamicArray<ChainContent> aWord, double smoothPara, WordDictionary biDict, WordDictionary coreDict)
+        {
+            ColumnFirstDynamicArray<ChainContent> aBiWordNet = new ColumnFirstDynamicArray<ChainContent>();
+
+            ChainItem<ChainContent> pCur, pNextWords;
+            int nTwoWordsFreq = 0, nCurWordIndex, nNextWordIndex;
+            double dCurFreqency, dValue, dTemp;
+            string sTwoWords;
+            StringBuilder sb = new StringBuilder();
+
+            //Record the position map of possible words
+            int[] m_npWordPosMapTable = PreparePositionMap(aWord);
+
+            pCur = aWord.GetHead();
+            while (pCur != null)
+            {
+                if (pCur.Content.nPOS >= 0)
+                    //It's not an unknown words
+                    dCurFreqency = pCur.Content.eWeight;
+                else
+                    //Unknown words
+                    dCurFreqency = coreDict.GetFrequency(pCur.Content.sWord, 2);
+
+                //Get next words which begin with pCur.colï¼ˆæ³¨ï¼šå¾ˆç‰¹æ®Šçš„å¯¹åº”å…³ç³»ï¼‰
+                pNextWords = aWord.GetFirstElementOfRow(pCur.col);
+
+                while (pNextWords != null && pNextWords.row == pCur.col)
+                {
+                    sb.Remove(0, sb.Length);
+                    sb.Append(pCur.Content.sWord);
+                    sb.Append(Predefine.WORD_SEGMENTER);
+                    sb.Append(pNextWords.Content.sWord);
+
+                    sTwoWords = sb.ToString();
+
+                    //Two linked Words frequency
+                    nTwoWordsFreq = biDict.GetFrequency(sTwoWords, 3);
+
+                    //Smoothing
+                    dTemp = 1.0 / Predefine.MAX_FREQUENCE;
+
+                    //-log{a*P(Ci-1)+(1-a)P(Ci|Ci-1)} Note 0<a<1
+                    dValue = -Math.Log(smoothPara * (1.0 + dCurFreqency) / (Predefine.MAX_FREQUENCE + 80000.0)
+                      + (1.0 - smoothPara) * ((1.0 - dTemp) * nTwoWordsFreq / (1.0 + dCurFreqency) +
+                      dTemp));
+
+                    //Unknown words: P(Wi|Ci);while known words:1
+                    if (pCur.Content.nPOS < 0)
+                        dValue += pCur.Content.nPOS;
+
+                    //Get the position index of current word in the position map table
+                    nCurWordIndex = Utility.BinarySearch(pCur.row * Predefine.MAX_SENTENCE_LEN + pCur.col, m_npWordPosMapTable);
+                    nNextWordIndex = Utility.BinarySearch(pNextWords.row * Predefine.MAX_SENTENCE_LEN + pNextWords.col, m_npWordPosMapTable);
+
+                    aBiWordNet.SetElement(nCurWordIndex, nNextWordIndex, new ChainContent(dValue, pCur.Content.nPOS, sTwoWords));
+
+                    pNextWords = pNextWords.next; //Get next word
+                }
+                pCur = pCur.next;
+            }
+
+            return aBiWordNet;
+        }
+
+        //====================================================================
+        // å‡†å¤‡PositionMapï¼Œç”¨äºè®°å½•è¯çš„ä½ç½®
+        //====================================================================
+        private static int[] PreparePositionMap(RowFirstDynamicArray<ChainContent> aWord)
+        {
+            int[] m_npWordPosMapTable;
+            ChainItem<ChainContent> pTail, pCur;
+            int nWordIndex = 0, m_nWordCount;
+
+            //Get tail element and return the words count
+            m_nWordCount = aWord.GetTail(out pTail);
+
+            if (m_nWordCount > 0)
+                m_npWordPosMapTable = new int[m_nWordCount];
             else
+                m_npWordPosMapTable = null;
+
+            //Record the  position of possible words
+            pCur = aWord.GetHead();
+            while (pCur != null)
             {
-               atomSegment.Add(new AtomNode(charArray[pCur].ToString(), nCurType));
-               pCur++;
-            }
-         }
-
-         // Ôö¼Ó½áÊø±êÖ¾
-         if (tmpEnd != null)
-            atomSegment.Add(tmpEnd);
-
-         return atomSegment;
-      }
-
-      #endregion
-
-      #region GenerateWordNet Method
-
-      //====================================================================
-      // Func Name  : GenerateWordNet
-      // Description: Generate the segmentation word net according 
-      //              the original sentence
-      // Parameters : sSentence: the sentence
-      //              dictCore : core dictionary
-      //              bOriginalFreq=false: output original frequency
-      // Returns    : bool
-      //====================================================================
-      public static RowFirstDynamicArray<ChainContent> GenerateWordNet(List<AtomNode> atomSegment, WordDictionary coreDict)
-      {
-         string sWord = "", sMaxMatchWord;
-         int nPOSRet, nPOS, nTotalFreq;
-         double dValue = 0;
-
-         RowFirstDynamicArray<ChainContent> m_segGraph = new RowFirstDynamicArray<ChainContent>();
-         m_segGraph.SetEmpty();
-
-         // ½«Ô­×Ó²¿·Ö´æÈëm_segGraph
-         for (int i = 0; i < atomSegment.Count; i++)//Init the cost array
-         {
-            if (atomSegment[i].nPOS == Predefine.CT_CHINESE)
-               m_segGraph.SetElement(i, i + 1, new ChainContent(0, 0, atomSegment[i].sWord));
-            else
-            {
-               sWord = atomSegment[i].sWord;//init the word 
-               dValue = Predefine.MAX_FREQUENCE;
-               switch (atomSegment[i].nPOS)
-               {
-                  case Predefine.CT_INDEX:
-                  case Predefine.CT_NUM:
-                     nPOS = -27904;//'m'*256
-                     sWord = "Î´##Êı";
-                     dValue = 0;
-                     break;
-                  case Predefine.CT_DELIMITER:
-                     nPOS = 30464;//'w'*256;
-                     break;
-                  case Predefine.CT_LETTER:
-                     nPOS = -28280; // -'n' * 256 - 'x';
-                     dValue = 0;
-                     sWord = "Î´##´®";
-                     break;
-                  case Predefine.CT_SINGLE://12021-2129-3121
-                     if (Regex.IsMatch(atomSegment[i].sWord, @"^(-?\d+)(\.\d+)?$"))¡¡¡¡//Æ¥Åä¸¡µãÊı
-                     {
-                        nPOS = -27904;//'m'*256
-                        sWord = "Î´##Êı";
-                     }
-                     else
-                     {
-                        nPOS = -28280; // -'n' * 256 - 'x'
-                        sWord = "Î´##´®";
-                     }
-                     dValue = 0;
-                     break;
-                  default:
-                     nPOS = atomSegment[i].nPOS;//'?'*256;
-                     break;
-               }
-               m_segGraph.SetElement(i, i + 1, new ChainContent(dValue, nPOS, sWord));//init the link with minimum
-            }
-         }
-
-         // ½«ËùÓĞ¿ÉÄÜµÄ×é´Ê´æÈëm_segGraph
-         for (int i = 0; i < atomSegment.Count; i++)//All the word
-         {
-            sWord = atomSegment[i].sWord;//Get the current atom
-            int j = i + 1;
-
-            while (j < atomSegment.Count && coreDict.GetMaxMatch(sWord, out sMaxMatchWord, out nPOSRet))
-            {
-               if (sMaxMatchWord == sWord)  // ¾ÍÊÇÎÒÃÇÒªÕÒµÄ´Ê
-               {
-                  WordInfo info = coreDict.GetWordInfo(sWord); // ¸Ã´Ê¿ÉÄÜ¾ÍÓĞ¶àÖÖ´ÊĞÔ
-
-                  // ¼ÆËã¸Ã´ÊµÄËùÓĞ´ÊÆµÖ®ºÍ
-                  nTotalFreq = 0;
-                  for (int k = 0; k < info.Count; k++)
-                     nTotalFreq += info.Frequencies[k];
-
-                  // ÏŞÖÆ³öÏÖÄ³Ğ©ÌØÊâ´Ê
-                  if (sWord.Length == 2 && (sWord.StartsWith("Äê") || sWord.StartsWith("ÔÂ")) && i >= 1 &&
-                     (Utility.IsAllNum(atomSegment[i - 1].sWord) ||
-                     Utility.IsAllChineseNum(atomSegment[i - 1].sWord)))
-                  {
-                     //1ÄêÄÚ¡¢1999ÄêÄ©
-                     if ("Ä©ÄÚÖĞµ×Ç°¼ä³õ".IndexOf(sWord.Substring(1)) >= 0)
-                        break;
-                  }
-
-                  // Èç¹û¸Ã´ÊÖ»ÓĞÒ»¸ö´ÊĞÔ£¬Ôò´æ´¢£¬·ñÔò´ÊĞÔ¼ÇÂ¼Îª 0
-                  if (info.Count == 1)
-                     m_segGraph.SetElement(i, j, new ChainContent(nTotalFreq, info.POSs[0], sWord));
-                  else
-                     m_segGraph.SetElement(i, j, new ChainContent(nTotalFreq, 0, sWord));
-               }
-
-               sWord += atomSegment[j++].sWord;
-            }
-         }
-         return m_segGraph;
-      }
-
-      #endregion
-
-      #region BiGraphGenerate Method
-
-      //====================================================================
-      // Éú³ÉÁ½Á½´ÊÖ®¼äµÄ¶ş²æÍ¼±í
-      //====================================================================
-      public static ColumnFirstDynamicArray<ChainContent> BiGraphGenerate(
-         RowFirstDynamicArray<ChainContent> aWord, double smoothPara, WordDictionary biDict, WordDictionary coreDict)
-      {
-         ColumnFirstDynamicArray<ChainContent> aBiWordNet = new ColumnFirstDynamicArray<ChainContent>();
-
-         ChainItem<ChainContent> pCur, pNextWords;
-         int nTwoWordsFreq = 0, nCurWordIndex, nNextWordIndex;
-         double dCurFreqency, dValue, dTemp;
-         string sTwoWords;
-         StringBuilder sb = new StringBuilder();
-
-         //Record the position map of possible words
-         int[] m_npWordPosMapTable = PreparePositionMap(aWord);
-
-         pCur = aWord.GetHead();
-         while (pCur != null)
-         {
-            if (pCur.Content.nPOS >= 0)
-               //It's not an unknown words
-               dCurFreqency = pCur.Content.eWeight;
-            else
-               //Unknown words
-               dCurFreqency = coreDict.GetFrequency(pCur.Content.sWord, 2);
-
-            //Get next words which begin with pCur.col£¨×¢£ººÜÌØÊâµÄ¶ÔÓ¦¹ØÏµ£©
-            pNextWords = aWord.GetFirstElementOfRow(pCur.col);
-
-            while (pNextWords != null && pNextWords.row == pCur.col)
-            {
-               sb.Remove(0, sb.Length);
-               sb.Append(pCur.Content.sWord);
-               sb.Append(Predefine.WORD_SEGMENTER);
-               sb.Append(pNextWords.Content.sWord);
-
-               sTwoWords = sb.ToString();
-
-               //Two linked Words frequency
-               nTwoWordsFreq = biDict.GetFrequency(sTwoWords, 3);
-
-               //Smoothing
-               dTemp = 1.0 / Predefine.MAX_FREQUENCE;
-
-               //-log{a*P(Ci-1)+(1-a)P(Ci|Ci-1)} Note 0<a<1
-               dValue = -Math.Log(smoothPara * (1.0 + dCurFreqency) / (Predefine.MAX_FREQUENCE + 80000.0)
-                 + (1.0 - smoothPara) * ((1.0 - dTemp) * nTwoWordsFreq / (1.0 + dCurFreqency) +
-                 dTemp));
-
-               //Unknown words: P(Wi|Ci);while known words:1
-               if (pCur.Content.nPOS < 0)
-                  dValue += pCur.Content.nPOS;
-
-               //Get the position index of current word in the position map table
-               nCurWordIndex = Utility.BinarySearch(pCur.row * Predefine.MAX_SENTENCE_LEN + pCur.col, m_npWordPosMapTable);
-               nNextWordIndex = Utility.BinarySearch(pNextWords.row * Predefine.MAX_SENTENCE_LEN + pNextWords.col, m_npWordPosMapTable);
-
-               aBiWordNet.SetElement(nCurWordIndex, nNextWordIndex, new ChainContent(dValue, pCur.Content.nPOS, sTwoWords));
-
-               pNextWords = pNextWords.next; //Get next word
-            }
-            pCur = pCur.next;
-         }
-
-         return aBiWordNet;
-      }
-
-      //====================================================================
-      // ×¼±¸PositionMap£¬ÓÃÓÚ¼ÇÂ¼´ÊµÄÎ»ÖÃ
-      //====================================================================
-      private static int[] PreparePositionMap(RowFirstDynamicArray<ChainContent> aWord)
-      {
-         int[] m_npWordPosMapTable;
-         ChainItem<ChainContent> pTail, pCur;
-         int nWordIndex = 0, m_nWordCount;
-
-         //Get tail element and return the words count
-         m_nWordCount = aWord.GetTail(out pTail);
-
-         if (m_nWordCount > 0)
-            m_npWordPosMapTable = new int[m_nWordCount];
-         else
-            m_npWordPosMapTable = null;
-
-         //Record the  position of possible words
-         pCur = aWord.GetHead();
-         while (pCur != null)
-         {
-            m_npWordPosMapTable[nWordIndex++] = pCur.row * Predefine.MAX_SENTENCE_LEN + pCur.col;
-            pCur = pCur.next;
-         }
-
-         return m_npWordPosMapTable;
-      }
-
-      #endregion
-
-      #region Private Static Functions
-
-      #region BiPath2LinkedArray Method
-
-      //====================================================================
-      // ½«BiPath×ª»»ÎªLinkedArray
-      // ÀıÈç¡°ËûËµµÄÈ·ÊµÔÚÀí¡±
-      // BiPath£º£¨0, 1, 2, 3, 6, 9, 11, 12£©
-      //    0    1   2   3   4     5   6     7   8     9   10    11  12
-      // Ê¼##Ê¼  Ëû  Ëµ  µÄ  µÄÈ·  È·  È·Êµ  Êµ  ÊµÔÚ  ÔÚ  ÔÚÀí  Àí  Ä©##Ä©
-      //====================================================================
-      private static WordLinkedArray BiPath2LinkedArray(int[] biPath, RowFirstDynamicArray<ChainContent> segGraph, List<AtomNode> atomSegment)
-      {
-         List<ChainItem<ChainContent>> list = segGraph.ToListItems();
-         StringBuilder sb = new StringBuilder();
-
-         WordLinkedArray result = new WordLinkedArray();
-
-         for (int i = 0; i < biPath.Length; i++)
-         {
-            WordNode node = new WordNode();
-
-            node.row = list[biPath[i]].row;
-            node.col = list[biPath[i]].col;
-            node.sWordInSegGraph = list[biPath[i]].Content.sWord;
-
-            node.theWord = new WordResult();
-            if (node.sWordInSegGraph == "Î´##ÈË" || node.sWordInSegGraph == "Î´##µØ" ||
-               node.sWordInSegGraph == "Î´##Êı" || node.sWordInSegGraph == "Î´##Ê±" || node.sWordInSegGraph == "Î´##´®")
-            {
-               sb.Remove(0, sb.Length);
-               for (int j = node.row; j < node.col; j++)
-                  sb.Append(atomSegment[j].sWord);
-
-               node.theWord.sWord = sb.ToString();
-            }
-            else
-               node.theWord.sWord = list[biPath[i]].Content.sWord;
-
-            node.theWord.nPOS = list[biPath[i]].Content.nPOS;
-            node.theWord.dValue = list[biPath[i]].Content.eWeight;
-
-            result.AppendNode(node);
-         }
-
-         return result;
-      }
-
-      #endregion
-
-      #region GenerateWord Method
-
-      //====================================================================
-      // Generate Word according the segmentation route
-      //====================================================================
-      private static WordResult[] GenerateWord(int[] uniPath, WordLinkedArray linkedArray, RowFirstDynamicArray<ChainContent> m_graphOptimum)
-      {
-         if (linkedArray.Count == 0)
-            return null;
-
-         //--------------------------------------------------------------------
-         //Merge all seperate continue num into one number
-         MergeContinueNumIntoOne(ref linkedArray);
-
-         //--------------------------------------------------------------------
-         //The delimiter "£­£­"
-         ChangeDelimiterPOS(ref linkedArray);
-
-         //--------------------------------------------------------------------
-         //Èç¹ûÇ°Ò»¸ö´ÊÊÇÊı×Ö£¬µ±Ç°´ÊÒÔ¡°£­¡±»ò¡°-¡±¿ªÊ¼£¬²¢ÇÒ²»Ö¹ÕâÒ»¸ö×Ö·û£¬
-         //ÄÇÃ´½«´Ë¡°£­¡±·ûºÅ´Óµ±Ç°´ÊÖĞ·ÖÀë³öÀ´¡£
-         //ÀıÈç ¡°3 / -4 / ÔÂ¡±ĞèÒª²ğ·Ö³É¡°3 / - / 4 / ÔÂ¡±
-         SplitMiddleSlashFromDigitalWords(ref linkedArray);
-
-         //--------------------------------------------------------------------
-         //1¡¢Èç¹ûµ±Ç°´ÊÊÇÊı×Ö£¬ÏÂÒ»¸ö´ÊÊÇ¡°ÔÂ¡¢ÈÕ¡¢Ê±¡¢·Ö¡¢Ãë¡¢ÔÂ·İ¡±ÖĞµÄÒ»¸ö£¬ÔòºÏ²¢,ÇÒµ±Ç°´Ê´ÊĞÔÊÇÊ±¼ä
-         //2¡¢Èç¹ûµ±Ç°´ÊÊÇ¿ÉÒÔ×÷ÎªÄê·İµÄÊı×Ö£¬ÏÂÒ»¸ö´ÊÊÇ¡°Äê¡±£¬ÔòºÏ²¢£¬´ÊĞÔÎªÊ±¼ä£¬·ñÔòÎªÊı×Ö¡£
-         //3¡¢Èç¹û×îºóÒ»¸öºº×ÖÊÇ"µã" £¬ÔòÈÏÎªµ±Ç°Êı×ÖÊÇÊ±¼ä
-         //4¡¢Èç¹ûµ±Ç°´®×îºóÒ»¸öºº×Ö²»ÊÇ"¡Ã¡¤£®£¯"ºÍ°ë½ÇµÄ'.''/'£¬ÄÇÃ´ÊÇÊı
-         //5¡¢µ±Ç°´®×îºóÒ»¸öºº×ÖÊÇ"¡Ã¡¤£®£¯"ºÍ°ë½ÇµÄ'.''/'£¬ÇÒ³¤¶È´óÓÚ1£¬ÄÇÃ´È¥µô×îºóÒ»¸ö×Ö·û¡£ÀıÈç"1."
-         CheckDateElements(ref linkedArray);
-
-         //--------------------------------------------------------------------
-         //Êä³ö½á¹û
-         WordResult[] result = new WordResult[linkedArray.Count];
-
-         WordNode pCur = linkedArray.first;
-         int i = 0;
-         while (pCur != null)
-         {
-            WordResult item = new WordResult();
-            item.sWord = pCur.theWord.sWord;
-            item.nPOS = pCur.theWord.nPOS;
-            item.dValue = pCur.theWord.dValue;
-            result[i] = item;
-
-            m_graphOptimum.SetElement(pCur.row, pCur.col, new ChainContent(item.dValue, item.nPOS, pCur.sWordInSegGraph));
-
-            pCur = pCur.next;
-            i++;
-         }
-
-         return result;
-      }
-
-      #endregion
-
-      #region MergeContinueNumIntoOne Method
-
-      private static void MergeContinueNumIntoOne(ref WordLinkedArray linkedArray)
-      {
-         if (linkedArray.Count < 2)
-            return;
-
-         string tmp;
-         WordNode pCur = linkedArray.first;
-         WordNode pNext = pCur.next;
-
-         while (pNext != null)
-         {
-            if ((Utility.IsAllNum(pCur.theWord.sWord) || Utility.IsAllChineseNum(pCur.theWord.sWord)) &&
-               (Utility.IsAllNum(pNext.theWord.sWord) || Utility.IsAllChineseNum(pNext.theWord.sWord)))
-            {
-               tmp = pCur.theWord.sWord + pNext.theWord.sWord;
-               if (Utility.IsAllNum(tmp) || Utility.IsAllChineseNum(tmp))
-               {
-                  pCur.theWord.sWord += pNext.theWord.sWord;
-                  pCur.col = pNext.col;
-                  pCur.next = pNext.next;
-                  linkedArray.Count--;
-                  pNext = pCur.next;
-                  continue;
-               }
+                m_npWordPosMapTable[nWordIndex++] = pCur.row * Predefine.MAX_SENTENCE_LEN + pCur.col;
+                pCur = pCur.next;
             }
 
-            pCur = pCur.next;
-            pNext = pNext.next;
-         }
-      }
+            return m_npWordPosMapTable;
+        }
 
-      #endregion
+        #endregion
 
-      #region ChangeDelimiterPOS Method
+        #region Private Static Functions
 
-      private static void ChangeDelimiterPOS(ref WordLinkedArray linkedArray)
-      {
-         WordNode pCur = linkedArray.first;
-         while (pCur != null)
-         {
-            if (pCur.theWord.sWord == "£­£­" || pCur.theWord.sWord == "¡ª" || pCur.theWord.sWord == "-")
+        #region BiPath2LinkedArray Method
+
+        //====================================================================
+        // å°†BiPathè½¬æ¢ä¸ºLinkedArray
+        // ä¾‹å¦‚â€œä»–è¯´çš„ç¡®å®åœ¨ç†â€
+        // BiPathï¼šï¼ˆ0, 1, 2, 3, 6, 9, 11, 12ï¼‰
+        //    0    1   2   3   4     5   6     7   8     9   10    11  12
+        // å§‹##å§‹  ä»–  è¯´  çš„  çš„ç¡®  ç¡®  ç¡®å®  å®  å®åœ¨  åœ¨  åœ¨ç†  ç†  æœ«##æœ«
+        //====================================================================
+        private static WordLinkedArray BiPath2LinkedArray(int[] biPath, RowFirstDynamicArray<ChainContent> segGraph, List<AtomNode> atomSegment)
+        {
+            List<ChainItem<ChainContent>> list = segGraph.ToListItems();
+            StringBuilder sb = new StringBuilder();
+
+            WordLinkedArray result = new WordLinkedArray();
+
+            for (int i = 0; i < biPath.Length; i++)
             {
-               pCur.theWord.nPOS = 30464; //'w'*256;Set the POS with 'w'
-               pCur.theWord.dValue = 0;
+                WordNode node = new WordNode();
+
+                node.row = list[biPath[i]].row;
+                node.col = list[biPath[i]].col;
+                node.sWordInSegGraph = list[biPath[i]].Content.sWord;
+
+                node.theWord = new WordResult();
+                if (node.sWordInSegGraph == "æœª##äºº" || node.sWordInSegGraph == "æœª##åœ°" ||
+                   node.sWordInSegGraph == "æœª##æ•°" || node.sWordInSegGraph == "æœª##æ—¶" || node.sWordInSegGraph == "æœª##ä¸²")
+                {
+                    sb.Remove(0, sb.Length);
+                    for (int j = node.row; j < node.col; j++)
+                        sb.Append(atomSegment[j].sWord);
+
+                    node.theWord.sWord = sb.ToString();
+                }
+                else
+                    node.theWord.sWord = list[biPath[i]].Content.sWord;
+
+                node.theWord.nPOS = list[biPath[i]].Content.nPOS;
+                node.theWord.dValue = list[biPath[i]].Content.eWeight;
+
+                result.AppendNode(node);
             }
 
-            pCur = pCur.next;
-         }
-      }
+            return result;
+        }
 
-      #endregion
+        #endregion
 
-      #region SplitMiddleSlashFromDigitalWords Method
+        #region GenerateWord Method
 
-      //====================================================================
-      //Èç¹ûÇ°Ò»¸ö´ÊÊÇÊı×Ö£¬µ±Ç°´ÊÒÔ¡°£­¡±»ò¡°-¡±¿ªÊ¼£¬²¢ÇÒ²»Ö¹ÕâÒ»¸ö×Ö·û£¬
-      //ÄÇÃ´½«´Ë¡°£­¡±·ûºÅ´Óµ±Ç°´ÊÖĞ·ÖÀë³öÀ´¡£
-      //ÀıÈç ¡°3 / -4 / ÔÂ¡±ĞèÒª²ğ·Ö³É¡°3 / - / 4 / ÔÂ¡±
-      //====================================================================
-      private static void SplitMiddleSlashFromDigitalWords(ref WordLinkedArray linkedArray)
-      {
-         if (linkedArray.Count < 2)
-            return;
+        //====================================================================
+        // Generate Word according the segmentation route
+        //====================================================================
+        private static WordResult[] GenerateWord(int[] uniPath, WordLinkedArray linkedArray, RowFirstDynamicArray<ChainContent> m_graphOptimum)
+        {
+            if (linkedArray.Count == 0)
+                return null;
 
-         WordNode pCur = linkedArray.first.next;
-         WordNode pPre = linkedArray.first;
+            //--------------------------------------------------------------------
+            //Merge all seperate continue num into one number
+            MergeContinueNumIntoOne(ref linkedArray);
 
-         while (pCur != null)
-         {
-            //27904='m'*256
-            if ((Math.Abs(pPre.theWord.nPOS) == 27904 || Math.Abs(pPre.theWord.nPOS) == 29696) &&
-               (Utility.IsAllNum(pCur.theWord.sWord) || Utility.IsAllChineseNum(pCur.theWord.sWord)) &&
-               ("-£­".IndexOf(pCur.theWord.sWord.ToCharArray()[0]) >= 0) && pCur.theWord.sWord.Length > 1)
+            //--------------------------------------------------------------------
+            //The delimiter "ï¼ï¼"
+            ChangeDelimiterPOS(ref linkedArray);
+
+            //--------------------------------------------------------------------
+            //å¦‚æœå‰ä¸€ä¸ªè¯æ˜¯æ•°å­—ï¼Œå½“å‰è¯ä»¥â€œï¼â€æˆ–â€œ-â€å¼€å§‹ï¼Œå¹¶ä¸”ä¸æ­¢è¿™ä¸€ä¸ªå­—ç¬¦ï¼Œ
+            //é‚£ä¹ˆå°†æ­¤â€œï¼â€ç¬¦å·ä»å½“å‰è¯ä¸­åˆ†ç¦»å‡ºæ¥ã€‚
+            //ä¾‹å¦‚ â€œ3 / -4 / æœˆâ€éœ€è¦æ‹†åˆ†æˆâ€œ3 / - / 4 / æœˆâ€
+            SplitMiddleSlashFromDigitalWords(ref linkedArray);
+
+            //--------------------------------------------------------------------
+            //1ã€å¦‚æœå½“å‰è¯æ˜¯æ•°å­—ï¼Œä¸‹ä¸€ä¸ªè¯æ˜¯â€œæœˆã€æ—¥ã€æ—¶ã€åˆ†ã€ç§’ã€æœˆä»½â€ä¸­çš„ä¸€ä¸ªï¼Œåˆ™åˆå¹¶,ä¸”å½“å‰è¯è¯æ€§æ˜¯æ—¶é—´
+            //2ã€å¦‚æœå½“å‰è¯æ˜¯å¯ä»¥ä½œä¸ºå¹´ä»½çš„æ•°å­—ï¼Œä¸‹ä¸€ä¸ªè¯æ˜¯â€œå¹´â€ï¼Œåˆ™åˆå¹¶ï¼Œè¯æ€§ä¸ºæ—¶é—´ï¼Œå¦åˆ™ä¸ºæ•°å­—ã€‚
+            //3ã€å¦‚æœæœ€åä¸€ä¸ªæ±‰å­—æ˜¯"ç‚¹" ï¼Œåˆ™è®¤ä¸ºå½“å‰æ•°å­—æ˜¯æ—¶é—´
+            //4ã€å¦‚æœå½“å‰ä¸²æœ€åä¸€ä¸ªæ±‰å­—ä¸æ˜¯"âˆ¶Â·ï¼ï¼"å’ŒåŠè§’çš„'.''/'ï¼Œé‚£ä¹ˆæ˜¯æ•°
+            //5ã€å½“å‰ä¸²æœ€åä¸€ä¸ªæ±‰å­—æ˜¯"âˆ¶Â·ï¼ï¼"å’ŒåŠè§’çš„'.''/'ï¼Œä¸”é•¿åº¦å¤§äº1ï¼Œé‚£ä¹ˆå»æ‰æœ€åä¸€ä¸ªå­—ç¬¦ã€‚ä¾‹å¦‚"1."
+            CheckDateElements(ref linkedArray);
+
+            //--------------------------------------------------------------------
+            //è¾“å‡ºç»“æœ
+            WordResult[] result = new WordResult[linkedArray.Count];
+
+            WordNode pCur = linkedArray.first;
+            int i = 0;
+            while (pCur != null)
             {
-               // ½«¡°£­¡±²ğ·Ö³öÀ´¡£
-               WordNode newNode = new WordNode();
-               newNode.row = pCur.row + 1;
-               newNode.col = pCur.col;
-               newNode.sWordInSegGraph = pCur.theWord.sWord.Substring(1);
-               WordResult theWord = new WordResult();
-               theWord.sWord = newNode.sWordInSegGraph;
-               theWord.nPOS = 27904;
-               theWord.dValue = pCur.theWord.dValue;
-               newNode.theWord = theWord;
+                WordResult item = new WordResult();
+                item.sWord = pCur.theWord.sWord;
+                item.nPOS = pCur.theWord.nPOS;
+                item.dValue = pCur.theWord.dValue;
+                result[i] = item;
 
-               pCur.col = pCur.row + 1;
-               pCur.theWord.sWord = pCur.theWord.sWord.Substring(0, 1);
-               pCur.theWord.nPOS = 30464; //'w'*256;
-               pCur.theWord.dValue = 0;
+                m_graphOptimum.SetElement(pCur.row, pCur.col, new ChainContent(item.dValue, item.nPOS, pCur.sWordInSegGraph));
 
-               newNode.next = pCur.next;
-               pCur.next = newNode;
-
-               linkedArray.Count++;
-            }
-            pCur = pCur.next;
-            pPre = pPre.next;
-         }
-      }
-
-      #endregion
-
-      #region CheckDateElements Method
-
-      //====================================================================
-      //1¡¢Èç¹ûµ±Ç°´ÊÊÇÊı×Ö£¬ÏÂÒ»¸ö´ÊÊÇ¡°ÔÂ¡¢ÈÕ¡¢Ê±¡¢·Ö¡¢Ãë¡¢ÔÂ·İ¡±ÖĞµÄÒ»¸ö£¬ÔòºÏ²¢ÇÒµ±Ç°´Ê´ÊĞÔÊÇÊ±¼ä
-      //2¡¢Èç¹ûµ±Ç°´ÊÊÇ¿ÉÒÔ×÷ÎªÄê·İµÄÊı×Ö£¬ÏÂÒ»¸ö´ÊÊÇ¡°Äê¡±£¬ÔòºÏ²¢£¬´ÊĞÔÎªÊ±¼ä£¬·ñÔòÎªÊı×Ö¡£
-      //3¡¢Èç¹û×îºóÒ»¸öºº×ÖÊÇ"µã" £¬ÔòÈÏÎªµ±Ç°Êı×ÖÊÇÊ±¼ä
-      //4¡¢Èç¹ûµ±Ç°´®×îºóÒ»¸öºº×Ö²»ÊÇ"¡Ã¡¤£®£¯"ºÍ°ë½ÇµÄ'.''/'£¬ÄÇÃ´ÊÇÊı
-      //5¡¢µ±Ç°´®×îºóÒ»¸öºº×ÖÊÇ"¡Ã¡¤£®£¯"ºÍ°ë½ÇµÄ'.''/'£¬ÇÒ³¤¶È´óÓÚ1£¬ÄÇÃ´È¥µô×îºóÒ»¸ö×Ö·û¡£ÀıÈç"1."
-      //====================================================================
-      private static void CheckDateElements(ref WordLinkedArray linkedArray)
-      {
-         if (linkedArray.Count < 2)
-            return;
-
-         string nextWord;
-         WordNode pCur = linkedArray.first;
-         WordNode pNext = pCur.next;
-
-         while (pNext != null)
-         {
-            if (Utility.IsAllNum(pCur.theWord.sWord) || Utility.IsAllChineseNum(pCur.theWord.sWord))
-            {
-               //===== 1¡¢Èç¹ûµ±Ç°´ÊÊÇÊı×Ö£¬ÏÂÒ»¸ö´ÊÊÇ¡°ÔÂ¡¢ÈÕ¡¢Ê±¡¢·Ö¡¢Ãë¡¢ÔÂ·İ¡±ÖĞµÄÒ»¸ö£¬ÔòºÏ²¢ÇÒµ±Ç°´Ê´ÊĞÔÊÇÊ±¼ä
-               nextWord = pNext.theWord.sWord;
-               if ((nextWord.Length == 1 && "ÔÂÈÕÊ±·ÖÃë".IndexOf(nextWord) != -1) || (nextWord.Length == 2 && nextWord == "ÔÂ·İ"))
-               {
-                  //2001Äê
-                  pCur.theWord.sWord += nextWord;
-                  pCur.col = pNext.col;
-                  pCur.sWordInSegGraph = "Î´##Ê±";
-                  pCur.theWord.nPOS = -29696; //'t'*256;//Set the POS with 'm'
-                  pCur.next = pNext.next;
-                  pNext = pCur.next;
-                  linkedArray.Count--;
-               }
-               //===== 2¡¢Èç¹ûµ±Ç°´ÊÊÇ¿ÉÒÔ×÷ÎªÄê·İµÄÊı×Ö£¬ÏÂÒ»¸ö´ÊÊÇ¡°Äê¡±£¬ÔòºÏ²¢£¬´ÊĞÔÎªÊ±¼ä£¬·ñÔòÎªÊı×Ö¡£
-               else if (nextWord == "Äê")
-               {
-                  if (IsYearTime(pCur.theWord.sWord))
-                  {
-                     pCur.theWord.sWord += nextWord;
-                     pCur.col = pNext.col;
-                     pCur.sWordInSegGraph = "Î´##Ê±";
-                     pCur.theWord.nPOS = -29696; //'t'*256;//Set the POS with 'm'
-                     pCur.next = pNext.next;
-                     pNext = pCur.next;
-                     linkedArray.Count--;
-                  }
-                  //===== ·ñÔòµ±Ç°´Ê¾ÍÊÇÊı×ÖÁË =====
-                  else
-                  {
-                     pCur.sWordInSegGraph = "Î´##Êı";
-                     pCur.theWord.nPOS = -27904; //Set the POS with 'm'
-                  }
-               }
-               else
-               {
-                  //===== 3¡¢Èç¹û×îºóÒ»¸öºº×ÖÊÇ"µã" £¬ÔòÈÏÎªµ±Ç°Êı×ÖÊÇÊ±¼ä
-                  if (pCur.theWord.sWord.EndsWith("µã"))
-                  {
-                     pCur.sWordInSegGraph = "Î´##Ê±";
-                     pCur.theWord.nPOS = -29696; //Set the POS with 't'
-                  }
-                  else
-                  {
-                     char[] tmpcharArray = pCur.theWord.sWord.ToCharArray();
-                     string lastChar = tmpcharArray[tmpcharArray.Length - 1].ToString();
-                     //===== 4¡¢Èç¹ûµ±Ç°´®×îºóÒ»¸öºº×Ö²»ÊÇ"¡Ã¡¤£®£¯"ºÍ°ë½ÇµÄ'.''/'£¬ÄÇÃ´ÊÇÊı
-                     if ("¡Ã¡¤£®£¯./".IndexOf(lastChar) == -1)
-                     {
-                        pCur.sWordInSegGraph = "Î´##Êı";
-                        pCur.theWord.nPOS = -27904; //'m'*256;Set the POS with 'm'
-                     }
-                     //===== 5¡¢µ±Ç°´®×îºóÒ»¸öºº×ÖÊÇ"¡Ã¡¤£®£¯"ºÍ°ë½ÇµÄ'.''/'£¬ÇÒ³¤¶È´óÓÚ1£¬ÄÇÃ´È¥µô×îºóÒ»¸ö×Ö·û¡£ÀıÈç"1."
-                     else if (pCur.theWord.sWord.Length > 1)
-                     {
-                        pCur.theWord.sWord = pCur.theWord.sWord.Substring(0, pCur.theWord.sWord.Length - 1);
-
-                        pCur.sWordInSegGraph = "Î´##Êı";
-                        pCur.theWord.nPOS = -27904; //'m'*256;Set the POS with 'm'
-                     }
-                  }
-               }
+                pCur = pCur.next;
+                i++;
             }
 
-            pCur = pCur.next;
-            pNext = pNext.next;
-         }
-      }
+            return result;
+        }
 
-      #endregion
+        #endregion
 
-      #region IsYearTime Method
+        #region MergeContinueNumIntoOne Method
 
-      private static bool IsYearTime(string sNum)
-      {
-         //Judge whether the sNum is a num genearating year
-         int nLen = sNum.Length;
-         char[] charArray = sNum.ToCharArray();
+        private static void MergeContinueNumIntoOne(ref WordLinkedArray linkedArray)
+        {
+            if (linkedArray.Count < 2)
+                return;
 
-         //1992Äê, 90Äê
-         if (Utility.IsAllNum(sNum) && (nLen == 4 || nLen == 2 && "£µ£¶£·£¸£¹56789".IndexOf(charArray[0]) != -1))
-            return true;
+            string tmp;
+            WordNode pCur = linkedArray.first;
+            WordNode pNext = pCur.next;
 
-         if (Utility.GetCharCount("Áã¡ğÒ»¶şÈıËÄÎåÁùÆß°Ë¾ÅÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾Á", sNum) == nLen && nLen >= 2)
-            return true;
-
-         //¶şÇªÁã¶şÄê
-         if (nLen == 4 && Utility.GetCharCount("Ç§ÇªÁã¡ğ", sNum) == 2)
-            return true;
-
-         if (nLen == 1 && Utility.GetCharCount("Ç§Çª", sNum) == 1)
-            return true;
-
-         if (nLen == 2 && Regex.IsMatch(sNum, "^[¼×ÒÒ±û¶¡Îì¼º¸ıĞÁÈÉ¹ï][×Ó³óÒúÃ®³½ËÈÎçÎ´ÉêÓÏĞçº¥]$"))
-            return true;
-
-         return false;
-      }
-
-      #endregion
-
-      #endregion
-
-      #region Events
-
-      private void SendEvents(SegmentEventArgs e)
-      {
-         if (OnSegmentEvent != null)
-            OnSegmentEvent(this, e);
-      }
-
-      private void OnAtomSegment(List<AtomNode> nodes)
-      {
-         StringBuilder sb = new StringBuilder();
-         for (int i = 0; i < nodes.Count; i++)
-            sb.Append(string.Format("{0}, ", nodes[i].sWord));
-
-         sb.Append("\r\n");
-
-         SendEvents(new SegmentEventArgs(SegmentStage.AtomSegment, sb.ToString()));
-      }
-
-      private void OnGenSegGraph(RowFirstDynamicArray<ChainContent> segGraph)
-      {
-         SendEvents(new SegmentEventArgs(SegmentStage.GenSegGraph, segGraph.ToString()));
-      }
-
-      private void OnGenBiSegGraph(ColumnFirstDynamicArray<ChainContent> biGraph)
-      {
-         SendEvents(new SegmentEventArgs(SegmentStage.GenBiSegGraph, biGraph.ToString()));
-      }
-
-      private void OnNShortPath(List<int[]> paths, RowFirstDynamicArray<ChainContent> segGraph)
-      {
-         List<ChainItem<ChainContent>> list = segGraph.ToListItems();
-         string theWord;
-
-         int[] aPath;
-         StringBuilder sb = new StringBuilder();
-
-         for (int i = 0; i < paths.Count; i++)
-         {
-            aPath = paths[i];
-            for (int j = 0; j < aPath.Length; j++)
+            while (pNext != null)
             {
-               theWord = list[aPath[j]].Content.sWord;
-               if (theWord == "Î´##ÈË" || theWord == "Î´##µØ" || theWord == "Î´##Êı" || theWord == "Î´##Ê±" || theWord == "Î´##´®")
-               {
-                  for (int k = list[aPath[j]].row; k < list[aPath[j]].col; k++)
-                     sb.Append(atomSegment[k].sWord);
-                  sb.Append(", ");
-               }
-               else
-                  sb.Append(string.Format("{0}, ", list[aPath[j]].Content.sWord));
+                if ((Utility.IsAllNum(pCur.theWord.sWord) || Utility.IsAllChineseNum(pCur.theWord.sWord)) &&
+                   (Utility.IsAllNum(pNext.theWord.sWord) || Utility.IsAllChineseNum(pNext.theWord.sWord)))
+                {
+                    tmp = pCur.theWord.sWord + pNext.theWord.sWord;
+                    if (Utility.IsAllNum(tmp) || Utility.IsAllChineseNum(tmp))
+                    {
+                        pCur.theWord.sWord += pNext.theWord.sWord;
+                        pCur.col = pNext.col;
+                        pCur.next = pNext.next;
+                        linkedArray.Count--;
+                        pNext = pCur.next;
+                        continue;
+                    }
+                }
+
+                pCur = pCur.next;
+                pNext = pNext.next;
             }
+        }
+
+        #endregion
+
+        #region ChangeDelimiterPOS Method
+
+        private static void ChangeDelimiterPOS(ref WordLinkedArray linkedArray)
+        {
+            WordNode pCur = linkedArray.first;
+            while (pCur != null)
+            {
+                if (pCur.theWord.sWord == "ï¼ï¼" || pCur.theWord.sWord == "â€”" || pCur.theWord.sWord == "-")
+                {
+                    pCur.theWord.nPOS = 30464; //'w'*256;Set the POS with 'w'
+                    pCur.theWord.dValue = 0;
+                }
+
+                pCur = pCur.next;
+            }
+        }
+
+        #endregion
+
+        #region SplitMiddleSlashFromDigitalWords Method
+
+        //====================================================================
+        //å¦‚æœå‰ä¸€ä¸ªè¯æ˜¯æ•°å­—ï¼Œå½“å‰è¯ä»¥â€œï¼â€æˆ–â€œ-â€å¼€å§‹ï¼Œå¹¶ä¸”ä¸æ­¢è¿™ä¸€ä¸ªå­—ç¬¦ï¼Œ
+        //é‚£ä¹ˆå°†æ­¤â€œï¼â€ç¬¦å·ä»å½“å‰è¯ä¸­åˆ†ç¦»å‡ºæ¥ã€‚
+        //ä¾‹å¦‚ â€œ3 / -4 / æœˆâ€éœ€è¦æ‹†åˆ†æˆâ€œ3 / - / 4 / æœˆâ€
+        //====================================================================
+        private static void SplitMiddleSlashFromDigitalWords(ref WordLinkedArray linkedArray)
+        {
+            if (linkedArray.Count < 2)
+                return;
+
+            WordNode pCur = linkedArray.first.next;
+            WordNode pPre = linkedArray.first;
+
+            while (pCur != null)
+            {
+                //27904='m'*256
+                if ((Math.Abs(pPre.theWord.nPOS) == 27904 || Math.Abs(pPre.theWord.nPOS) == 29696) &&
+                   (Utility.IsAllNum(pCur.theWord.sWord) || Utility.IsAllChineseNum(pCur.theWord.sWord)) &&
+                   ("-ï¼".IndexOf(pCur.theWord.sWord.ToCharArray()[0]) >= 0) && pCur.theWord.sWord.Length > 1)
+                {
+                    // å°†â€œï¼â€æ‹†åˆ†å‡ºæ¥ã€‚
+                    WordNode newNode = new WordNode();
+                    newNode.row = pCur.row + 1;
+                    newNode.col = pCur.col;
+                    newNode.sWordInSegGraph = pCur.theWord.sWord.Substring(1);
+                    WordResult theWord = new WordResult();
+                    theWord.sWord = newNode.sWordInSegGraph;
+                    theWord.nPOS = 27904;
+                    theWord.dValue = pCur.theWord.dValue;
+                    newNode.theWord = theWord;
+
+                    pCur.col = pCur.row + 1;
+                    pCur.theWord.sWord = pCur.theWord.sWord.Substring(0, 1);
+                    pCur.theWord.nPOS = 30464; //'w'*256;
+                    pCur.theWord.dValue = 0;
+
+                    newNode.next = pCur.next;
+                    pCur.next = newNode;
+
+                    linkedArray.Count++;
+                }
+                pCur = pCur.next;
+                pPre = pPre.next;
+            }
+        }
+
+        #endregion
+
+        #region CheckDateElements Method
+
+        //====================================================================
+        //1ã€å¦‚æœå½“å‰è¯æ˜¯æ•°å­—ï¼Œä¸‹ä¸€ä¸ªè¯æ˜¯â€œæœˆã€æ—¥ã€æ—¶ã€åˆ†ã€ç§’ã€æœˆä»½â€ä¸­çš„ä¸€ä¸ªï¼Œåˆ™åˆå¹¶ä¸”å½“å‰è¯è¯æ€§æ˜¯æ—¶é—´
+        //2ã€å¦‚æœå½“å‰è¯æ˜¯å¯ä»¥ä½œä¸ºå¹´ä»½çš„æ•°å­—ï¼Œä¸‹ä¸€ä¸ªè¯æ˜¯â€œå¹´â€ï¼Œåˆ™åˆå¹¶ï¼Œè¯æ€§ä¸ºæ—¶é—´ï¼Œå¦åˆ™ä¸ºæ•°å­—ã€‚
+        //3ã€å¦‚æœæœ€åä¸€ä¸ªæ±‰å­—æ˜¯"ç‚¹" ï¼Œåˆ™è®¤ä¸ºå½“å‰æ•°å­—æ˜¯æ—¶é—´
+        //4ã€å¦‚æœå½“å‰ä¸²æœ€åä¸€ä¸ªæ±‰å­—ä¸æ˜¯"âˆ¶Â·ï¼ï¼"å’ŒåŠè§’çš„'.''/'ï¼Œé‚£ä¹ˆæ˜¯æ•°
+        //5ã€å½“å‰ä¸²æœ€åä¸€ä¸ªæ±‰å­—æ˜¯"âˆ¶Â·ï¼ï¼"å’ŒåŠè§’çš„'.''/'ï¼Œä¸”é•¿åº¦å¤§äº1ï¼Œé‚£ä¹ˆå»æ‰æœ€åä¸€ä¸ªå­—ç¬¦ã€‚ä¾‹å¦‚"1."
+        //====================================================================
+        private static void CheckDateElements(ref WordLinkedArray linkedArray)
+        {
+            if (linkedArray.Count < 2)
+                return;
+
+            string nextWord;
+            WordNode pCur = linkedArray.first;
+            WordNode pNext = pCur.next;
+
+            while (pNext != null)
+            {
+                if (Utility.IsAllNum(pCur.theWord.sWord) || Utility.IsAllChineseNum(pCur.theWord.sWord))
+                {
+                    //===== 1ã€å¦‚æœå½“å‰è¯æ˜¯æ•°å­—ï¼Œä¸‹ä¸€ä¸ªè¯æ˜¯â€œæœˆã€æ—¥ã€æ—¶ã€åˆ†ã€ç§’ã€æœˆä»½â€ä¸­çš„ä¸€ä¸ªï¼Œåˆ™åˆå¹¶ä¸”å½“å‰è¯è¯æ€§æ˜¯æ—¶é—´
+                    nextWord = pNext.theWord.sWord;
+                    if ((nextWord.Length == 1 && "æœˆæ—¥æ—¶åˆ†ç§’".IndexOf(nextWord) != -1) || (nextWord.Length == 2 && nextWord == "æœˆä»½"))
+                    {
+                        //2001å¹´
+                        pCur.theWord.sWord += nextWord;
+                        pCur.col = pNext.col;
+                        pCur.sWordInSegGraph = "æœª##æ—¶";
+                        pCur.theWord.nPOS = -29696; //'t'*256;//Set the POS with 'm'
+                        pCur.next = pNext.next;
+                        pNext = pCur.next;
+                        linkedArray.Count--;
+                    }
+                    //===== 2ã€å¦‚æœå½“å‰è¯æ˜¯å¯ä»¥ä½œä¸ºå¹´ä»½çš„æ•°å­—ï¼Œä¸‹ä¸€ä¸ªè¯æ˜¯â€œå¹´â€ï¼Œåˆ™åˆå¹¶ï¼Œè¯æ€§ä¸ºæ—¶é—´ï¼Œå¦åˆ™ä¸ºæ•°å­—ã€‚
+                    else if (nextWord == "å¹´")
+                    {
+                        if (IsYearTime(pCur.theWord.sWord))
+                        {
+                            pCur.theWord.sWord += nextWord;
+                            pCur.col = pNext.col;
+                            pCur.sWordInSegGraph = "æœª##æ—¶";
+                            pCur.theWord.nPOS = -29696; //'t'*256;//Set the POS with 'm'
+                            pCur.next = pNext.next;
+                            pNext = pCur.next;
+                            linkedArray.Count--;
+                        }
+                        //===== å¦åˆ™å½“å‰è¯å°±æ˜¯æ•°å­—äº† =====
+                        else
+                        {
+                            pCur.sWordInSegGraph = "æœª##æ•°";
+                            pCur.theWord.nPOS = -27904; //Set the POS with 'm'
+                        }
+                    }
+                    else
+                    {
+                        //===== 3ã€å¦‚æœæœ€åä¸€ä¸ªæ±‰å­—æ˜¯"ç‚¹" ï¼Œåˆ™è®¤ä¸ºå½“å‰æ•°å­—æ˜¯æ—¶é—´
+                        if (pCur.theWord.sWord.EndsWith("ç‚¹"))
+                        {
+                            pCur.sWordInSegGraph = "æœª##æ—¶";
+                            pCur.theWord.nPOS = -29696; //Set the POS with 't'
+                        }
+                        else
+                        {
+                            char[] tmpcharArray = pCur.theWord.sWord.ToCharArray();
+                            string lastChar = tmpcharArray[tmpcharArray.Length - 1].ToString();
+                            //===== 4ã€å¦‚æœå½“å‰ä¸²æœ€åä¸€ä¸ªæ±‰å­—ä¸æ˜¯"âˆ¶Â·ï¼ï¼"å’ŒåŠè§’çš„'.''/'ï¼Œé‚£ä¹ˆæ˜¯æ•°
+                            if ("âˆ¶Â·ï¼ï¼./".IndexOf(lastChar) == -1)
+                            {
+                                pCur.sWordInSegGraph = "æœª##æ•°";
+                                pCur.theWord.nPOS = -27904; //'m'*256;Set the POS with 'm'
+                            }
+                            //===== 5ã€å½“å‰ä¸²æœ€åä¸€ä¸ªæ±‰å­—æ˜¯"âˆ¶Â·ï¼ï¼"å’ŒåŠè§’çš„'.''/'ï¼Œä¸”é•¿åº¦å¤§äº1ï¼Œé‚£ä¹ˆå»æ‰æœ€åä¸€ä¸ªå­—ç¬¦ã€‚ä¾‹å¦‚"1."
+                            else if (pCur.theWord.sWord.Length > 1)
+                            {
+                                pCur.theWord.sWord = pCur.theWord.sWord.Substring(0, pCur.theWord.sWord.Length - 1);
+
+                                pCur.sWordInSegGraph = "æœª##æ•°";
+                                pCur.theWord.nPOS = -27904; //'m'*256;Set the POS with 'm'
+                            }
+                        }
+                    }
+                }
+
+                pCur = pCur.next;
+                pNext = pNext.next;
+            }
+        }
+
+        #endregion
+
+        #region IsYearTime Method
+
+        private static bool IsYearTime(string sNum)
+        {
+            //Judge whether the sNum is a num genearating year
+            int nLen = sNum.Length;
+            char[] charArray = sNum.ToCharArray();
+
+            //1992å¹´, 90å¹´
+            if (Utility.IsAllNum(sNum) && (nLen == 4 || nLen == 2 && "ï¼•ï¼–ï¼—ï¼˜ï¼™56789".IndexOf(charArray[0]) != -1))
+                return true;
+
+            if (Utility.GetCharCount("é›¶â—‹ä¸€äºŒä¸‰å››äº”å…­ä¸ƒå…«ä¹å£¹è´°åè‚†ä¼é™†æŸ’æŒç–", sNum) == nLen && nLen >= 2)
+                return true;
+
+            //äºŒä»Ÿé›¶äºŒå¹´
+            if (nLen == 4 && Utility.GetCharCount("åƒä»Ÿé›¶â—‹", sNum) == 2)
+                return true;
+
+            if (nLen == 1 && Utility.GetCharCount("åƒä»Ÿ", sNum) == 1)
+                return true;
+
+            if (nLen == 2 && Regex.IsMatch(sNum, "^[ç”²ä¹™ä¸™ä¸æˆŠå·±åºšè¾›å£¬ç™¸][å­ä¸‘å¯…å¯è¾°å·³åˆæœªç”³é…‰æˆŒäº¥]$"))
+                return true;
+
+            return false;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Events
+
+        private void SendEvents(SegmentEventArgs e)
+        {
+            if (OnSegmentEvent != null)
+                OnSegmentEvent(this, e);
+        }
+
+        private void OnAtomSegment(List<AtomNode> nodes)
+        {
+            if (IsSendSegmentEvent == false)
+            {
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < nodes.Count; i++)
+                sb.Append(string.Format("{0}, ", nodes[i].sWord));
 
             sb.Append("\r\n");
-         }
 
-         SendEvents(new SegmentEventArgs(SegmentStage.NShortPath, sb.ToString()));
-      }
+            SendEvents(new SegmentEventArgs(SegmentStage.AtomSegment, sb.ToString()));
+        }
 
-      private void OnBeforeOptimize(List<WordResult[]> m_pWordSeg)
-      {
-         StringBuilder sb = new StringBuilder();
-         for (int k = 0; k < m_pWordSeg.Count; k++)
-         {
-            for (int j = 0; j < m_pWordSeg[k].Length; j++)
-               sb.Append(string.Format("{0}, ", m_pWordSeg[k][j].sWord));
-            sb.Append("\r\n");
-         }
+        private void OnGenSegGraph(RowFirstDynamicArray<ChainContent> segGraph)
+        {
+            if (IsSendSegmentEvent == false)
+            {
+                return;
+            }
+            SendEvents(new SegmentEventArgs(SegmentStage.GenSegGraph, segGraph.ToString()));
+        }
 
-         SendEvents(new SegmentEventArgs(SegmentStage.BeforeOptimize, sb.ToString()));
-      }
+        private void OnGenBiSegGraph(ColumnFirstDynamicArray<ChainContent> biGraph)
+        {
+            if (IsSendSegmentEvent == false)
+            {
+                return;
+            }
+            SendEvents(new SegmentEventArgs(SegmentStage.GenBiSegGraph, biGraph.ToString()));
+        }
 
-      private void OnOptimumSegment(RowFirstDynamicArray<ChainContent> m_graphOptimum)
-      {
-         SendEvents(new SegmentEventArgs(SegmentStage.OptimumSegment, m_graphOptimum.ToString()));
-      }
+        private void OnNShortPath(List<int[]> paths, RowFirstDynamicArray<ChainContent> segGraph)
+        {
+            if (IsSendSegmentEvent == false)
+            {
+                return;
+            }
+            List<ChainItem<ChainContent>> list = segGraph.ToListItems();
+            string theWord;
 
-      private void OnGenBiOptimumSegGraph(ColumnFirstDynamicArray<ChainContent> biOptGraph)
-      {
-         SendEvents(new SegmentEventArgs(SegmentStage.GenBiSegGraph, biOptGraph.ToString()));
-      }
+            int[] aPath;
+            StringBuilder sb = new StringBuilder();
 
-      #endregion
-   }
+            for (int i = 0; i < paths.Count; i++)
+            {
+                aPath = paths[i];
+                for (int j = 0; j < aPath.Length; j++)
+                {
+                    theWord = list[aPath[j]].Content.sWord;
+                    if (theWord == "æœª##äºº" || theWord == "æœª##åœ°" || theWord == "æœª##æ•°" || theWord == "æœª##æ—¶" || theWord == "æœª##ä¸²")
+                    {
+                        for (int k = list[aPath[j]].row; k < list[aPath[j]].col; k++)
+                            sb.Append(atomSegment[k].sWord);
+                        sb.Append(", ");
+                    }
+                    else
+                        sb.Append(string.Format("{0}, ", list[aPath[j]].Content.sWord));
+                }
+
+                sb.Append("\r\n");
+            }
+
+            SendEvents(new SegmentEventArgs(SegmentStage.NShortPath, sb.ToString()));
+        }
+
+        private void OnBeforeOptimize(List<WordResult[]> m_pWordSeg)
+        {
+            if (IsSendSegmentEvent == false)
+            {
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int k = 0; k < m_pWordSeg.Count; k++)
+            {
+                for (int j = 0; j < m_pWordSeg[k].Length; j++)
+                    sb.Append(string.Format("{0}, ", m_pWordSeg[k][j].sWord));
+                sb.Append("\r\n");
+            }
+
+            SendEvents(new SegmentEventArgs(SegmentStage.BeforeOptimize, sb.ToString()));
+        }
+
+        private void OnOptimumSegment(RowFirstDynamicArray<ChainContent> m_graphOptimum)
+        {
+            if (IsSendSegmentEvent == false)
+            {
+                return;
+            }
+            SendEvents(new SegmentEventArgs(SegmentStage.OptimumSegment, m_graphOptimum.ToString()));
+        }
+
+        private void OnGenBiOptimumSegGraph(ColumnFirstDynamicArray<ChainContent> biOptGraph)
+        {
+            if (IsSendSegmentEvent==false)
+            {
+                return;
+            }
+            SendEvents(new SegmentEventArgs(SegmentStage.GenBiSegGraph, biOptGraph.ToString()));
+        }
+
+        #endregion
+    }
 }

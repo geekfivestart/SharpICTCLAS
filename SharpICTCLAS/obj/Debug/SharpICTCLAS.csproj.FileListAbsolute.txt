@@ -8,3 +8,8 @@ C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1
 C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\SharpICTCLAS\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.dll
 C:\Users\zhangjc\Desktop\SharpICTCLAS分词系统_1.0\SharpICTCLAS分词系统 1.1\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.pdb
+D:\work14\ht\bin\SharpICTCLAS.dll
+D:\work14\ht\bin\SharpICTCLAS.pdb
+D:\work14\ht\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.dll
+D:\work14\ht\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.pdb
+D:\work14\ht\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.csprojResolveAssemblyReference.cache

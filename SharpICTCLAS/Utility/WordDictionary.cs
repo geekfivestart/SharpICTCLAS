@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓĞ£ºÖĞÎÄ·Ö´Ê£»´ÊĞÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ğ¡£
- *              ·Ö´ÊÕıÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ğÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖĞÖĞ¹úÈËÃûµÄÊ¶±ğÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖĞ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ğ­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ğí¿ÉÖ¤1.0
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®ç‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›ç‡å‡é«˜äº90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›ç‡æ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕğÓî¸ù¾İFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓĞ´úÂë×öÁË²¿·ÖÖØĞ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸è°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -39,1088 +39,1076 @@ using System.IO;
 
 namespace SharpICTCLAS
 {
-   public class WordDictionary
-   {
-      public bool bReleased = true;
+    public class WordDictionary
+    {
+        public bool bReleased = true;
 
-      public IndexTableItem[] indexTable;
-      public ModifyTableItem[] modifyTable;
+        public IndexTableItem[] indexTable;
+        public ModifyTableItem[] modifyTable;
 
-      #region Load Method
+        #region Load Method
 
-      public bool Load(string sFilename)
-      {
-         return Load(sFilename, false);
-      }
+        public bool Load(string sFilename)
+        {
+            return Load(sFilename, false);
+        }
 
-      //====================================================================
-      // Func Name  : Load
-      // Description: Load the dictionary from the file .dct
-      // Parameters : sFilename: the file name
-      // Returns    : success or fail
-      //====================================================================
-      public bool Load(string sFilename, bool bReset)
-      {
-         int frequency, wordLength, pos;   //ÆµÂÊ¡¢´Ê³¤¡¢¶ÁÈ¡´ÊĞÔ
-         bool isSuccess = true;
-         FileStream fileStream = null;
-         BinaryReader binReader = null;
+        //====================================================================
+        // Func Name  : Load
+        // Description: Load the dictionary from the file .dct
+        // Parameters : sFilename: the file name
+        // Returns    : success or fail
+        //====================================================================
+        public bool Load(string sFilename, bool bReset)
+        {
+            int frequency, wordLength, pos;   //é¢‘ç‡ã€è¯é•¿ã€è¯»å–è¯æ€§
+            bool isSuccess = true;
+            FileStream fileStream = null;
+            BinaryReader binReader = null;
 
-         try
-         {
-            fileStream = new FileStream(sFilename, FileMode.Open, FileAccess.Read);
-            if (fileStream == null)
-               return false;
-
-            binReader = new BinaryReader(fileStream, Encoding.GetEncoding("gb2312"));
-
-            indexTable = new IndexTableItem[Predefine.CC_NUM];
-
-            bReleased = false;
-            for (int i = 0; i < Predefine.CC_NUM; i++)
+            try
             {
-               //¶ÁÈ¡ÒÔ¸Ãºº×Ö´òÍ·µÄ´ÊÓĞ¶àÉÙ¸ö
-               indexTable[i] = new IndexTableItem();
-               indexTable[i].nCount = binReader.ReadInt32();
+                fileStream = new FileStream(sFilename, FileMode.Open, FileAccess.Read);
+                if (fileStream == null)
+                    return false;
 
-               if (indexTable[i].nCount <= 0)
-                  continue;
+                binReader = new BinaryReader(fileStream, Encoding.GetEncoding("gb2312"));
 
-               indexTable[i].WordItems = new WordItem[indexTable[i].nCount];
+                indexTable = new IndexTableItem[Predefine.CC_NUM];
 
-               for (int j = 0; j < indexTable[i].nCount; j++)
-               {
-                  indexTable[i].WordItems[j] = new WordItem();
+                bReleased = false;
+                for (int i = 0; i < Predefine.CC_NUM; i++)
+                {
+                    //è¯»å–ä»¥è¯¥æ±‰å­—æ‰“å¤´çš„è¯æœ‰å¤šå°‘ä¸ª
+                    indexTable[i] = new IndexTableItem();
+                    indexTable[i].nCount = binReader.ReadInt32();
 
-                  frequency = binReader.ReadInt32();   //¶ÁÈ¡ÆµÂÊ
-                  wordLength = binReader.ReadInt32();  //¶ÁÈ¡´Ê³¤
-                  pos = binReader.ReadInt32();      //¶ÁÈ¡´ÊĞÔ
+                    if (indexTable[i].nCount <= 0)
+                        continue;
 
-                  if (wordLength > 0)
-                     indexTable[i].WordItems[j].sWord = Utility.ByteArray2String(binReader.ReadBytes(wordLength));
-                  else
-                     indexTable[i].WordItems[j].sWord = "";
+                    indexTable[i].WordItems = new WordItem[indexTable[i].nCount];
+                    indexTable[i].WordItemDict = new System.Collections.Generic.Dictionary<string, int>();
 
-                  //Reset the frequency
-                  if (bReset)
-                     indexTable[i].WordItems[j].nFrequency = 0;
-                  else
-                     indexTable[i].WordItems[j].nFrequency = frequency;
+                    for (int j = 0; j < indexTable[i].nCount; j++)
+                    {
+                        indexTable[i].WordItems[j] = new WordItem();
 
-                  indexTable[i].WordItems[j].nWordLen = wordLength;
-                  indexTable[i].WordItems[j].nPOS = pos;
-               }
+                        frequency = binReader.ReadInt32();   //è¯»å–é¢‘ç‡
+                        wordLength = binReader.ReadInt32();  //è¯»å–è¯é•¿
+                        pos = binReader.ReadInt32();      //è¯»å–è¯æ€§
+
+                        if (wordLength > 0)
+                            indexTable[i].WordItems[j].sWord = Utility.ByteArray2String(binReader.ReadBytes(wordLength));
+                        else
+                            indexTable[i].WordItems[j].sWord = "";
+
+                        indexTable[i].WordItemDict[indexTable[i].WordItems[j].sWord] = j;
+
+                        //Reset the frequency
+                        if (bReset)
+                            indexTable[i].WordItems[j].nFrequency = 0;
+                        else
+                            indexTable[i].WordItems[j].nFrequency = frequency;
+
+                        indexTable[i].WordItems[j].nWordLen = wordLength;
+                        indexTable[i].WordItems[j].nPOS = pos;
+                    }
+                }
             }
-         }
-         catch (Exception e)
-         {
-            Console.WriteLine(e.Message);
-            isSuccess = false;
-         }
-         finally
-         {
-            if (binReader != null)
-               binReader.Close();
-
-            if (fileStream != null)
-               fileStream.Close();
-         }
-         return isSuccess;
-      }
-      #endregion
-
-      #region Save Method
-
-      //====================================================================
-      // Func Name  : Save
-      // Description: Save the dictionary as the file .dct
-      // Parameters : sFilename: the file name
-      // Returns    : success or fail
-      //====================================================================
-      public bool Save(string sFilename)
-      {
-         bool isSuccess = true;
-         FileStream outputFile = null;
-         BinaryWriter writer = null;
-
-         try
-         {
-            outputFile = new FileStream(sFilename, FileMode.Create, FileAccess.Write);
-            if (outputFile == null)
-               return false;
-
-            writer = new BinaryWriter(outputFile, Encoding.GetEncoding("gb2312"));
-
-            //¶ÔÍ¼Ò»ÖĞËùÊ¾µÄ6768¸öÊı¾İ¿é½øĞĞ±éÀú
-            for (int i = 0; i < Predefine.CC_NUM; i++)
+            catch (Exception e)
             {
-               //Èç¹û·¢ÉúÁËĞŞ¸Ä£¬ÔòÍê³ÉindexTableÓëmodifyTable¹é²¢ÅÅĞòÊ½µÄºÏ²¢¹¤×÷²¢´æÅÌ£¨ÅÅĞòÔ­ÔòÊÇÏÈ°²sWordÅÅ£¬È»ºóÔÙ°´´ÊĞÔÅÅ£©
-               if (modifyTable != null)
-                  MergeAndSaveIndexTableItem(writer, indexTable[i], modifyTable[i]);
-               else
-                  //·ñÔòÖ±½ÓĞ´ÈëindexTable
-                  SaveIndexTableItem(writer, indexTable[i]);
+                Console.WriteLine(e.Message);
+                isSuccess = false;
             }
-         }
-         catch
-         {
-            isSuccess = false;
-         }
-         finally
-         {
-            if (writer != null)
-               writer.Close();
-
-            if (outputFile != null)
-               outputFile.Close();
-         }
-         return isSuccess;
-      }
-
-      private void MergeAndSaveIndexTableItem(BinaryWriter writer, IndexTableItem item, ModifyTableItem modifyItem)
-      {
-         int j, nCount;   //ÆµÂÊ¡¢´Ê³¤¡¢¶ÁÈ¡´ÊĞÔ
-         WordChain pCur;
-
-         //¼ÆËãĞŞ¸ÄºóÓĞĞ§´Ê¿éµÄÊıÄ¿
-         nCount = item.nCount + modifyItem.nCount - modifyItem.nDelete;
-         writer.Write(nCount);
-
-         pCur = modifyItem.pWordItemHead;
-
-         j = 0;
-         //¶ÔÔ­±íÖĞµÄ´Ê¿éºÍĞŞ¸Ä±íÖĞµÄ´Ê¿é½øĞĞ±éÀú,²¢°ÑĞŞ¸ÄºóµÄÌí¼Óµ½Ô­±íÖĞ
-         while (pCur != null && j < item.nCount)
-         {
-            //Èç¹ûĞŞ¸Ä±íÖĞµÄ´ÊĞ¡ÓÚÔ­±íÖĞ¶ÔÓ¦Î»ÖÃµÄ´Ê»òÕß³¤¶ÈÏàµÈµ«nHandleÖµ±ÈÔ­±íÖĞµÄĞ¡,Ôò°ÑĞŞ¸Ä±íÖĞµÄĞ´Èëµ½´ÊµäÎÄ¼şµ±ÖĞ.
-            if (Utility.CCStringCompare(pCur.data.sWord, item.WordItems[j].sWord) < 0 ||
-               ((pCur.data.sWord == item.WordItems[j].sWord) &&
-               (pCur.data.nPOS < item.WordItems[j].nPOS)))
+            finally
             {
-               //Output the modified data to the file
-               SaveWordItem(writer, pCur.data);
-               pCur = pCur.next;
+                if (binReader != null)
+                    binReader.Close();
+
+                if (fileStream != null)
+                    fileStream.Close();
             }
-            //Æµ¶ÈnFrequecyµÈÓÚ-1ËµÃ÷¸Ã´ÊÒÑ±»É¾³ı,Ìø¹ıËü
-            else if (item.WordItems[j].nFrequency == -1)
-               j++;
-            //Èç¹ûĞŞ¸Ä±íÖĞµÄ´Ê³¤¶È±ÈÔ­±íÖĞµÄ³¤¶È´ó»ò  ³¤¶ÈÏàµÈµ«¾ä±úÖµÒª¶à,¾Í°ÑÔ­±íµÄ´ÊĞ´ÈëµÄ´ÊµäÎÄ¼şÖĞ
-            else if (Utility.CCStringCompare(pCur.data.sWord, item.WordItems[j].sWord) > 0 ||
-               ((pCur.data.sWord == item.WordItems[j].sWord) &&
-               (pCur.data.nPOS > item.WordItems[j].nPOS)))
+            return isSuccess;
+        }
+        #endregion
+
+        #region Save Method
+
+        //====================================================================
+        // Func Name  : Save
+        // Description: Save the dictionary as the file .dct
+        // Parameters : sFilename: the file name
+        // Returns    : success or fail
+        //====================================================================
+        public bool Save(string sFilename)
+        {
+            bool isSuccess = true;
+            FileStream outputFile = null;
+            BinaryWriter writer = null;
+
+            try
             {
-               //Output the index table data to the file
-               SaveWordItem(writer, item.WordItems[j]);
-               j++;
+                outputFile = new FileStream(sFilename, FileMode.Create, FileAccess.Write);
+                if (outputFile == null)
+                    return false;
+
+                writer = new BinaryWriter(outputFile, Encoding.GetEncoding("gb2312"));
+
+                //å¯¹å›¾ä¸€ä¸­æ‰€ç¤ºçš„6768ä¸ªæ•°æ®å—è¿›è¡Œéå†
+                for (int i = 0; i < Predefine.CC_NUM; i++)
+                {
+                    //å¦‚æœå‘ç”Ÿäº†ä¿®æ”¹ï¼Œåˆ™å®ŒæˆindexTableä¸modifyTableå½’å¹¶æ’åºå¼çš„åˆå¹¶å·¥ä½œå¹¶å­˜ç›˜ï¼ˆæ’åºåŸåˆ™æ˜¯å…ˆå®‰sWordæ’ï¼Œç„¶åå†æŒ‰è¯æ€§æ’ï¼‰
+                    if (modifyTable != null)
+                        MergeAndSaveIndexTableItem(writer, indexTable[i], modifyTable[i]);
+                    else
+                        //å¦åˆ™ç›´æ¥å†™å…¥indexTable
+                        SaveIndexTableItem(writer, indexTable[i]);
+                }
             }
-         }
-         //Èç¹û¹é²¢½áÊøºóindexTableÓĞÊ£Óà£¬Ôò¼ÌĞøĞ´ÍêindexTableÖĞµÄÊı¾İ
-         if (j < item.nCount)
-         {
-            for (int i = j; i < item.nCount; i++)
-               if (item.WordItems[j].nFrequency != -1)
-                  SaveWordItem(writer, item.WordItems[i]);
-         }
-         //·ñÔò¼ÌĞøĞ´ÍêmodifyTableÖĞµÄÊı¾İ
-         else
+            catch
+            {
+                isSuccess = false;
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+
+                if (outputFile != null)
+                    outputFile.Close();
+            }
+            return isSuccess;
+        }
+
+        private void MergeAndSaveIndexTableItem(BinaryWriter writer, IndexTableItem item, ModifyTableItem modifyItem)
+        {
+            int j, nCount;   //é¢‘ç‡ã€è¯é•¿ã€è¯»å–è¯æ€§
+            WordChain pCur;
+
+            //è®¡ç®—ä¿®æ”¹åæœ‰æ•ˆè¯å—çš„æ•°ç›®
+            nCount = item.nCount + modifyItem.nCount - modifyItem.nDelete;
+            writer.Write(nCount);
+
+            pCur = modifyItem.pWordItemHead;
+
+            j = 0;
+            //å¯¹åŸè¡¨ä¸­çš„è¯å—å’Œä¿®æ”¹è¡¨ä¸­çš„è¯å—è¿›è¡Œéå†,å¹¶æŠŠä¿®æ”¹åçš„æ·»åŠ åˆ°åŸè¡¨ä¸­
+            while (pCur != null && j < item.nCount)
+            {
+                //å¦‚æœä¿®æ”¹è¡¨ä¸­çš„è¯å°äºåŸè¡¨ä¸­å¯¹åº”ä½ç½®çš„è¯æˆ–è€…é•¿åº¦ç›¸ç­‰ä½†nHandleå€¼æ¯”åŸè¡¨ä¸­çš„å°,åˆ™æŠŠä¿®æ”¹è¡¨ä¸­çš„å†™å…¥åˆ°è¯å…¸æ–‡ä»¶å½“ä¸­.
+                if (Utility.CCStringCompare(pCur.data.sWord, item.WordItems[j].sWord) < 0 ||
+                   ((pCur.data.sWord == item.WordItems[j].sWord) &&
+                   (pCur.data.nPOS < item.WordItems[j].nPOS)))
+                {
+                    //Output the modified data to the file
+                    SaveWordItem(writer, pCur.data);
+                    pCur = pCur.next;
+                }
+                //é¢‘åº¦nFrequecyç­‰äº-1è¯´æ˜è¯¥è¯å·²è¢«åˆ é™¤,è·³è¿‡å®ƒ
+                else if (item.WordItems[j].nFrequency == -1)
+                    j++;
+                //å¦‚æœä¿®æ”¹è¡¨ä¸­çš„è¯é•¿åº¦æ¯”åŸè¡¨ä¸­çš„é•¿åº¦å¤§æˆ–  é•¿åº¦ç›¸ç­‰ä½†å¥æŸ„å€¼è¦å¤š,å°±æŠŠåŸè¡¨çš„è¯å†™å…¥çš„è¯å…¸æ–‡ä»¶ä¸­
+                else if (Utility.CCStringCompare(pCur.data.sWord, item.WordItems[j].sWord) > 0 ||
+                   ((pCur.data.sWord == item.WordItems[j].sWord) &&
+                   (pCur.data.nPOS > item.WordItems[j].nPOS)))
+                {
+                    //Output the index table data to the file
+                    SaveWordItem(writer, item.WordItems[j]);
+                    j++;
+                }
+            }
+            //å¦‚æœå½’å¹¶ç»“æŸåindexTableæœ‰å‰©ä½™ï¼Œåˆ™ç»§ç»­å†™å®ŒindexTableä¸­çš„æ•°æ®
+            if (j < item.nCount)
+            {
+                for (int i = j; i < item.nCount; i++)
+                    if (item.WordItems[j].nFrequency != -1)
+                        SaveWordItem(writer, item.WordItems[i]);
+            }
+            //å¦åˆ™ç»§ç»­å†™å®ŒmodifyTableä¸­çš„æ•°æ®
+            else
+                while (pCur != null)
+                {
+                    //Output the modified data to the file
+                    SaveWordItem(writer, pCur.data);
+                    pCur = pCur.next;
+                }
+        }
+
+        private void SaveIndexTableItem(BinaryWriter writer, IndexTableItem item)
+        {
+            writer.Write(item.nCount);
+
+            for (int i = 0; i < item.nCount; i++)
+                SaveWordItem(writer, item.WordItems[i]);
+        }
+
+        private void SaveWordItem(BinaryWriter writer, WordItem item)
+        {
+            int frequency = item.nFrequency;
+            int wordLength = item.nWordLen;
+            int handle = item.nPOS;
+
+            writer.Write(frequency);
+            writer.Write(wordLength);
+            writer.Write(handle);
+
+            if (wordLength > 0)
+                writer.Write(Encoding.GetEncoding("gb2312").GetBytes(item.sWord));
+        }
+
+        #endregion
+
+        #region AddItem Method
+        //====================================================================
+        // Func Name  : AddItem
+        // Description: Add a word item to the dictionary
+        // Parameters : sWord: the word
+        //              nHandle:the handle number
+        //              nFrequency: the frequency
+        // Returns    : success or fail
+        //====================================================================
+        public bool AddItem(string sWord, int nPOS, int nFrequency)
+        {
+            int nPos, nFoundPos;
+            WordChain pRet, pTemp, pNext;
+            string sWordAdd;
+
+            //é¢„å¤„ç†,å»æ‰è¯çš„å‰åçš„ç©ºæ ¼
+            if (!PreProcessing(ref sWord, out nPos, out sWordAdd))
+                return false;
+
+            if (FindInOriginalTable(nPos, sWordAdd, nPOS, out nFoundPos))
+            {
+                //The word exists in the original table, so add the frequency
+                //Operation in the index table and its items
+                if (indexTable[nPos].WordItems[nFoundPos].nFrequency == -1)
+                {
+                    //The word item has been removed
+                    indexTable[nPos].WordItems[nFoundPos].nFrequency = nFrequency;
+
+                    if (modifyTable == null)
+                        modifyTable = new ModifyTableItem[Predefine.CC_NUM];
+
+                    modifyTable[nPos].nDelete -= 1;
+                }
+                else
+                    indexTable[nPos].WordItems[nFoundPos].nFrequency += nFrequency;
+                return true;
+            }
+
+            //The items not exists in the index table.
+            //As following, we have to find the item whether exists in the modify data region
+            //If exists, change the frequency .or else add a item
+            if (modifyTable == null)
+            {
+                modifyTable = new ModifyTableItem[Predefine.CC_NUM];
+                for (int i = 0; i < Predefine.CC_NUM; i++)
+                    modifyTable[i] = new ModifyTableItem();
+            }
+
+            if (FindInModifyTable(nPos, sWordAdd, nPOS, out pRet))
+            {
+                if (pRet != null)
+                    pRet = pRet.next;
+                else
+                    pRet = modifyTable[nPos].pWordItemHead;
+
+                pRet.data.nFrequency += nFrequency;
+                return true;
+            }
+
+            //find the proper position to add the word to the modify data table and link
+            pTemp = new WordChain(); //Allocate the word chain node
+            pTemp.data = new WordItem();
+            pTemp.data.nPOS = nPOS; //store the handle
+            pTemp.data.nWordLen = Utility.GetWordLength(sWordAdd);
+            pTemp.data.sWord = sWordAdd;
+            pTemp.data.nFrequency = nFrequency;
+            pTemp.next = null;
+            if (pRet != null)
+            {
+                pNext = pRet.next; //Get the next item before the current item
+                pRet.next = pTemp; //link the node to the chain
+            }
+            else
+            {
+                pNext = modifyTable[nPos].pWordItemHead;
+                modifyTable[nPos].pWordItemHead = pTemp; //Set the pAdd as the head node
+            }
+            pTemp.next = pNext; //Very important!!!! or else it will lose some node
+
+            modifyTable[nPos].nCount++; //the number increase by one
+            return true;
+        }
+
+        #endregion
+
+        #region DelItem Method
+
+        public bool DelItem(string sWord, int nPOS)
+        {
+            string sWordDel;
+            int nPos, nFoundPos, nTemp;
+            WordChain pPre, pTemp, pCur;
+
+            if (!PreProcessing(ref sWord, out nPos, out sWordDel))
+                return false;
+
+            if (FindInOriginalTable(nPos, sWordDel, nPOS, out nFoundPos))
+            {
+                //Not prepare the buffer
+                if (modifyTable == null)
+                    modifyTable = new ModifyTableItem[Predefine.CC_NUM];
+
+                indexTable[nPos].WordItems[nFoundPos].nFrequency = -1;
+                modifyTable[nPos].nDelete += 1;
+
+                //Remove all items which word is sWordDel,ignoring the handle
+                if (nPOS == -1)
+                {
+                    nTemp = nFoundPos + 1; //Check its previous position
+                    while (nTemp < indexTable[nPos].nCount &&
+                       string.Compare(indexTable[nPos].WordItems[nFoundPos].sWord, sWordDel) == 0)
+                    {
+                        indexTable[nPos].WordItems[nTemp].nFrequency = -1;
+                        modifyTable[nPos].nDelete += 1;
+                        nTemp += 1;
+                    }
+                }
+                return true;
+            }
+
+            //Operation in the modify table and its items
+            if (FindInModifyTable(nPos, sWordDel, nPOS, out pPre))
+            {
+                pCur = modifyTable[nPos].pWordItemHead;
+                if (pPre != null)
+                    pCur = pPre.next;
+                while (pCur != null && string.Compare(pCur.data.sWord, sWordDel, true) == 0 &&
+                   (pCur.data.nPOS == nPOS || nPOS < 0))
+                {
+                    pTemp = pCur;
+                    //pCur is the first item
+                    if (pPre != null)
+                        pPre.next = pCur.next;
+                    else
+                        modifyTable[nPos].pWordItemHead = pCur.next;
+
+                    pCur = pCur.next;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region IsExist Method
+
+        //====================================================================
+        // Func Name  : IsExist
+        // Description: Check the sWord with nHandle whether exist
+        // Parameters : sWord: the word
+        //            : nHandle: the nHandle
+        // Returns    : Is Exist
+        //====================================================================
+        public bool IsExist(string sWord, int nHandle)
+        {
+            string sWordFind;
+            int nPos;
+
+            if (!PreProcessing(ref sWord, out nPos, out sWordFind))
+                return false;
+
+            return (FindInOriginalTable(nPos, sWordFind, nHandle) || FindInModifyTable(nPos, sWordFind, nHandle));
+        }
+
+        #endregion
+
+        #region GetWordType Method
+
+        //====================================================================
+        // Func Name  : GetWordType
+        // Description: Get the type of word
+        // Parameters : sWord: the word
+        // Returns    : the type
+        //====================================================================
+        public int GetWordType(string sWord)
+        {
+            int nType = Utility.charType(sWord.ToCharArray()[0]);
+            int nLen = Utility.GetWordLength(sWord);
+
+            //Chinese word
+            if (nLen > 0 && nType == Predefine.CT_CHINESE && Utility.IsAllChinese(sWord))
+                return Predefine.WT_CHINESE;
+            //Delimiter
+            else if (nLen > 0 && nType == Predefine.CT_DELIMITER)
+                return Predefine.WT_DELIMITER;
+            //other invalid
+            else
+                return Predefine.WT_OTHER;
+        }
+
+        #endregion
+
+        #region GetWordInfo Method
+
+        public WordInfo GetWordInfo(string sWord)
+        {
+            WordInfo info = new WordInfo();
+            info.sWord = sWord;
+
+            string sWordGet;
+            int nFirstCharId, nFoundPos;
+            WordChain pPre, pCur;
+
+            if (!PreProcessing(ref sWord, out nFirstCharId, out sWordGet))
+                return null;
+
+            if (FindFirstMatchItemInOrgTbl(nFirstCharId, sWordGet, out nFoundPos))
+            {
+                var  itFcid = indexTable[nFirstCharId];
+                while (nFoundPos < itFcid.nCount && string.Compare(itFcid.WordItems[nFoundPos].sWord, sWordGet) == 0)
+                {
+                    info.POSs.Add(itFcid.WordItems[nFoundPos].nPOS);
+                    info.Frequencies.Add(itFcid.WordItems[nFoundPos].nFrequency);
+                    info.Count++;
+
+                    nFoundPos++;
+                }
+                return info;
+            }
+
+            //Operation in the index table and its items
+            if (FindInModifyTable(nFirstCharId, sWordGet, out pPre))
+            {
+                pCur = modifyTable[nFirstCharId].pWordItemHead;
+
+                if (pPre != null)
+                    pCur = pPre.next;
+
+                while (pCur != null && string.Compare(pCur.data.sWord, sWordGet, true) == 0)
+                {
+                    info.POSs.Add(pCur.data.nPOS);
+                    info.Frequencies.Add(pCur.data.nFrequency);
+                    info.Count++;
+                    pCur = pCur.next;
+                }
+                return info;
+            }
+            return null;
+        }
+
+        #endregion
+
+        #region GetMaxMatch Method
+
+        //====================================================================
+        // Func Name  : GetMaxMatch
+        // Description: Get the max match to the word
+        // Parameters : nHandle: the only handle which will be attached to the word
+        // Returns    : success or fail
+        //====================================================================
+        public bool GetMaxMatch(string sWord, out string sWordRet, out int nPOSRet)
+        {
+            string sWordGet, sFirstChar;
+            int nFirstCharId;
+            WordChain pCur;
+
+            sWordRet = "";
+            nPOSRet = -1;
+
+            if (!PreProcessing(ref sWord, out nFirstCharId, out sWordGet))
+                return false;
+
+            sFirstChar = Utility.CC_ID2Char(nFirstCharId).ToString();
+
+            //åœ¨indexTableä¸­æ£€ç´¢ä»¥sWordGetæ‰“å¤´çš„é¡¹ç›®
+            int i = 0;
+            while (i < indexTable[nFirstCharId].nCount)
+            {
+                if ( Utility.StartsWith(indexTable[nFirstCharId].WordItems[i].sWord, sWordGet))
+                {
+                    sWordRet = sFirstChar + indexTable[nFirstCharId].WordItems[i].sWord;
+                    nPOSRet = indexTable[nFirstCharId].WordItems[i].nPOS;
+                    return true;
+                }
+                i++;
+            }
+
+            //åœ¨indexTableä¸­æ²¡èƒ½æ‰¾åˆ°ï¼Œåˆ°modifyTableä¸­å»æ‰¾
+            if (modifyTable == null)
+                return false;
+
+            pCur = modifyTable[nFirstCharId].pWordItemHead;
             while (pCur != null)
             {
-               //Output the modified data to the file
-               SaveWordItem(writer, pCur.data);
-               pCur = pCur.next;
+                if (pCur.data.sWord.StartsWith(sWordGet))
+                {
+                    sWordRet = sFirstChar + pCur.data.sWord;
+                    nPOSRet = pCur.data.nPOS;
+                    return true;
+                }
+                pCur = pCur.next;
             }
-      }
 
-      private void SaveIndexTableItem(BinaryWriter writer, IndexTableItem item)
-      {
-         writer.Write(item.nCount);
-
-         for (int i = 0; i < item.nCount; i++)
-            SaveWordItem(writer, item.WordItems[i]);
-      }
-
-      private void SaveWordItem(BinaryWriter writer, WordItem item)
-      {
-         int frequency = item.nFrequency;
-         int wordLength = item.nWordLen;
-         int handle = item.nPOS;
-
-         writer.Write(frequency);
-         writer.Write(wordLength);
-         writer.Write(handle);
-
-         if (wordLength > 0)
-            writer.Write(Encoding.GetEncoding("gb2312").GetBytes(item.sWord));
-      }
-
-      #endregion
-
-      #region AddItem Method
-      //====================================================================
-      // Func Name  : AddItem
-      // Description: Add a word item to the dictionary
-      // Parameters : sWord: the word
-      //              nHandle:the handle number
-      //              nFrequency: the frequency
-      // Returns    : success or fail
-      //====================================================================
-      public bool AddItem(string sWord, int nPOS, int nFrequency)
-      {
-         int nPos, nFoundPos;
-         WordChain pRet, pTemp, pNext;
-         string sWordAdd;
-
-         //Ô¤´¦Àí,È¥µô´ÊµÄÇ°ºóµÄ¿Õ¸ñ
-         if (!PreProcessing(ref sWord, out nPos, out sWordAdd))
             return false;
+        }
 
-         if (FindInOriginalTable(nPos, sWordAdd, nPOS, out nFoundPos))
-         {
-            //The word exists in the original table, so add the frequency
-            //Operation in the index table and its items
-            if (indexTable[nPos].WordItems[nFoundPos].nFrequency == -1)
-            {
-               //The word item has been removed
-               indexTable[nPos].WordItems[nFoundPos].nFrequency = nFrequency;
+        #endregion
 
-               if (modifyTable == null)
-                  modifyTable = new ModifyTableItem[Predefine.CC_NUM];
+        #region GetFrequency Method
 
-               modifyTable[nPos].nDelete -= 1;
-            }
-            else
-               indexTable[nPos].WordItems[nFoundPos].nFrequency += nFrequency;
-            return true;
-         }
+        //====================================================================
+        // æŸ¥æ‰¾è¯æ€§ä¸ºnPOSçš„sWordçš„è¯é¢‘
+        //====================================================================
+        public int GetFrequency(string sWord, int nPOS)
+        {
+            string sWordFind;
+            int firstCharCC_ID, nIndex;
+            WordChain pFound;
 
-         //The items not exists in the index table.
-         //As following, we have to find the item whether exists in the modify data region
-         //If exists, change the frequency .or else add a item
-         if (modifyTable == null)
-         {
-            modifyTable = new ModifyTableItem[Predefine.CC_NUM];
+            if (!PreProcessing(ref sWord, out firstCharCC_ID, out sWordFind))
+                return 0;
+
+            if (FindInOriginalTable(firstCharCC_ID, sWordFind, nPOS, out nIndex))
+                return indexTable[firstCharCC_ID].WordItems[nIndex].nFrequency;
+
+            if (FindInModifyTable(firstCharCC_ID, sWordFind, nPOS, out pFound))
+                return pFound.data.nFrequency;
+
+            return 0;
+        }
+
+        #endregion
+
+        #region ReleaseDict
+
+        public void ReleaseDict()
+        {
             for (int i = 0; i < Predefine.CC_NUM; i++)
-               modifyTable[i] = new ModifyTableItem();
-         }
+                for (int j = 0; indexTable[i] != null && j < indexTable[i].nCount; j++)
+                    indexTable[i] = null;
 
-         if (FindInModifyTable(nPos, sWordAdd, nPOS, out pRet))
-         {
-            if (pRet != null)
-               pRet = pRet.next;
-            else
-               pRet = modifyTable[nPos].pWordItemHead;
+            modifyTable = null;
+        }
 
-            pRet.data.nFrequency += nFrequency;
-            return true;
-         }
+        #endregion
 
-         //find the proper position to add the word to the modify data table and link
-         pTemp = new WordChain(); //Allocate the word chain node
-         pTemp.data = new WordItem();
-         pTemp.data.nPOS = nPOS; //store the handle
-         pTemp.data.nWordLen = Utility.GetWordLength(sWordAdd);
-         pTemp.data.sWord = sWordAdd;
-         pTemp.data.nFrequency = nFrequency;
-         pTemp.next = null;
-         if (pRet != null)
-         {
-            pNext = pRet.next; //Get the next item before the current item
-            pRet.next = pTemp; //link the node to the chain
-         }
-         else
-         {
-            pNext = modifyTable[nPos].pWordItemHead;
-            modifyTable[nPos].pWordItemHead = pTemp; //Set the pAdd as the head node
-         }
-         pTemp.next = pNext; //Very important!!!! or else it will lose some node
+        #region MergePOS Method
 
-         modifyTable[nPos].nCount++; //the number increase by one
-         return true;
-      }
+        //====================================================================
+        // Func Name  : MergePOS
+        // Description: Merge all the POS into nPOS,
+        //              just get the word in the dictionary and set its POS as nPOS
+        // Parameters : nPOS: the only handle which will be attached to the word
+        // Returns    : the type
+        //====================================================================
+        public bool MergePOS(int nPOS)
+        {
+            int i, j, nCompare;
+            string sWordPrev;
+            WordChain pPre, pCur, pTemp;
 
-      #endregion
-
-      #region DelItem Method
-
-      public bool DelItem(string sWord, int nPOS)
-      {
-         string sWordDel;
-         int nPos, nFoundPos, nTemp;
-         WordChain pPre, pTemp, pCur;
-
-         if (!PreProcessing(ref sWord, out nPos, out sWordDel))
-            return false;
-
-         if (FindInOriginalTable(nPos, sWordDel, nPOS, out nFoundPos))
-         {
             //Not prepare the buffer
             if (modifyTable == null)
-               modifyTable = new ModifyTableItem[Predefine.CC_NUM];
+                modifyTable = new ModifyTableItem[Predefine.CC_NUM];
 
-            indexTable[nPos].WordItems[nFoundPos].nFrequency = -1;
-            modifyTable[nPos].nDelete += 1;
-
-            //Remove all items which word is sWordDel,ignoring the handle
-            if (nPOS == -1)
+            //Operation in the index table
+            for (i = 0; i < Predefine.CC_NUM; i++)
             {
-               nTemp = nFoundPos + 1; //Check its previous position
-               while (nTemp < indexTable[nPos].nCount &&
-                  string.Compare(indexTable[nPos].WordItems[nFoundPos].sWord, sWordDel) == 0)
-               {
-                  indexTable[nPos].WordItems[nTemp].nFrequency = -1;
-                  modifyTable[nPos].nDelete += 1;
-                  nTemp += 1;
-               }
+                //delete the memory of word item array in the dictionary
+                sWordPrev = null; //Set empty
+                for (j = 0; j < indexTable[i].nCount; j++)
+                {
+                    nCompare = Utility.CCStringCompare(sWordPrev, indexTable[i].WordItems[j].sWord);
+                    if ((j == 0 || nCompare < 0) && indexTable[i].WordItems[j].nFrequency != -1)
+                    {
+                        //Need to modify its handle
+                        indexTable[i].WordItems[j].nPOS = nPOS; //Change its handle
+                        sWordPrev = indexTable[i].WordItems[j].sWord;
+                        //Refresh previous Word
+                    }
+                    else if (nCompare == 0 && indexTable[i].WordItems[j].nFrequency != -1)
+                    {
+                        //Need to delete when not delete and same as previous word
+                        indexTable[i].WordItems[j].nFrequency = -1; //Set delete flag
+                        modifyTable[i].nDelete += 1; //Add the number of being deleted
+                    }
+                }
+            }
+            for (i = 0; i < Predefine.CC_NUM; i++)
+            //Operation in the modify table
+            {
+                pPre = null;
+                pCur = modifyTable[i].pWordItemHead;
+                sWordPrev = null; //Set empty
+                while (pCur != null)
+                {
+                    if (Utility.CCStringCompare(pCur.data.sWord, sWordPrev) > 0)
+                    {
+                        //The new word
+                        pCur.data.nPOS = nPOS; //Chang its handle
+                        sWordPrev = pCur.data.sWord; //Set new previous word
+                        pPre = pCur; //New previous pointer
+                        pCur = pCur.next;
+                    }
+                    else
+                    {
+                        //The same word as previous,delete it.
+                        pTemp = pCur;
+                        if (pPre != null)
+                            //pCur is the first item
+                            pPre.next = pCur.next;
+                        else
+                            modifyTable[i].pWordItemHead = pCur.next;
+                        pCur = pCur.next;
+                    }
+                }
             }
             return true;
-         }
+        }
 
-         //Operation in the modify table and its items
-         if (FindInModifyTable(nPos, sWordDel, nPOS, out pPre))
-         {
-            pCur = modifyTable[nPos].pWordItemHead;
-            if (pPre != null)
-               pCur = pPre.next;
-            while (pCur != null && string.Compare(pCur.data.sWord, sWordDel, true) == 0 &&
-               (pCur.data.nPOS == nPOS || nPOS < 0))
+        #endregion
+
+        #region ToTextFile Method
+
+        public bool ToTextFile(string sFileName)
+        {
+            bool isSuccess = true;
+            FileStream outputFile = null;
+            StreamWriter writer = null;
+
+            //Modification made, not to output when modify table exists.
+            if (modifyTable != null)
+                return false;
+
+            try
             {
-               pTemp = pCur;
-               //pCur is the first item
-               if (pPre != null)
-                  pPre.next = pCur.next;
-               else
-                  modifyTable[nPos].pWordItemHead = pCur.next;
+                outputFile = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
+                if (outputFile == null)
+                    return false;
 
-               pCur = pCur.next;
+                writer = new StreamWriter(outputFile, Encoding.GetEncoding("gb2312"));
+
+                for (int j = 0; j < Predefine.CC_NUM; j++)
+                {
+                    writer.WriteLine("====================================\r\næ±‰å­—:{0}, ID ï¼š{1}\r\n", Utility.CC_ID2Char(j), j);
+
+                    writer.WriteLine("  è¯é•¿  é¢‘ç‡  è¯æ€§   è¯");
+                    for (int i = 0; i < indexTable[j].nCount; i++)
+                        writer.WriteLine("{0,5} {1,6} {2,5}  ({3}){4}",
+                           indexTable[j].WordItems[i].nWordLen,
+                           indexTable[j].WordItems[i].nFrequency,
+                           Utility.GetPOSString(indexTable[j].WordItems[i].nPOS),
+                           Utility.CC_ID2Char(j),
+                           indexTable[j].WordItems[i].sWord);
+                }
+            }
+            catch
+            {
+                isSuccess = false;
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+
+                if (outputFile != null)
+                    outputFile.Close();
+            }
+            return isSuccess;
+        }
+
+        #endregion
+
+        #region Merge Method
+
+        //====================================================================
+        //Merge dict2 into current dictionary and the frequency ratio from dict2 and current dict is nRatio
+        //====================================================================
+        public bool Merge(WordDictionary dict2, int nRatio)
+        {
+            int i, j, k, nCmpValue;
+            string sWord;
+
+            //Modification made, not to output when modify table exists.
+            if (modifyTable != null || dict2.modifyTable != null)
+                return false;
+
+            for (i = 0; i < Predefine.CC_NUM; i++)
+            {
+                j = 0;
+                k = 0;
+                while (j < indexTable[i].nCount && k < dict2.indexTable[i].nCount)
+                {
+                    nCmpValue = Utility.CCStringCompare(indexTable[i].WordItems[j].sWord, dict2.indexTable[i].WordItems[k].sWord);
+                    if (nCmpValue == 0)
+                    //Same Words and determine the different handle
+                    {
+                        if (indexTable[i].WordItems[j].nPOS < dict2.indexTable[i].WordItems[k].nPOS)
+                            nCmpValue = -1;
+                        else if (indexTable[i].WordItems[j].nPOS > dict2.indexTable[i].WordItems[k].nPOS)
+                            nCmpValue = 1;
+                    }
+
+                    if (nCmpValue == 0)
+                    {
+                        indexTable[i].WordItems[j].nFrequency = (nRatio * indexTable[i].WordItems[j].nFrequency + dict2.indexTable[i].WordItems[k].nFrequency) / (nRatio + 1);
+                        j += 1;
+                        k += 1;
+                    }
+                    //Get next word in the current dictionary
+                    else if (nCmpValue < 0)
+                    {
+                        indexTable[i].WordItems[j].nFrequency = (nRatio * indexTable[i].WordItems[j].nFrequency) / (nRatio + 1);
+                        j += 1;
+                    }
+                    else
+                    //Get next word in the second dictionary
+                    {
+                        if (dict2.indexTable[i].WordItems[k].nFrequency > (nRatio + 1) / 10)
+                        {
+                            sWord = string.Format("{0}{1}", Utility.CC_ID2Char(i).ToString(), dict2.indexTable[i].WordItems[k].sWord);
+                            AddItem(sWord, dict2.indexTable[i].WordItems[k].nPOS, dict2.indexTable[i].WordItems[k].nFrequency / (nRatio + 1));
+                        }
+                        k += 1;
+                    }
+                }
+
+                //words in current dictionary are left
+                while (j < indexTable[i].nCount)
+                {
+                    indexTable[i].WordItems[j].nFrequency = (nRatio * indexTable[i].WordItems[j].nFrequency) / (nRatio + 1);
+                    j += 1;
+                }
+
+                //words in Dict2 are left
+                while (k < dict2.indexTable[i].nCount)
+                {
+                    if (dict2.indexTable[i].WordItems[k].nFrequency > (nRatio + 1) / 10)
+                    {
+                        sWord = string.Format("{0}{1}", Utility.CC_ID2Char(i).ToString(), dict2.indexTable[i].WordItems[k].sWord);
+                        AddItem(sWord, dict2.indexTable[i].WordItems[k].nPOS, dict2.indexTable[i].WordItems[k].nFrequency / (nRatio + 1));
+                    }
+                    k += 1;
+                }
             }
             return true;
-         }
-         return false;
-      }
+        }
 
-      #endregion
+        #endregion
 
-      #region IsExist Method
+        #region Optimum Method
 
-      //====================================================================
-      // Func Name  : IsExist
-      // Description: Check the sWord with nHandle whether exist
-      // Parameters : sWord: the word
-      //            : nHandle: the nHandle
-      // Returns    : Is Exist
-      //====================================================================
-      public bool IsExist(string sWord, int nHandle)
-      {
-         string sWordFind;
-         int nPos;
-
-         if (!PreProcessing(ref sWord, out nPos, out sWordFind))
-            return false;
-
-         return (FindInOriginalTable(nPos, sWordFind, nHandle) || FindInModifyTable(nPos, sWordFind, nHandle));
-      }
-
-      #endregion
-
-      #region GetWordType Method
-
-      //====================================================================
-      // Func Name  : GetWordType
-      // Description: Get the type of word
-      // Parameters : sWord: the word
-      // Returns    : the type
-      //====================================================================
-      public int GetWordType(string sWord)
-      {
-         int nType = Utility.charType(sWord.ToCharArray()[0]);
-         int nLen = Utility.GetWordLength(sWord);
-
-         //Chinese word
-         if (nLen > 0 && nType == Predefine.CT_CHINESE && Utility.IsAllChinese(sWord))
-            return Predefine.WT_CHINESE;
-         //Delimiter
-         else if (nLen > 0 && nType == Predefine.CT_DELIMITER)
-            return Predefine.WT_DELIMITER;
-         //other invalid
-         else
-            return Predefine.WT_OTHER;
-      }
-
-      #endregion
-
-      #region GetWordInfo Method
-
-      public WordInfo GetWordInfo(string sWord)
-      {
-         WordInfo info = new WordInfo();
-         info.sWord = sWord;
-
-         string sWordGet;
-         int nFirstCharId, nFoundPos;
-         WordChain pPre, pCur;
-
-         if (!PreProcessing(ref sWord, out nFirstCharId, out sWordGet))
-            return null;
-
-         if (FindFirstMatchItemInOrgTbl(nFirstCharId, sWordGet, out nFoundPos))
-         {
-            while (nFoundPos < indexTable[nFirstCharId].nCount && string.Compare(indexTable[nFirstCharId].WordItems[nFoundPos].sWord, sWordGet) == 0)
+        //====================================================================
+        //Delete word item which
+        //(1)frequency is 0
+        //(2)word is same as following but the POS value is parent set of the following
+        //for example "æ±Ÿæ³½æ°‘/n/0" will deleted, because "æ±Ÿæ³½æ°‘/nr/0" is more detail and correct
+        //====================================================================
+        public bool Optimum()
+        {
+            int nPrevPOS, i, j, nPrevFreq;
+            string sPrevWord, sCurWord;
+            for (i = 0; i < Predefine.CC_NUM; i++)
             {
-               info.POSs.Add(indexTable[nFirstCharId].WordItems[nFoundPos].nPOS);
-               info.Frequencies.Add(indexTable[nFirstCharId].WordItems[nFoundPos].nFrequency);
-               info.Count++;
-
-               nFoundPos++;
+                j = 0;
+                sPrevWord = null;
+                nPrevPOS = 0;
+                nPrevFreq = -1;
+                while (j < indexTable[i].nCount)
+                {
+                    sCurWord = string.Format("{0}{1}", Utility.CC_ID2Char(i).ToString(), indexTable[i].WordItems[j].sWord);
+                    if (nPrevPOS == 30720 || nPrevPOS == 26368 || nPrevPOS == 29031 ||
+                      (sPrevWord == sCurWord && nPrevFreq == 0 && indexTable[i].WordItems[j].nPOS / 256 * 256 == nPrevPOS))
+                    {
+                        //Delete Previous word item
+                        //Delete word with POS 'x','g' 'qg'
+                        DelItem(sPrevWord, nPrevPOS);
+                    }
+                    sPrevWord = sCurWord;
+                    nPrevPOS = indexTable[i].WordItems[j].nPOS;
+                    nPrevFreq = indexTable[i].WordItems[j].nFrequency;
+                    j += 1; //Get next item in the original table.
+                }
             }
-            return info;
-         }
-
-         //Operation in the index table and its items
-         if (FindInModifyTable(nFirstCharId, sWordGet, out pPre))
-         {
-            pCur = modifyTable[nFirstCharId].pWordItemHead;
-
-            if (pPre != null)
-               pCur = pPre.next;
-
-            while (pCur != null && string.Compare(pCur.data.sWord, sWordGet, true) == 0)
-            {
-               info.POSs.Add(pCur.data.nPOS);
-               info.Frequencies.Add(pCur.data.nFrequency);
-               info.Count++;
-               pCur = pCur.next;
-            }
-            return info;
-         }
-         return null;
-      }
-
-      #endregion
-
-      #region GetMaxMatch Method
-
-      //====================================================================
-      // Func Name  : GetMaxMatch
-      // Description: Get the max match to the word
-      // Parameters : nHandle: the only handle which will be attached to the word
-      // Returns    : success or fail
-      //====================================================================
-      public bool GetMaxMatch(string sWord, out string sWordRet, out int nPOSRet)
-      {
-         string sWordGet, sFirstChar;
-         int nFirstCharId;
-         WordChain pCur;
-
-         sWordRet = "";
-         nPOSRet = -1;
-
-         if (!PreProcessing(ref sWord, out nFirstCharId, out sWordGet))
-            return false;
-
-         sFirstChar = Utility.CC_ID2Char(nFirstCharId).ToString();
-
-         //ÔÚindexTableÖĞ¼ìË÷ÒÔsWordGet´òÍ·µÄÏîÄ¿
-         int i = 0;
-         while (i < indexTable[nFirstCharId].nCount)
-         {
-            if (indexTable[nFirstCharId].WordItems[i].sWord.StartsWith(sWordGet))
-            {
-               sWordRet = sFirstChar + indexTable[nFirstCharId].WordItems[i].sWord;
-               nPOSRet = indexTable[nFirstCharId].WordItems[i].nPOS;
-               return true;
-            }
-            i++;
-         }
-
-         //ÔÚindexTableÖĞÃ»ÄÜÕÒµ½£¬µ½modifyTableÖĞÈ¥ÕÒ
-         if (modifyTable == null)
-            return false;
-
-         pCur = modifyTable[nFirstCharId].pWordItemHead;
-         while (pCur != null)
-         {
-            if (pCur.data.sWord.StartsWith(sWordGet))
-            {
-               sWordRet = sFirstChar + pCur.data.sWord;
-               nPOSRet = pCur.data.nPOS;
-               return true;
-            }
-            pCur = pCur.next;
-         }
-
-         return false;
-      }
-
-      #endregion
-
-      #region GetFrequency Method
-
-      //====================================================================
-      // ²éÕÒ´ÊĞÔÎªnPOSµÄsWordµÄ´ÊÆµ
-      //====================================================================
-      public int GetFrequency(string sWord, int nPOS)
-      {
-         string sWordFind;
-         int firstCharCC_ID, nIndex;
-         WordChain pFound;
-
-         if (!PreProcessing(ref sWord, out firstCharCC_ID, out sWordFind))
-            return 0;
-
-         if (FindInOriginalTable(firstCharCC_ID, sWordFind, nPOS, out nIndex))
-            return indexTable[firstCharCC_ID].WordItems[nIndex].nFrequency;
-
-         if (FindInModifyTable(firstCharCC_ID, sWordFind, nPOS, out pFound))
-            return pFound.data.nFrequency;
-
-         return 0;
-      }
-
-      #endregion
-
-      #region ReleaseDict
-
-      public void ReleaseDict()
-      {
-         for (int i = 0; i < Predefine.CC_NUM; i++)
-            for (int j = 0; indexTable[i] != null && j < indexTable[i].nCount; j++)
-               indexTable[i] = null;
-
-         modifyTable = null;
-      }
-
-      #endregion
-
-      #region MergePOS Method
-
-      //====================================================================
-      // Func Name  : MergePOS
-      // Description: Merge all the POS into nPOS,
-      //              just get the word in the dictionary and set its POS as nPOS
-      // Parameters : nPOS: the only handle which will be attached to the word
-      // Returns    : the type
-      //====================================================================
-      public bool MergePOS(int nPOS)
-      {
-         int i, j, nCompare;
-         string sWordPrev;
-         WordChain pPre, pCur, pTemp;
-
-         //Not prepare the buffer
-         if (modifyTable == null)
-            modifyTable = new ModifyTableItem[Predefine.CC_NUM];
-
-         //Operation in the index table
-         for (i = 0; i < Predefine.CC_NUM; i++)
-         {
-            //delete the memory of word item array in the dictionary
-            sWordPrev = null; //Set empty
-            for (j = 0; j < indexTable[i].nCount; j++)
-            {
-               nCompare = Utility.CCStringCompare(sWordPrev, indexTable[i].WordItems[j].sWord);
-               if ((j == 0 || nCompare < 0) && indexTable[i].WordItems[j].nFrequency != -1)
-               {
-                  //Need to modify its handle
-                  indexTable[i].WordItems[j].nPOS = nPOS; //Change its handle
-                  sWordPrev = indexTable[i].WordItems[j].sWord;
-                  //Refresh previous Word
-               }
-               else if (nCompare == 0 && indexTable[i].WordItems[j].nFrequency != -1)
-               {
-                  //Need to delete when not delete and same as previous word
-                  indexTable[i].WordItems[j].nFrequency = -1; //Set delete flag
-                  modifyTable[i].nDelete += 1; //Add the number of being deleted
-               }
-            }
-         }
-         for (i = 0; i < Predefine.CC_NUM; i++)
-         //Operation in the modify table
-         {
-            pPre = null;
-            pCur = modifyTable[i].pWordItemHead;
-            sWordPrev = null; //Set empty
-            while (pCur != null)
-            {
-               if (Utility.CCStringCompare(pCur.data.sWord, sWordPrev) > 0)
-               {
-                  //The new word
-                  pCur.data.nPOS = nPOS; //Chang its handle
-                  sWordPrev = pCur.data.sWord; //Set new previous word
-                  pPre = pCur; //New previous pointer
-                  pCur = pCur.next;
-               }
-               else
-               {
-                  //The same word as previous,delete it.
-                  pTemp = pCur;
-                  if (pPre != null)
-                     //pCur is the first item
-                     pPre.next = pCur.next;
-                  else
-                     modifyTable[i].pWordItemHead = pCur.next;
-                  pCur = pCur.next;
-               }
-            }
-         }
-         return true;
-      }
-
-      #endregion
-
-      #region ToTextFile Method
-
-      public bool ToTextFile(string sFileName)
-      {
-         bool isSuccess = true;
-         FileStream outputFile = null;
-         StreamWriter writer = null;
-
-         //Modification made, not to output when modify table exists.
-         if (modifyTable != null)
-            return false;
-
-         try
-         {
-            outputFile = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
-            if (outputFile == null)
-               return false;
-
-            writer = new StreamWriter(outputFile, Encoding.GetEncoding("gb2312"));
-
-            for (int j = 0; j < Predefine.CC_NUM; j++)
-            {
-               writer.WriteLine("====================================\r\nºº×Ö:{0}, ID £º{1}\r\n", Utility.CC_ID2Char(j), j);
-
-               writer.WriteLine("  ´Ê³¤  ÆµÂÊ  ´ÊĞÔ   ´Ê");
-               for (int i = 0; i < indexTable[j].nCount; i++)
-                  writer.WriteLine("{0,5} {1,6} {2,5}  ({3}){4}",
-                     indexTable[j].WordItems[i].nWordLen,
-                     indexTable[j].WordItems[i].nFrequency,
-                     Utility.GetPOSString(indexTable[j].WordItems[i].nPOS),
-                     Utility.CC_ID2Char(j),
-                     indexTable[j].WordItems[i].sWord);
-            }
-         }
-         catch
-         {
-            isSuccess = false;
-         }
-         finally
-         {
-            if (writer != null)
-               writer.Close();
-
-            if (outputFile != null)
-               outputFile.Close();
-         }
-         return isSuccess;
-      }
-
-      #endregion
-
-      #region Merge Method
-
-      //====================================================================
-      //Merge dict2 into current dictionary and the frequency ratio from dict2 and current dict is nRatio
-      //====================================================================
-      public bool Merge(WordDictionary dict2, int nRatio)
-      {
-         int i, j, k, nCmpValue;
-         string sWord;
-
-         //Modification made, not to output when modify table exists.
-         if (modifyTable != null || dict2.modifyTable != null)
-            return false;
-
-         for (i = 0; i < Predefine.CC_NUM; i++)
-         {
-            j = 0;
-            k = 0;
-            while (j < indexTable[i].nCount && k < dict2.indexTable[i].nCount)
-            {
-               nCmpValue = Utility.CCStringCompare(indexTable[i].WordItems[j].sWord, dict2.indexTable[i].WordItems[k].sWord);
-               if (nCmpValue == 0)
-               //Same Words and determine the different handle
-               {
-                  if (indexTable[i].WordItems[j].nPOS < dict2.indexTable[i].WordItems[k].nPOS)
-                     nCmpValue = -1;
-                  else if (indexTable[i].WordItems[j].nPOS > dict2.indexTable[i].WordItems[k].nPOS)
-                     nCmpValue = 1;
-               }
-
-               if (nCmpValue == 0)
-               {
-                  indexTable[i].WordItems[j].nFrequency = (nRatio * indexTable[i].WordItems[j].nFrequency + dict2.indexTable[i].WordItems[k].nFrequency) / (nRatio + 1);
-                  j += 1;
-                  k += 1;
-               }
-               //Get next word in the current dictionary
-               else if (nCmpValue < 0)
-               {
-                  indexTable[i].WordItems[j].nFrequency = (nRatio * indexTable[i].WordItems[j].nFrequency) / (nRatio + 1);
-                  j += 1;
-               }
-               else
-               //Get next word in the second dictionary
-               {
-                  if (dict2.indexTable[i].WordItems[k].nFrequency > (nRatio + 1) / 10)
-                  {
-                     sWord = string.Format("{0}{1}", Utility.CC_ID2Char(i).ToString(), dict2.indexTable[i].WordItems[k].sWord);
-                     AddItem(sWord, dict2.indexTable[i].WordItems[k].nPOS, dict2.indexTable[i].WordItems[k].nFrequency / (nRatio + 1));
-                  }
-                  k += 1;
-               }
-            }
-
-            //words in current dictionary are left
-            while (j < indexTable[i].nCount)
-            {
-               indexTable[i].WordItems[j].nFrequency = (nRatio * indexTable[i].WordItems[j].nFrequency) / (nRatio + 1);
-               j += 1;
-            }
-
-            //words in Dict2 are left
-            while (k < dict2.indexTable[i].nCount)
-            {
-               if (dict2.indexTable[i].WordItems[k].nFrequency > (nRatio + 1) / 10)
-               {
-                  sWord = string.Format("{0}{1}", Utility.CC_ID2Char(i).ToString(), dict2.indexTable[i].WordItems[k].sWord);
-                  AddItem(sWord, dict2.indexTable[i].WordItems[k].nPOS, dict2.indexTable[i].WordItems[k].nFrequency / (nRatio + 1));
-               }
-               k += 1;
-            }
-         }
-         return true;
-      }
-
-      #endregion
-
-      #region Optimum Method
-
-      //====================================================================
-      //Delete word item which
-      //(1)frequency is 0
-      //(2)word is same as following but the POS value is parent set of the following
-      //for example "½­ÔóÃñ/n/0" will deleted, because "½­ÔóÃñ/nr/0" is more detail and correct
-      //====================================================================
-      public bool Optimum()
-      {
-         int nPrevPOS, i, j, nPrevFreq;
-         string sPrevWord, sCurWord;
-         for (i = 0; i < Predefine.CC_NUM; i++)
-         {
-            j = 0;
-            sPrevWord = null;
-            nPrevPOS = 0;
-            nPrevFreq = -1;
-            while (j < indexTable[i].nCount)
-            {
-               sCurWord = string.Format("{0}{1}", Utility.CC_ID2Char(i).ToString(), indexTable[i].WordItems[j].sWord);
-               if (nPrevPOS == 30720 || nPrevPOS == 26368 || nPrevPOS == 29031 ||
-                 (sPrevWord == sCurWord && nPrevFreq == 0 && indexTable[i].WordItems[j].nPOS / 256 * 256 == nPrevPOS))
-               {
-                  //Delete Previous word item
-                  //Delete word with POS 'x','g' 'qg'
-                  DelItem(sPrevWord, nPrevPOS);
-               }
-               sPrevWord = sCurWord;
-               nPrevPOS = indexTable[i].WordItems[j].nPOS;
-               nPrevFreq = indexTable[i].WordItems[j].nFrequency;
-               j += 1; //Get next item in the original table.
-            }
-         }
-         return true;
-      }
-
-      #endregion
-
-      #region Private Functions
-
-      #region PreProcessing Method
-
-      //====================================================================
-      // Func Name  : PreProcessing
-      // Description: Get the type of word
-      // Parameters : sWord: the word
-      // Returns    : the type
-      //====================================================================
-      private bool PreProcessing(ref string sWord, out int nId, out string sWordRet)
-      {
-         sWord = sWord.Trim();
-
-         //Position for the delimeters
-         int nType = Utility.charType(sWord.ToCharArray()[0]);
-
-         if (sWord.Length != 0)
-         {
-            //Chinese word
-            if (nType == Predefine.CT_CHINESE)
-            {
-               //Get the inner code of the first Chinese Char
-               byte[] byteArray = Utility.String2ByteArray(sWord);
-               nId = Utility.CC_ID(byteArray[0], byteArray[1]);
-
-               //store the word,not store the first Chinese Char
-               sWordRet = sWord.Substring(1);
-               return true;
-            }
-
-            //Delimiter
-            if (nType == Predefine.CT_DELIMITER)
-            {
-               nId = 3755;
-               //Get the inner code of the first Chinese Char
-               sWordRet = sWord; //store the word, not store the first Chinese Char
-               return true;
-            }
-         }
-
-         nId = 0;
-         sWordRet = "";
-         return false; //other invalid
-      }
-
-      #endregion
-
-      #region FindInOriginalTable Method
-
-      //====================================================================
-      // Func Name  : FindInOriginalTable
-      // Description: judge the word and handle exist in the inner table and its items
-      // Parameters : nInnerCode: the inner code of the first CHines char
-      //              sWord: the word
-      //              nHandle:the handle number
-      //              *nPosRet:the position which node is matched
-      // Returns    : success or fail
-      //====================================================================
-      private bool FindInOriginalTable(int nInnerCode, string sWord, int nPOS, out int nPosRet)
-      {
-         WordItem[] pItems = indexTable[nInnerCode].WordItems;
-
-         int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
-         int nMid = (nStart + nEnd) / 2, nCmpValue;
-
-         while (nStart <= nEnd)
-         //Binary search
-         {
-            nCmpValue = Utility.CCStringCompare(pItems[nMid].sWord, sWord);
-            if (nCmpValue == 0 && (pItems[nMid].nPOS == nPOS || nPOS == -1))
-            {
-               if (nPOS == -1)
-               //Not very strict match
-               {
-                  nMid -= 1;
-                  while (nMid >= 0 && string.Compare(pItems[nMid].sWord, sWord) == 0)
-                     //Get the first item which match the current word
-                     nMid--;
-                  if (nMid < 0 || string.Compare(pItems[nMid].sWord, sWord) != 0)
-                     nMid++;
-               }
-               nPosRet = nMid;
-               return true;//find it
-            }
-            else if (nCmpValue < 0 || (nCmpValue == 0 && pItems[nMid].nPOS < nPOS && nPOS != -1))
-            {
-               nStart = nMid + 1;
-            }
-            else if (nCmpValue > 0 || (nCmpValue == 0 && pItems[nMid].nPOS > nPOS && nPOS != -1))
-            {
-               nEnd = nMid - 1;
-            }
-            nMid = (nStart + nEnd) / 2;
-         }
-
-         //Get the previous position
-         nPosRet = nMid - 1;
-         return false;
-      }
-
-      //====================================================================
-      // Func Name  : FindInOriginalTable
-      // Description: judge the word and handle exist in the inner table and its items
-      // Parameters : nInnerCode: the inner code of the first CHines char
-      //              sWord: the word
-      //              nHandle:the handle number
-      // Returns    : success or fail
-      //====================================================================
-      private bool FindInOriginalTable(int nInnerCode, string sWord, int nPOS)
-      {
-         WordItem[] pItems = indexTable[nInnerCode].WordItems;
-
-         int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
-         int nMid = (nStart + nEnd) / 2, nCmpValue;
-
-         //Binary search
-         while (nStart <= nEnd)
-         {
-            nCmpValue = Utility.CCStringCompare(pItems[nMid].sWord, sWord);
-
-            if (nCmpValue == 0 && (pItems[nMid].nPOS == nPOS || nPOS == -1))
-               return true;//find it
-            else if (nCmpValue < 0 || (nCmpValue == 0 && pItems[nMid].nPOS < nPOS && nPOS != -1))
-               nStart = nMid + 1;
-            else if (nCmpValue > 0 || (nCmpValue == 0 && pItems[nMid].nPOS > nPOS && nPOS != -1))
-               nEnd = nMid - 1;
-
-            nMid = (nStart + nEnd) / 2;
-         }
-         return false;
-      }
-
-      #endregion
-
-      #region FindInModifyTable Method
-
-      //====================================================================
-      // Func Name  : FindInModifyTable
-      // Description: judge the word and handle exist in the modified table and its items
-      // Parameters : nInnerCode: the inner code of the first CHines char
-      //              sWord: the word
-      //              nHandle:the handle number
-      //              *pFindRet: the node found
-      // Returns    : success or fail
-      //====================================================================
-      private bool FindInModifyTable(int nInnerCode, string sWord, int nPOS, out WordChain pFindRet)
-      {
-         WordChain pCur, pPre;
-         if (modifyTable != null)
-         {
-            pCur = modifyTable[nInnerCode].pWordItemHead;
-            pPre = null;
-            while (pCur != null && (Utility.CCStringCompare(pCur.data.sWord, sWord) < 0 ||
-               (string.Compare(pCur.data.sWord, sWord, true) == 0 && pCur.data.nPOS < nPOS)))
-            //sort the link chain as alphabet
-            {
-               pPre = pCur;
-               pCur = pCur.next;
-            }
-
-            pFindRet = pPre;
-
-            if (pCur != null && string.Compare(pCur.data.sWord, sWord, true) == 0 && pCur.data.nPOS == nPOS)
-               //The node exists, delete the node and return
-               return true;
-            else
-               return false;
-         }
-
-         pFindRet = null;
-         return false;
-      }
-
-      //====================================================================
-      // Func Name  : FindInModifyTable
-      // Description: judge the word and handle exist in the modified table and its items
-      // Parameters : nInnerCode: the inner code of the first CHines char
-      //              sWord: the word
-      //              nHandle:the handle number
-      //              *pFindRet: the node found
-      // Returns    : success or fail
-      //====================================================================
-      private bool FindInModifyTable(int nInnerCode, string sWord, out WordChain pFindRet)
-      {
-         WordChain pCur, pPre;
-         if (modifyTable != null)
-         {
-            pCur = modifyTable[nInnerCode].pWordItemHead;
-            pPre = null;
-            while (pCur != null && (Utility.CCStringCompare(pCur.data.sWord, sWord) < 0))
-            {
-               pPre = pCur;
-               pCur = pCur.next;
-            }
-
-            pFindRet = pPre;
-
-            if (pCur != null && string.Compare(pCur.data.sWord, sWord, true) == 0)
-               return true;
-            else
-               return false;
-         }
-
-         pFindRet = null;
-         return false;
-      }
-
-      //====================================================================
-      // Func Name  : FindInModifyTable
-      // Description: judge the word and handle exist in the modified table and its items
-      // Parameters : nInnerCode: the inner code of the first CHines char
-      //              sWord: the word
-      //              nHandle:the handle number
-      // Returns    : success or fail
-      //====================================================================
-      private bool FindInModifyTable(int nInnerCode, string sWord, int nPOS)
-      {
-         WordChain pCur, pPre;
-         if (modifyTable != null)
-         {
-            pCur = modifyTable[nInnerCode].pWordItemHead;
-            pPre = null;
-
-            //sort the link chain as alphabet
-            while (pCur != null && (Utility.CCStringCompare(pCur.data.sWord, sWord) < 0 ||
-               (string.Compare(pCur.data.sWord, sWord, true) == 0 && pCur.data.nPOS < nPOS)))
-            {
-               pPre = pCur;
-               pCur = pCur.next;
-            }
-
-            //The node exists
-            if (pCur != null && string.Compare(pCur.data.sWord, sWord, true) == 0 &&
-                (pCur.data.nPOS == nPOS || nPOS < 0))
-               return true;
-         }
-         return false;
-      }
-
-      #endregion
-
-      #region FindFirstMatchItemInOrgTbl Method
-
-      //====================================================================
-      // ²éÕÒµÚÒ»¸öÂú×ã£¨int nInnerCode, string sWordFunc Name£©Ìõ¼şµÄÎ»ÖÃ
-      //====================================================================
-      private bool FindFirstMatchItemInOrgTbl(int nInnerCode, string sWord, out int nPosRet)
-      {
-         WordItem[] pItems = indexTable[nInnerCode].WordItems;
-
-         int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
-         int nMid = (nStart + nEnd) / 2, nCmpValue;
-
-         if (sWord.Length == 0)
-         {
-            nPosRet = 0;
             return true;
-         }
+        }
 
-         while (nStart <= nEnd)
-         {
-            nCmpValue = Utility.CCStringCompare(pItems[nMid].sWord, sWord);
-            if (nCmpValue == 0)
+        #endregion
+
+        #region Private Functions
+
+        #region PreProcessing Method
+
+        //====================================================================
+        // Func Name  : PreProcessing
+        // Description: Get the type of word
+        // Parameters : sWord: the word
+        // Returns    : the type
+        //====================================================================
+        private bool PreProcessing(ref string sWord, out int nId, out string sWordRet)
+        {
+            sWord = sWord.Trim();
+
+            //Position for the delimeters
+            int nType = Utility.charType(sWord[0]);
+
+            if (sWord.Length != 0)
             {
-               //Get the first item which match the current word
-               while (nMid >= 0 && pItems[nMid].sWord == sWord)
-                  nMid--;
+                //Chinese word
+                if (nType == Predefine.CT_CHINESE)
+                {
+                    //Get the inner code of the first Chinese Char
+                    byte[] byteArray = Utility.String2ByteArrayFirst(sWord);
+                    nId = Utility.CC_ID(byteArray[0], byteArray[1]);
 
-               nPosRet = ++nMid;
-               return true;
+                    //store the word,not store the first Chinese Char
+                    sWordRet = sWord.Substring(1);
+                    return true;
+                }
+
+                //Delimiter
+                if (nType == Predefine.CT_DELIMITER)
+                {
+                    nId = 3755;
+                    //Get the inner code of the first Chinese Char
+                    sWordRet = sWord; //store the word, not store the first Chinese Char
+                    return true;
+                }
             }
-            else if (nCmpValue < 0)
-               nStart = nMid + 1;
-            else if (nCmpValue > 0)
-               nEnd = nMid - 1;
 
-            nMid = (nStart + nEnd) / 2;
-         }
+            nId = 0;
+            sWordRet = "";
+            return false; //other invalid
+        }
 
-         nPosRet = -1;
-         return false;
-      }
+        #endregion
 
-      #endregion
+        #region FindInOriginalTable Method
 
-      #endregion
+        //====================================================================
+        // Func Name  : FindInOriginalTable
+        // Description: judge the word and handle exist in the inner table and its items
+        // Parameters : nInnerCode: the inner code of the first CHines char
+        //              sWord: the word
+        //              nHandle:the handle number
+        //              *nPosRet:the position which node is matched
+        // Returns    : success or fail
+        //====================================================================
+        private bool FindInOriginalTable(int nInnerCode, string sWord, int nPOS, out int nPosRet)
+        {
+            WordItem[] pItems = indexTable[nInnerCode].WordItems;
 
-   }
+            int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
+            int nMid = (nStart + nEnd) / 2, nCmpValue;
+
+
+            if (indexTable[nInnerCode].WordItemDict != null && indexTable[nInnerCode].WordItemDict.ContainsKey(sWord))
+            {
+                nMid = indexTable[nInnerCode].WordItemDict[sWord];
+
+                if ((pItems[nMid].nPOS == nPOS || nPOS == -1))
+                {
+                    if (nPOS == -1)
+                    //Not very strict match
+                    {
+                        nMid -= 1;
+                        while (nMid >= 0 && string.Compare(pItems[nMid].sWord, sWord) == 0)
+                            //Get the first item which match the current word
+                            nMid--;
+                        if (nMid < 0 || string.Compare(pItems[nMid].sWord, sWord) != 0)
+                            nMid++;
+                    }
+                    nPosRet = nMid;
+                    return true;//find it
+                }
+            }
+
+            //Get the previous position
+            nPosRet = nMid - 1;
+            return false;
+        }
+
+        //====================================================================
+        // Func Name  : FindInOriginalTable
+        // Description: judge the word and handle exist in the inner table and its items
+        // Parameters : nInnerCode: the inner code of the first CHines char
+        //              sWord: the word
+        //              nHandle:the handle number
+        // Returns    : success or fail
+        //====================================================================
+        private bool FindInOriginalTable(int nInnerCode, string sWord, int nPOS)
+        {
+            WordItem[] pItems = indexTable[nInnerCode].WordItems;
+
+            int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
+            int nMid = (nStart + nEnd) / 2, nCmpValue;
+
+            if (indexTable[nInnerCode].WordItemDict != null && indexTable[nInnerCode].WordItemDict.ContainsKey(sWord))
+            {
+                nMid = indexTable[nInnerCode].WordItemDict[sWord];
+                if ((pItems[nMid].nPOS == nPOS || nPOS == -1))
+                    return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region FindInModifyTable Method
+
+        //====================================================================
+        // Func Name  : FindInModifyTable
+        // Description: judge the word and handle exist in the modified table and its items
+        // Parameters : nInnerCode: the inner code of the first CHines char
+        //              sWord: the word
+        //              nHandle:the handle number
+        //              *pFindRet: the node found
+        // Returns    : success or fail
+        //====================================================================
+        private bool FindInModifyTable(int nInnerCode, string sWord, int nPOS, out WordChain pFindRet)
+        {
+            WordChain pCur, pPre;
+            if (modifyTable != null)
+            {
+                pCur = modifyTable[nInnerCode].pWordItemHead;
+                pPre = null;
+                while (pCur != null && (Utility.CCStringCompare(pCur.data.sWord, sWord) < 0 ||
+                   (string.Compare(pCur.data.sWord, sWord, true) == 0 && pCur.data.nPOS < nPOS)))
+                //sort the link chain as alphabet
+                {
+                    pPre = pCur;
+                    pCur = pCur.next;
+                }
+
+                pFindRet = pPre;
+
+                if (pCur != null && string.Compare(pCur.data.sWord, sWord, true) == 0 && pCur.data.nPOS == nPOS)
+                    //The node exists, delete the node and return
+                    return true;
+                else
+                    return false;
+            }
+
+            pFindRet = null;
+            return false;
+        }
+
+        //====================================================================
+        // Func Name  : FindInModifyTable
+        // Description: judge the word and handle exist in the modified table and its items
+        // Parameters : nInnerCode: the inner code of the first CHines char
+        //              sWord: the word
+        //              nHandle:the handle number
+        //              *pFindRet: the node found
+        // Returns    : success or fail
+        //====================================================================
+        private bool FindInModifyTable(int nInnerCode, string sWord, out WordChain pFindRet)
+        {
+            WordChain pCur, pPre;
+            if (modifyTable != null)
+            {
+                pCur = modifyTable[nInnerCode].pWordItemHead;
+                pPre = null;
+                while (pCur != null && (Utility.CCStringCompare(pCur.data.sWord, sWord) < 0))
+                {
+                    pPre = pCur;
+                    pCur = pCur.next;
+                }
+
+                pFindRet = pPre;
+
+                if (pCur != null && string.Compare(pCur.data.sWord, sWord, true) == 0)
+                    return true;
+                else
+                    return false;
+            }
+
+            pFindRet = null;
+            return false;
+        }
+
+        //====================================================================
+        // Func Name  : FindInModifyTable
+        // Description: judge the word and handle exist in the modified table and its items
+        // Parameters : nInnerCode: the inner code of the first CHines char
+        //              sWord: the word
+        //              nHandle:the handle number
+        // Returns    : success or fail
+        //====================================================================
+        private bool FindInModifyTable(int nInnerCode, string sWord, int nPOS)
+        {
+            WordChain pCur, pPre;
+            if (modifyTable != null)
+            {
+                pCur = modifyTable[nInnerCode].pWordItemHead;
+                pPre = null;
+
+                //sort the link chain as alphabet
+                while (pCur != null && (Utility.CCStringCompare(pCur.data.sWord, sWord) < 0 ||
+                   (string.Compare(pCur.data.sWord, sWord, true) == 0 && pCur.data.nPOS < nPOS)))
+                {
+                    pPre = pCur;
+                    pCur = pCur.next;
+                }
+
+                //The node exists
+                if (pCur != null && string.Compare(pCur.data.sWord, sWord, true) == 0 &&
+                    (pCur.data.nPOS == nPOS || nPOS < 0))
+                    return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region FindFirstMatchItemInOrgTbl Method
+
+        //====================================================================
+        // æŸ¥æ‰¾ç¬¬ä¸€ä¸ªæ»¡è¶³ï¼ˆint nInnerCode, string sWordFunc Nameï¼‰æ¡ä»¶çš„ä½ç½®
+        //====================================================================
+        private bool FindFirstMatchItemInOrgTbl(int nInnerCode, string sWord, out int nPosRet)
+        {
+            WordItem[] pItems = indexTable[nInnerCode].WordItems;
+
+            int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
+            int nMid = (nStart + nEnd) / 2, nCmpValue;
+
+            if (sWord.Length == 0)
+            {
+                nPosRet = 0;
+                return true;
+            }
+
+            while (nStart <= nEnd)
+            {
+                nCmpValue = Utility.CCStringCompare(pItems[nMid].sWord, sWord);
+                if (nCmpValue == 0)
+                {
+                    //Get the first item which match the current word
+                    while (nMid >= 0 && pItems[nMid].sWord == sWord)
+                        nMid--;
+
+                    nPosRet = ++nMid;
+                    return true;
+                }
+                else if (nCmpValue < 0)
+                    nStart = nMid + 1;
+                else if (nCmpValue > 0)
+                    nEnd = nMid - 1;
+
+                nMid = (nStart + nEnd) / 2;
+            }
+
+            nPosRet = -1;
+            return false;
+        }
+
+        #endregion
+
+        #endregion
+
+    }
 }

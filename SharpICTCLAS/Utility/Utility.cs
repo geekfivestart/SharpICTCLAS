@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓĞ£ºÖĞÎÄ·Ö´Ê£»´ÊĞÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ğ¡£
- *              ·Ö´ÊÕıÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ğÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖĞÖĞ¹úÈËÃûµÄÊ¶±ğÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖĞ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ğ­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ğí¿ÉÖ¤1.0
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®ç‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›ç‡å‡é«˜äº90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›ç‡æ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕğÓî¸ù¾İFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓĞ´úÂë×öÁË²¿·ÖÖØĞ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸è°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -41,620 +41,706 @@ using System.Text.RegularExpressions;
 
 namespace SharpICTCLAS
 {
-   public sealed class Utility
-   {
-      private Utility()
-      {
-      }
+    public sealed class Utility
+    {
+        static Utility()
+        {
+            CC_ID_Init();
+            CtoArray();
+        }
+        private Utility()
+        {
+        }
 
-      #region GetPOSValue Method
-
-      public static int GetPOSValue(string sPOS)
-      {
-         char[] c = sPOS.ToCharArray();
-
-         if (c.Length == 1)
-            return Convert.ToInt32(c[0]) * 256;
-         else if (c.Length == 2)
-            return Convert.ToInt32(c[0]) * 256 + Convert.ToInt32(c[1]);
-         else
-         {
-            string s1 = sPOS.Substring(0, sPOS.IndexOf('+'));
-            string s2 = sPOS.Substring(sPOS.IndexOf('+') + 1);
-            return 100 * GetPOSValue(s1) + Int32.Parse(s2);
-         }
-      }
-
-      #endregion
-
-      #region GetPOSString Method
-
-      public static string GetPOSString(int nPOS)
-      {
-         string sPOSRet;
-
-         if (nPOS > Convert.ToInt32('a') * 25600)
-         {
-            if ((nPOS / 100) % 256 != 0)
-               sPOSRet = string.Format("{0}{1}+{2}", Convert.ToChar(nPOS / 25600), Convert.ToChar((nPOS / 100) % 256), nPOS % 100);
-            else
-               sPOSRet = string.Format("{0}+{1}", Convert.ToChar(nPOS / 25600), nPOS % 100);
-         }
-         else
-         {
-            if (nPOS > 256)
-               sPOSRet = string.Format("{0}{1}", Convert.ToChar(nPOS / 256), Convert.ToChar(nPOS % 256));
-            else
-               sPOSRet = string.Format("{0}", Convert.ToChar(nPOS % 256));
-         }
-         return sPOSRet;
-      }
-
-      #endregion
-
-      //====================================================================
-      // ¸ù¾İºº×ÖµÄÁ½¸ö×Ö½Ú·µ»Ø¶ÔÓ¦µÄCC_ID
-      //====================================================================
-      public static int CC_ID(byte b1, byte b2)
-      {
-         return (Convert.ToInt32(b1) - 176) * 94 + (Convert.ToInt32(b2) - 161);
-      }
-
-      //====================================================================
-      // ¸ù¾İºº×Ö·µ»Ø¶ÔÓ¦µÄCC_ID
-      //====================================================================
-      public static int CC_ID(char c)
-      {
-         byte[] b = Encoding.GetEncoding("gb2312").GetBytes(c.ToString());
-         if (b.Length != 2)
-            return -1;
-         else
-            return (Convert.ToInt32(b[0]) - 176) * 94 + (Convert.ToInt32(b[1]) - 161);
-      }
-
-      //====================================================================
-      // ¸ù¾İCC_ID·µ»Ø¶ÔÓ¦µÄºº×Ö
-      //====================================================================
-      public static char CC_ID2Char(int cc_id)
-      {
-         if (cc_id < 0 || cc_id > Predefine.CC_NUM)
-            return '\0';
-
-         byte[] b = new byte[2];
-
-         b[0] = CC_CHAR1(cc_id);
-         b[1] = CC_CHAR2(cc_id);
-         return (Encoding.GetEncoding("gb2312").GetChars(b))[0];
-      }
-
-      //====================================================================
-      // ¸ù¾İCC_ID·µ»Ø¶ÔÓ¦ºº×ÖµÄµÚÒ»¸ö×Ö½Ú
-      //====================================================================
-      public static byte CC_CHAR1(int cc_id)
-      {
-         return Convert.ToByte(cc_id / 94 + 176);
-      }
-
-      //====================================================================
-      // ¸ù¾İCC_ID·µ»Ø¶ÔÓ¦ºº×ÖµÄµÚ¶ş¸ö×Ö½Ú
-      //====================================================================
-      public static byte CC_CHAR2(int cc_id)
-      {
-         return Convert.ToByte(cc_id % 94 + 161);
-      }
-
-      //====================================================================
-      // ½«×Ö·û´®×ª»»Îª×Ö½ÚÊı×é£¨ÓÃÓÚ½«ºº×ÖĞèÒª²ğ·Ö³É2×Ö½Ú£©
-      //====================================================================
-      public static byte[] String2ByteArray(string s)
-      {
-         return Encoding.GetEncoding("gb2312").GetBytes(s);
-      }
-
-      //====================================================================
-      // ½«×Ö½ÚÊı×éÖØĞÂ×ª»»Îª×Ö·û´®
-      //====================================================================
-      public static string ByteArray2String(byte[] byteArray)
-      {
-         return Encoding.GetEncoding("gb2312").GetString(byteArray);
-      }
-
-      //====================================================================
-      // »ñÈ¡×Ö·û´®³¤¶È£¨Ò»¸öºº×Ö°´2¸ö³¤¶ÈËã£©
-      //====================================================================
-      public static int GetWordLength(string s)
-      {
-         return String2ByteArray(s).Length;
-      }
-
-      //====================================================================
-      // Func Name  : charType
-      // Description: Judge the type of sChar or (sChar,sChar+1)
-      // Parameters : sFilename: the file name for the output CC List
-      // Returns    : int : the type of char
-      //====================================================================
-      public static int charType(char c)
-      {
-         if (Convert.ToInt32(c) < 128)
-         {
-            string delimiters = " *!,.?()[]{}+=";
-            //×¢ÊÍ£ºÔ­À´³ÌĞòÎª"\042!,.?()[]{}+="£¬"\042"Îª10½øÖÆ42ºÃASC×Ö·û£¬Îª*
-            if (delimiters.IndexOf(c) >= 0)
-               return Predefine.CT_DELIMITER;
-            return Predefine.CT_SINGLE;
-         }
-
-         byte[] byteArray = Encoding.GetEncoding("gb2312").GetBytes(c.ToString());
-
-         if (byteArray.Length != 2)
-            return Predefine.CT_OTHER;
-
-         int b1 = Convert.ToInt32(byteArray[0]);
-         int b2 = Convert.ToInt32(byteArray[1]);
-
-         return DoubleByteCharType(b1, b2);
-      }
-
-      private static int DoubleByteCharType(int b1, int b2)
-      {
-         //-------------------------------------------------------
-         /*
-            code  +0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F
-            A2A0     ¢¡ ¢¢ ¢£ ¢¤ ¢¥ ¢¦ ¢§ ¢¨ ¢© ¢ª ¢« ¢¬ ¢­ ¢® ¢¯
-            A2B0  ¢° ¢± ¢² ¢³ ¢´ ¢µ ¢¶ ¢· ¢¸ ¢¹ ¢º ¢» ¢¼ ¢½ ¢¾ ¢¿
-            A2C0  ¢À ¢Á ¢Â ¢Ã ¢Ä ¢Å ¢Æ ¢Ç ¢È ¢É ¢Ê ¢Ë ¢Ì ¢Í ¢Î ¢Ï
-            A2D0  ¢Ğ ¢Ñ ¢Ò ¢Ó ¢Ô ¢Õ ¢Ö ¢× ¢Ø ¢Ù ¢Ú ¢Û ¢Ü ¢İ ¢Ş ¢ß
-            A2E0  ¢à ¢á ¢â ¢ã ¢ä ¢å ¢æ ¢ç ¢è ¢é ¢ê ¢ë ¢ì ¢í ¢î ¢ï
-            A2F0  ¢ğ ¢ñ ¢ò ¢ó ¢ô ¢õ ¢ö ¢÷ ¢ø ¢ù ¢ú ¢û ¢ü ¢ı ¢ş   
-          */
-         if (b1 == 162)
-            return Predefine.CT_INDEX;
-
-         //-------------------------------------------------------
-         //£° £± £² £³ £´ £µ £¶ £· £¸ £¹
-         else if (b1 == 163 && b2 > 175 && b2 < 186)
-            return Predefine.CT_NUM;
-
-         //-------------------------------------------------------
-         //£Á£Â£Ã£Ä£Å£Æ£Ç£È£É£Ê£Ë£Ì£Í£Î£Ï£Ğ£Ñ£Ò£Ó£Ô£Õ£Ö£×£Ø£Ù£Ú
-         //£á£â£ã£ä£å£æ£ç£è£é£ê£ë£ì£í£î£ï£ğ£ñ£ò£ó£ô£õ£ö£÷£ø£ù£ú 
-         else if (b1 == 163 && (b2 >= 193 && b2 <= 218 || b2 >= 225 && b2 <= 250))
-            return Predefine.CT_LETTER;
-
-         //-------------------------------------------------------
-         /*
-           code  +0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F
-           A1A0     ¡¡ ¡¢ ¡£ ¡¤ ¡¥ ¡¦ ¡§ ¡¨ ¡© ¡ª ¡« ¡¬ ¡­ ¡® ¡¯
-           A1B0  ¡° ¡± ¡² ¡³ ¡´ ¡µ ¡¶ ¡· ¡¸ ¡¹ ¡º ¡» ¡¼ ¡½ ¡¾ ¡¿
-           A1C0  ¡À ¡Á ¡Â ¡Ã ¡Ä ¡Å ¡Æ ¡Ç ¡È ¡É ¡Ê ¡Ë ¡Ì ¡Í ¡Î ¡Ï
-           A1D0  ¡Ğ ¡Ñ ¡Ò ¡Ó ¡Ô ¡Õ ¡Ö ¡× ¡Ø ¡Ù ¡Ú ¡Û ¡Ü ¡İ ¡Ş ¡ß
-           A1E0  ¡à ¡á ¡â ¡ã ¡ä ¡å ¡æ ¡ç ¡è ¡é ¡ê ¡ë ¡ì ¡í ¡î ¡ï
-           A1F0  ¡ğ ¡ñ ¡ò ¡ó ¡ô ¡õ ¡ö ¡÷ ¡ø ¡ù ¡ú ¡û ¡ü ¡ı ¡ş   
-           ÒÔÏÂ³ıÁË×ÖÄ¸ºÍÊı×ÖµÄ²¿·Ö
-           code  +0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F
-           A3A0     £¡ £¢ ££ £¤ £¥ £¦ £§ £¨ £© £ª £« £¬ £­ £® £¯
-           A3B0                                £º £» £¼ £½ £¾ £¿
-           A3C0  £À 
-           A3D0                                   £Û £Ü £İ £Ş £ß
-           A3E0  £à 
-           A3F0                                   £û £ü £ı £ş 
-          */
-         else if (b1 == 161 || b1 == 163)
-            return Predefine.CT_DELIMITER;
-
-
-         else if (b1 >= 176 && b1 <= 247)
-            return Predefine.CT_CHINESE;
-
-
-         else
-            return Predefine.CT_OTHER;
-      }
-
-      //====================================================================
-      // Func Name  : IsAllSingleByte
-      // Description: Judge the string is all made up of Single Byte Char
-      // Parameters : sSentence: the original sentence which includes Chinese or Non-Chinese char
-      // Returns    : the end of the sub-sentence
-      //====================================================================
-      public static bool IsAllChinese(string sString)
-      {
-         byte[] byteArray = String2ByteArray(sString);
-
-         int nLen = byteArray.Length, i = 0;
-
-         while (i < nLen - 1 && Convert.ToInt32(byteArray[i]) < 248 && Convert.ToInt32(byteArray[i]) > 175)
-         {
-            i += 2;
-         }
-         if (i < nLen)
-            return false;
-         return true;
-      }
-
-      //====================================================================
-      //Judge the string is all made up of Num Char
-      //====================================================================
-      public static bool IsAllNum(string sString)
-      {
-         return Regex.IsMatch(sString, @"^[¡À+£­\-£«]?[£°£±£²£³£´£µ£¶£·£¸£¹\d]*[¡Ã¡¤£®£¯./]?[£°£±£²£³£´£µ£¶£·£¸£¹\d]*[°ÙÇ§ÍòÒÚ°ÛÇª£¥¡ë%]?$");
-      }
-
-      //====================================================================
-      //Decide whether the word is Chinese Num word
-      //====================================================================
-      public static bool IsAllChineseNum(string sWord)
-      {
-         //°Ù·ÖÖ®ÎåµãÁùµÄÈËÔçÉÏ°ËµãÊ®°Ë·ÖÆğ´²
-         return Regex.IsMatch(sWord, @"^[¼¸ÊıµÚÉÏ³É]?[Áã¡ğÒ»¶şÁ½ÈıËÄÎåÁùÆß°Ë¾ÅÊ®Ø¥°ÙÇ§ÍòÒÚÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾ÁÊ°°ÛÇª¡Ã¡¤£®£¯µã]*[·ÖÖ®]?[Áã¡ğÒ»¶şÁ½ÈıËÄÎåÁùÆß°Ë¾ÅÊ®Ø¥°ÙÇ§ÍòÒÚÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾ÁÊ°°ÛÇª]*$");
-      }
-
-      //====================================================================
-      //Binary search a value in a table which len is nTableLen
-      //====================================================================
-      public static int BinarySearch(int nVal, int[] nTable)
-      {
-         int nStart = 0, nEnd = nTable.Length - 1, nMid = (nStart + nEnd) / 2;
-
-         while (nStart <= nEnd)
-         {
-            if (nTable[nMid] == nVal)
-               return nMid;
-            else if (nTable[nMid] < nVal)
-               nStart = nMid + 1;
-            else
-               nEnd = nMid - 1;
-            nMid = (nStart + nEnd) / 2;
-         }
-
-         return -1;
-      }
-
-      //====================================================================
-      //Judge the string is all made up of Letter Char
-      //====================================================================
-      public static bool IsAllLetter(string sString)
-      {
-         char[] charArray = sString.ToCharArray();
-         foreach (char c in charArray)
-            if (charType(c) != Predefine.CT_LETTER)
-               return false;
-
-         return true;
-      }
-
-      //====================================================================
-      //Decide whether the word is all  non-foreign translation
-      //====================================================================
-      public static int GetForeignCharCount(string sWord)
-      {
-         int nForeignCount, nCount;
-         nForeignCount = GetCharCount(Predefine.TRANS_ENGLISH, sWord); //English char counnts
-         nCount = GetCharCount(Predefine.TRANS_JAPANESE, sWord); //Japan char counnts
-         if (nForeignCount <= nCount)
-            nForeignCount = nCount;
-         nCount = GetCharCount(Predefine.TRANS_RUSSIAN, sWord); //Russian char counnts
-         if (nForeignCount <= nCount)
-            nForeignCount = nCount;
-         return nForeignCount;
-      }
-
-      //====================================================================
-      //Get the count of char which is in sWord and in sCharSet
-      //====================================================================
-      public static int GetCharCount(string sCharSet, string sWord)
-      {
-         int nCount = 0;
-         char[] charArray = sWord.ToCharArray();
-         foreach (char c in charArray)
-            if (sCharSet.IndexOf(c) != -1)
-               nCount++;
-
-         return nCount;
-      }
-
-      //====================================================================
-      // °´ÕÕCC_IDµÄ´óĞ¡±È½ÏÁ½¸ö×Ö·û´®£¬ÀıÈç ³¬£­¡°Éù < Éú < ÏÖ¡±
-      //====================================================================
-      public static int CCStringCompare(string str1, string str2)
-      {
-         char[] ca1 = str1.ToCharArray();
-         char[] ca2 = str2.ToCharArray();
-
-         int minLength = Math.Min(ca1.Length, ca2.Length);
-
-         for (int i = 0; i < minLength; i++)
-         {
-            if (Convert.ToInt32(ca1[i]) < 128 && Convert.ToInt32(ca2[i]) < 128) //Èç¹ûÁ½¸ö×Ö·û¶¼ÊÇ°ë½Ç
+        static List<byte[]> C_Array = new List<byte[]>();
+        private static void CtoArray()
+        {
+            for (char i = (char)0; i < 0xffff; i++)
             {
-               if (ca1[i] < ca2[i])
-                  return -1;
-               else if (ca1[i] > ca2[i])
-                  return 1;
+                byte[] b = gb2312.GetBytes(i.ToString());
+                C_Array.Add(b);
             }
-            else if (Convert.ToInt32(ca1[i]) < 128)
-               return -1;
-            else if (Convert.ToInt32(ca2[i]) < 128)
-               return 1;
-            else //Á½¸ö×Ö·ûÈ«²¿ÊÇÈ«½Ç
+        }
+
+        /// <summary>
+        /// é¢„å…ˆåˆ›å»ºgb2312Encodingå®ä¾‹
+        /// </summary>
+        static Encoding gb2312 = Encoding.GetEncoding("gb2312");
+
+        #region GetPOSValue Method
+
+        public static int GetPOSValue(string sPOS)
+        {
+            char[] c = sPOS.ToCharArray();
+
+            if (c.Length == 1)
+                return Convert.ToInt32(c[0]) * 256;
+            else if (c.Length == 2)
+                return Convert.ToInt32(c[0]) * 256 + Convert.ToInt32(c[1]);
+            else
             {
-               if (CC_ID(ca1[i]) < CC_ID(ca2[i]))
-                  return -1;
-               if (CC_ID(ca1[i]) > CC_ID(ca2[i]))
-                  return 1;
+                string s1 = sPOS.Substring(0, sPOS.IndexOf('+'));
+                string s2 = sPOS.Substring(sPOS.IndexOf('+') + 1);
+                return 100 * GetPOSValue(s1) + Int32.Parse(s2);
             }
-         }
+        }
 
-         if (ca1.Length > ca2.Length)
-            return 1;
-         else if (ca1.Length == ca2.Length)
-            return 0;
-         else
+        #endregion
+
+        #region GetPOSString Method
+
+        public static string GetPOSString(int nPOS)
+        {
+            string sPOSRet;
+
+            if (nPOS > Convert.ToInt32('a') * 25600)
+            {
+                if ((nPOS / 100) % 256 != 0)
+                    sPOSRet = string.Format("{0}{1}+{2}", Convert.ToChar(nPOS / 25600), Convert.ToChar((nPOS / 100) % 256), nPOS % 100);
+                else
+                    sPOSRet = string.Format("{0}+{1}", Convert.ToChar(nPOS / 25600), nPOS % 100);
+            }
+            else
+            {
+                if (nPOS > 256)
+                    sPOSRet = string.Format("{0}{1}", Convert.ToChar(nPOS / 256), Convert.ToChar(nPOS % 256));
+                else
+                    sPOSRet = string.Format("{0}", Convert.ToChar(nPOS % 256));
+            }
+            return sPOSRet;
+        }
+
+        #endregion
+
+        //====================================================================
+        // æ ¹æ®æ±‰å­—çš„ä¸¤ä¸ªå­—èŠ‚è¿”å›å¯¹åº”çš„CC_ID
+        //====================================================================
+        public static int CC_ID(byte b1, byte b2)
+        {
+            return (Convert.ToInt32(b1) - 176) * 94 + (Convert.ToInt32(b2) - 161);
+        }
+
+        static int[] CC_ID_Dict = new int[0xffff];
+        private static void CC_ID_Init()
+        {
+            for (char i = (char)0; i < 0xffff; i++)
+            {
+                byte[] b = gb2312.GetBytes(i.ToString());
+                if (b.Length != 2)
+                {
+                    CC_ID_Dict[i] = (-1);
+                }
+                else
+                {
+                    CC_ID_Dict[i] = ((Convert.ToInt32(b[0]) - 176) * 94 + (Convert.ToInt32(b[1]) - 161));
+                }
+            }
+        }
+        //====================================================================
+        // æ ¹æ®æ±‰å­—è¿”å›å¯¹åº”çš„CC_ID
+        //====================================================================
+        public static int CC_ID(char c)
+        {
+            return CC_ID_Dict[c];
+        }
+
+        //====================================================================
+        // æ ¹æ®CC_IDè¿”å›å¯¹åº”çš„æ±‰å­—
+        //====================================================================
+        public static char CC_ID2Char(int cc_id)
+        {
+            if (cc_id < 0 || cc_id > Predefine.CC_NUM)
+                return '\0';
+
+            byte[] b = new byte[2];
+
+            b[0] = CC_CHAR1(cc_id);
+            b[1] = CC_CHAR2(cc_id);
+            return (gb2312.GetChars(b))[0];
+        }
+
+        //====================================================================
+        // æ ¹æ®CC_IDè¿”å›å¯¹åº”æ±‰å­—çš„ç¬¬ä¸€ä¸ªå­—èŠ‚
+        //====================================================================
+        public static byte CC_CHAR1(int cc_id)
+        {
+            return Convert.ToByte(cc_id / 94 + 176);
+        }
+
+        //====================================================================
+        // æ ¹æ®CC_IDè¿”å›å¯¹åº”æ±‰å­—çš„ç¬¬äºŒä¸ªå­—èŠ‚
+        //====================================================================
+        public static byte CC_CHAR2(int cc_id)
+        {
+            return Convert.ToByte(cc_id % 94 + 161);
+        }
+
+        //====================================================================
+        // å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºå­—èŠ‚æ•°ç»„ï¼ˆç”¨äºå°†æ±‰å­—éœ€è¦æ‹†åˆ†æˆ2å­—èŠ‚ï¼‰
+        //====================================================================
+        public static byte[] String2ByteArray(string s)
+        {
+            return gb2312.GetBytes(s);
+        }
+
+        //====================================================================
+        // å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºå­—èŠ‚æ•°ç»„ï¼ˆç”¨äºå°†æ±‰å­—éœ€è¦æ‹†åˆ†æˆ2å­—èŠ‚ï¼‰åªè½¬æ¢é¦–å­—ç¬¦
+        //====================================================================
+        public static byte[] String2ByteArrayFirst(string s)
+        {
+            return C_Array[s[0]];
+        }
+
+        //====================================================================
+        // å°†å­—èŠ‚æ•°ç»„é‡æ–°è½¬æ¢ä¸ºå­—ç¬¦ä¸²
+        //====================================================================
+        public static string ByteArray2String(byte[] byteArray)
+        {
+            return gb2312.GetString(byteArray);
+        }
+
+        //====================================================================
+        // è·å–å­—ç¬¦ä¸²é•¿åº¦ï¼ˆä¸€ä¸ªæ±‰å­—æŒ‰2ä¸ªé•¿åº¦ç®—ï¼‰
+        //====================================================================
+        public static int GetWordLength(string s)
+        {
+            return String2ByteArray(s).Length;
+        }
+
+        //====================================================================
+        // Func Name  : charType
+        // Description: Judge the type of sChar or (sChar,sChar+1)
+        // Parameters : sFilename: the file name for the output CC List
+        // Returns    : int : the type of char
+        //====================================================================
+        public static int charType(char c)
+        {
+            if (Convert.ToInt32(c) < 128)
+            {
+                string delimiters = " *!,.?()[]{}+=";
+                //æ³¨é‡Šï¼šåŸæ¥ç¨‹åºä¸º"\042!,.?()[]{}+="ï¼Œ"\042"ä¸º10è¿›åˆ¶42å¥½ASCå­—ç¬¦ï¼Œä¸º*
+                if (delimiters.IndexOf(c) >= 0)
+                    return Predefine.CT_DELIMITER;
+                return Predefine.CT_SINGLE;
+            }
+
+            byte[] byteArray = C_Array[c];
+
+            if (byteArray.Length != 2)
+                return Predefine.CT_OTHER;
+
+            int b1 = Convert.ToInt32(byteArray[0]);
+            int b2 = Convert.ToInt32(byteArray[1]);
+
+            return DoubleByteCharType(b1, b2);
+        }
+
+        private static int DoubleByteCharType(int b1, int b2)
+        {
+            //-------------------------------------------------------
+            /*
+               code  +0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F
+               A2A0     â…° â…± â…² â…³ â…´ â…µ â…¶ â…· â…¸ â…¹ î¦ î§ î¨ î© îª
+               A2B0  î« â’ˆ â’‰ â’Š â’‹ â’Œ â’ â’ â’ â’ â’‘ â’’ â’“ â’” â’• â’–
+               A2C0  â’— â’˜ â’™ â’š â’› â‘´ â‘µ â‘¶ â‘· â‘¸ â‘¹ â‘º â‘» â‘¼ â‘½ â‘¾
+               A2D0  â‘¿ â’€ â’ â’‚ â’ƒ â’„ â’… â’† â’‡ â‘  â‘¡ â‘¢ â‘£ â‘¤ â‘¥ â‘¦
+               A2E0  â‘§ â‘¨ â‘© î¬ î­ ãˆ  ãˆ¡ ãˆ¢ ãˆ£ ãˆ¤ ãˆ¥ ãˆ¦ ãˆ§ ãˆ¨ ãˆ© î®
+               A2F0  î¯ â…  â…¡ â…¢ â…£ â…¤ â…¥ â…¦ â…§ â…¨ â…© â…ª â…« î° î±   
+             */
+            if (b1 == 162)
+                return Predefine.CT_INDEX;
+
+            //-------------------------------------------------------
+            //ï¼ ï¼‘ ï¼’ ï¼“ ï¼” ï¼• ï¼– ï¼— ï¼˜ ï¼™
+            else if (b1 == 163 && b2 > 175 && b2 < 186)
+                return Predefine.CT_NUM;
+
+            //-------------------------------------------------------
+            //ï¼¡ï¼¢ï¼£ï¼¤ï¼¥ï¼¦ï¼§ï¼¨ï¼©ï¼ªï¼«ï¼¬ï¼­ï¼®ï¼¯ï¼°ï¼±ï¼²ï¼³ï¼´ï¼µï¼¶ï¼·ï¼¸ï¼¹ï¼º
+            //ï½ï½‚ï½ƒï½„ï½…ï½†ï½‡ï½ˆï½‰ï½Šï½‹ï½Œï½ï½ï½ï½ï½‘ï½’ï½“ï½”ï½•ï½–ï½—ï½˜ï½™ï½š 
+            else if (b1 == 163 && (b2 >= 193 && b2 <= 218 || b2 >= 225 && b2 <= 250))
+                return Predefine.CT_LETTER;
+
+            //-------------------------------------------------------
+            /*
+              code  +0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F
+              A1A0     ã€€ ã€ ã€‚ Â· Ë‰ Ë‡ Â¨ ã€ƒ ã€… â€” ï½ â€– â€¦ â€˜ â€™
+              A1B0  â€œ â€ ã€” ã€• ã€ˆ ã€‰ ã€Š ã€‹ ã€Œ ã€ ã€ ã€ ã€– ã€— ã€ ã€‘
+              A1C0  Â± Ã— Ã· âˆ¶ âˆ§ âˆ¨ âˆ‘ âˆ âˆª âˆ© âˆˆ âˆ· âˆš âŠ¥ âˆ¥ âˆ 
+              A1D0  âŒ’ âŠ™ âˆ« âˆ® â‰¡ â‰Œ â‰ˆ âˆ½ âˆ â‰  â‰® â‰¯ â‰¤ â‰¥ âˆ âˆµ
+              A1E0  âˆ´ â™‚ â™€ Â° â€² â€³ â„ƒ ï¼„ Â¤ ï¿  ï¿¡ â€° Â§ â„– â˜† â˜…
+              A1F0  â—‹ â— â— â—‡ â—† â–¡ â–  â–³ â–² â€» â†’ â† â†‘ â†“ ã€“   
+              ä»¥ä¸‹é™¤äº†å­—æ¯å’Œæ•°å­—çš„éƒ¨åˆ†
+              code  +0 +1 +2 +3 +4 +5 +6 +7 +8 +9 +A +B +C +D +E +F
+              A3A0     ï¼ ï¼‚ ï¼ƒ ï¿¥ ï¼… ï¼† ï¼‡ ï¼ˆ ï¼‰ ï¼Š ï¼‹ ï¼Œ ï¼ ï¼ ï¼
+              A3B0                                ï¼š ï¼› ï¼œ ï¼ ï¼ ï¼Ÿ
+              A3C0  ï¼  
+              A3D0                                   ï¼» ï¼¼ ï¼½ ï¼¾ ï¼¿
+              A3E0  ï½€ 
+              A3F0                                   ï½› ï½œ ï½ ï¿£ 
+             */
+            else if (b1 == 161 || b1 == 163)
+                return Predefine.CT_DELIMITER;
+
+
+            else if (b1 >= 176 && b1 <= 247)
+                return Predefine.CT_CHINESE;
+
+
+            else
+                return Predefine.CT_OTHER;
+        }
+
+        //====================================================================
+        // Func Name  : IsAllSingleByte
+        // Description: Judge the string is all made up of Single Byte Char
+        // Parameters : sSentence: the original sentence which includes Chinese or Non-Chinese char
+        // Returns    : the end of the sub-sentence
+        //====================================================================
+        public static bool IsAllChinese(string sString)
+        {
+            byte[] byteArray = String2ByteArray(sString);
+
+            int nLen = byteArray.Length, i = 0;
+
+            while (i < nLen - 1 && Convert.ToInt32(byteArray[i]) < 248 && Convert.ToInt32(byteArray[i]) > 175)
+            {
+                i += 2;
+            }
+            if (i < nLen)
+                return false;
+            return true;
+        }
+
+        static Regex IsAllNumRegex = new Regex(@"^[Â±+ï¼\-ï¼‹]?[ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™\d]*[âˆ¶Â·ï¼ï¼./]?[ï¼ï¼‘ï¼’ï¼“ï¼”ï¼•ï¼–ï¼—ï¼˜ï¼™\d]*[ç™¾åƒä¸‡äº¿ä½°ä»Ÿï¼…â€°%]?$", RegexOptions.Compiled);
+        //====================================================================
+        //Judge the string is all made up of Num Char
+        //====================================================================
+        public static bool IsAllNum(string sString)
+        {
+            return IsAllNumRegex.IsMatch(sString );
+        }
+
+        static Regex IsAllChineseNumRegex = new Regex(@"^[å‡ æ•°ç¬¬ä¸Šæˆ]?[é›¶â—‹ä¸€äºŒä¸¤ä¸‰å››äº”å…­ä¸ƒå…«ä¹åå»¿ç™¾åƒä¸‡äº¿å£¹è´°åè‚†ä¼é™†æŸ’æŒç–æ‹¾ä½°ä»Ÿâˆ¶Â·ï¼ï¼ç‚¹]*[åˆ†ä¹‹]?[é›¶â—‹ä¸€äºŒä¸¤ä¸‰å››äº”å…­ä¸ƒå…«ä¹åå»¿ç™¾åƒä¸‡äº¿å£¹è´°åè‚†ä¼é™†æŸ’æŒç–æ‹¾ä½°ä»Ÿ]*$", RegexOptions.Compiled);
+        //====================================================================
+        //Decide whether the word is Chinese Num word
+        //====================================================================
+        public static bool IsAllChineseNum(string sWord)
+        {
+            //ç™¾åˆ†ä¹‹äº”ç‚¹å…­çš„äººæ—©ä¸Šå…«ç‚¹åå…«åˆ†èµ·åºŠ
+            return IsAllChineseNumRegex.IsMatch(sWord);
+        }
+
+        //====================================================================
+        //Binary search a value in a table which len is nTableLen
+        //====================================================================
+        public static int BinarySearch(int nVal, int[] nTable)
+        {
+            int nStart = 0, nEnd = nTable.Length - 1, nMid = (nStart + nEnd) / 2;
+
+            while (nStart <= nEnd)
+            {
+                if (nTable[nMid] == nVal)
+                    return nMid;
+                else if (nTable[nMid] < nVal)
+                    nStart = nMid + 1;
+                else
+                    nEnd = nMid - 1;
+                nMid = (nStart + nEnd) / 2;
+            }
+
             return -1;
-      }
+        }
 
-      //====================================================================
-      //Generate the GB2312 List file
-      //====================================================================
-      public static bool GB2312_Generate(string sFileName)
-      {
-         bool isSuccess = true;
-         byte[] b = new byte[2];
-         FileStream outputFile = null;
-         StreamWriter writer = null;
+        //====================================================================
+        //Judge the string is all made up of Letter Char
+        //====================================================================
+        public static bool IsAllLetter(string sString)
+        {
+            char[] charArray = sString.ToCharArray();
+            foreach (char c in charArray)
+                if (charType(c) != Predefine.CT_LETTER)
+                    return false;
 
-         try
-         {
-            outputFile = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
-            if (outputFile == null)
-               return false;
+            return true;
+        }
 
-            writer = new StreamWriter(outputFile, Encoding.GetEncoding("gb2312"));
+        //====================================================================
+        //Decide whether the word is all  non-foreign translation
+        //====================================================================
+        public static int GetForeignCharCount(string sWord)
+        {
+            int nForeignCount, nCount;
+            nForeignCount = GetCharCount(Predefine.TRANS_ENGLISH, sWord); //English char counnts
+            nCount = GetCharCount(Predefine.TRANS_JAPANESE, sWord); //Japan char counnts
+            if (nForeignCount <= nCount)
+                nForeignCount = nCount;
+            nCount = GetCharCount(Predefine.TRANS_RUSSIAN, sWord); //Russian char counnts
+            if (nForeignCount <= nCount)
+                nForeignCount = nCount;
+            return nForeignCount;
+        }
 
-            for (int i = 161; i < 255; i++)
-               for (int j = 161; j < 255; j++)
-               {
-                  b[0] = Convert.ToByte(i);
-                  b[1] = Convert.ToByte(j);
-                  writer.WriteLine(string.Format("{0}, {1}, {2}", ByteArray2String(b), i, j));
-               }
-         }
-         catch
-         {
-            isSuccess = false;
-         }
-         finally
-         {
-            if (writer != null)
-               writer.Close();
+        //====================================================================
+        //Get the count of char which is in sWord and in sCharSet
+        //====================================================================
+        public static int GetCharCount(string sCharSet, string sWord)
+        {
+            int nCount = 0;
+            char[] charArray = sWord.ToCharArray();
+            foreach (char c in charArray)
+                if (sCharSet.IndexOf(c) != -1)
+                    nCount++;
 
-            if (outputFile != null)
-               outputFile.Close();
-         }
-         return isSuccess;
-      }
+            return nCount;
+        }
 
-      //====================================================================
-      //Generate the Chinese Char List file
-      //====================================================================
-      public static bool CC_Generate(string sFileName)
-      {
-         bool isSuccess = true;
-         byte[] b = new byte[2];
-         FileStream outputFile = null;
-         StreamWriter writer = null;
+        //====================================================================
+        // æŒ‰ç…§CC_IDçš„å¤§å°æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²ï¼Œä¾‹å¦‚ è¶…ï¼â€œå£° < ç”Ÿ < ç°â€
+        //====================================================================
+        public static int CCStringCompare(string ca1, string ca2)
+        {
 
-         try
-         {
-            outputFile = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
-            if (outputFile == null)
-               return false;
 
-            writer = new StreamWriter(outputFile, Encoding.GetEncoding("gb2312"));
+            int minLength = Math.Min(ca1.Length, ca2.Length);
 
-            for (int i = 176; i < 255; i++)
-               for (int j = 161; j < 255; j++)
-               {
-                  b[0] = Convert.ToByte(i);
-                  b[1] = Convert.ToByte(j);
-                  writer.WriteLine(string.Format("{0}, {1}, {2}", ByteArray2String(b), i, j));
-               }
-         }
-         catch
-         {
-            isSuccess = false;
-         }
-         finally
-         {
-            if (writer != null)
-               writer.Close();
+            for (int i = 0; i < minLength; i++)
+            {
+                //å‡è®¾éƒ½æ˜¯å…¨è§’å­—ç¬¦
+                int cc1 = CC_ID_Dict[ca1[i]];
+                int cc2 = CC_ID_Dict[ca2[i]];
+                if (cc1 != -1 && cc2 != -1)
+                {
+                    if (cc1 < cc2)
+                        return -1;
+                    if (cc1 > cc2)
+                        return 1;
+                }
+                else
+                {
 
-            if (outputFile != null)
-               outputFile.Close();
-         }
-         return isSuccess;
-      }
+                    int ca1int = Convert.ToInt32(ca1[i]);
+                    int ca2int = Convert.ToInt32(ca2[i]);
+                    if (ca1int < 128 && ca2int < 128) //å¦‚æœä¸¤ä¸ªå­—ç¬¦éƒ½æ˜¯åŠè§’
+                    {
+                        if (ca1[i] < ca2[i])
+                            return -1;
+                        else if (ca1[i] > ca2[i])
+                            return 1;
+                    }
+                    else if (ca1int < 128)
+                        return -1;
+                    else if (ca2int < 128)
+                        return 1;
+                }
+            }
 
-      #region È«½Ç°ë½Ç×ª»»
+            if (ca1.Length > ca2.Length)
+                return 1;
+            else if (ca1.Length == ca2.Length)
+                return 0;
+            else
+                return -1;
+        }
 
-      /*==========================================
-       * ÏÂÃæÁ½¸ö·½·¨£º
-       * Author : Ú÷Î°¿Æ(kwklover)
+        //====================================================================
+        //Generate the GB2312 List file
+        //====================================================================
+        public static bool GB2312_Generate(string sFileName)
+        {
+            bool isSuccess = true;
+            byte[] b = new byte[2];
+            FileStream outputFile = null;
+            StreamWriter writer = null;
+
+            try
+            {
+                outputFile = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
+                if (outputFile == null)
+                    return false;
+
+                writer = new StreamWriter(outputFile, Encoding.GetEncoding("gb2312"));
+
+                for (int i = 161; i < 255; i++)
+                    for (int j = 161; j < 255; j++)
+                    {
+                        b[0] = Convert.ToByte(i);
+                        b[1] = Convert.ToByte(j);
+                        writer.WriteLine(string.Format("{0}, {1}, {2}", ByteArray2String(b), i, j));
+                    }
+            }
+            catch
+            {
+                isSuccess = false;
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+
+                if (outputFile != null)
+                    outputFile.Close();
+            }
+            return isSuccess;
+        }
+
+        //====================================================================
+        //Generate the Chinese Char List file
+        //====================================================================
+        public static bool CC_Generate(string sFileName)
+        {
+            bool isSuccess = true;
+            byte[] b = new byte[2];
+            FileStream outputFile = null;
+            StreamWriter writer = null;
+
+            try
+            {
+                outputFile = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
+                if (outputFile == null)
+                    return false;
+
+                writer = new StreamWriter(outputFile, Encoding.GetEncoding("gb2312"));
+
+                for (int i = 176; i < 255; i++)
+                    for (int j = 161; j < 255; j++)
+                    {
+                        b[0] = Convert.ToByte(i);
+                        b[1] = Convert.ToByte(j);
+                        writer.WriteLine(string.Format("{0}, {1}, {2}", ByteArray2String(b), i, j));
+                    }
+            }
+            catch
+            {
+                isSuccess = false;
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+
+                if (outputFile != null)
+                    outputFile.Close();
+            }
+            return isSuccess;
+        }
+
+        #region å…¨è§’åŠè§’è½¬æ¢
+
+        /*==========================================
+       * ä¸‹é¢ä¸¤ä¸ªæ–¹æ³•ï¼š
+       * Author : é‚ä¼Ÿç§‘(kwklover)
        * Home   : http://www.cnblogs.com/kwklover
        *==========================================*/
-      /// <summary>
-      /// °Ñ×Ö·û×ª»»ÎªÈ«½ÇµÄ(°ë½Ç×ªÈ«½Ç)
-      /// </summary>
-      /// <param name="c"></param>
-      /// <returns></returns>
-      public static char ConvertToQJC(char c)
-      {
-         if (c == 32)
-            return (char)12288;
+        /// <summary>
+        /// æŠŠå­—ç¬¦è½¬æ¢ä¸ºå…¨è§’çš„(åŠè§’è½¬å…¨è§’)
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static char ConvertToQJC(char c)
+        {
+            if (c == 32)
+                return (char)12288;
 
-         if (c < 127)
-            return (char)(c + 65248);
+            if (c < 127)
+                return (char)(c + 65248);
 
-         return c;
-      }
+            return c;
+        }
 
-      /// <summary>
-      /// °Ñ×Ö·û×ª»»Îª°ë½ÇµÄ(È«½Ç×ª°ë½Ç)
-      /// </summary>
-      /// <param name="c"></param>
-      /// <returns></returns>
-      public static char ConvertToBJC(char c)
-      {
-         if (c == 12288)
-            return (char)32;
+        /// <summary>
+        /// æŠŠå­—ç¬¦è½¬æ¢ä¸ºåŠè§’çš„(å…¨è§’è½¬åŠè§’)
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static char ConvertToBJC(char c)
+        {
+            if (c == 12288)
+                return (char)32;
 
-         if (c > 65280 && c < 65375)
-            return (char)(c - 65248);
+            if (c > 65280 && c < 65375)
+                return (char)(c - 65248);
 
-         return c;
-      }
+            return c;
+        }
 
-      /*=============================================================================
-       *ÏÂÃæÁ½¸ö·½·¨from http://hardrock.cnblogs.com/archive/2005/09/27/245255.html
-       ==============================================================================*/
-      /// <summary>
-      /// ×ªÈ«½ÇµÄº¯Êı(SBC case)
-      /// </summary>
-      /// <param name="input">ÈÎÒâ×Ö·û´®</param>
-      /// <returns>È«½Ç×Ö·û´®</returns>
-      ///<remarks>
-      ///È«½Ç¿Õ¸ñÎª12288£¬°ë½Ç¿Õ¸ñÎª32
-      ///ÆäËû×Ö·û°ë½Ç(33-126)ÓëÈ«½Ç(65281-65374)µÄ¶ÔÓ¦¹ØÏµÊÇ£º¾ùÏà²î65248
-      ///</remarks>        
-      public static string ToSBC(string input)
-      {
-         //°ë½Ç×ªÈ«½Ç£º
-         char[] c = input.ToCharArray();
-         for (int i = 0; i < c.Length; i++)
-         {
-            if (c[i] == 32)
+        /*=============================================================================
+         *ä¸‹é¢ä¸¤ä¸ªæ–¹æ³•from http://hardrock.cnblogs.com/archive/2005/09/27/245255.html
+         ==============================================================================*/
+        /// <summary>
+        /// è½¬å…¨è§’çš„å‡½æ•°(SBC case)
+        /// </summary>
+        /// <param name="input">ä»»æ„å­—ç¬¦ä¸²</param>
+        /// <returns>å…¨è§’å­—ç¬¦ä¸²</returns>
+        ///<remarks>
+        ///å…¨è§’ç©ºæ ¼ä¸º12288ï¼ŒåŠè§’ç©ºæ ¼ä¸º32
+        ///å…¶ä»–å­—ç¬¦åŠè§’(33-126)ä¸å…¨è§’(65281-65374)çš„å¯¹åº”å…³ç³»æ˜¯ï¼šå‡ç›¸å·®65248
+        ///</remarks>        
+        public static string ToSBC(string input)
+        {
+            //åŠè§’è½¬å…¨è§’ï¼š
+            char[] c = input.ToCharArray();
+            for (int i = 0; i < c.Length; i++)
             {
-               c[i] = (char)12288;
-               continue;
+                if (c[i] == 32)
+                {
+                    c[i] = (char)12288;
+                    continue;
+                }
+                if (c[i] < 127)
+                    c[i] = (char)(c[i] + 65248);
             }
-            if (c[i] < 127)
-               c[i] = (char)(c[i] + 65248);
-         }
-         return new string(c);
-      }
+            return new string(c);
+        }
 
 
-      /// <summary>
-      /// ×ª°ë½ÇµÄº¯Êı(DBC case)
-      /// </summary>
-      /// <param name="input">ÈÎÒâ×Ö·û´®</param>
-      /// <returns>°ë½Ç×Ö·û´®</returns>
-      ///<remarks>
-      ///È«½Ç¿Õ¸ñÎª12288£¬°ë½Ç¿Õ¸ñÎª32
-      ///ÆäËû×Ö·û°ë½Ç(33-126)ÓëÈ«½Ç(65281-65374)µÄ¶ÔÓ¦¹ØÏµÊÇ£º¾ùÏà²î65248
-      ///</remarks>
-      public static string ToDBC(string input)
-      {
-         char[] c = input.ToCharArray();
-         for (int i = 0; i < c.Length; i++)
-         {
-            if (c[i] == 12288)
+        /// <summary>
+        /// è½¬åŠè§’çš„å‡½æ•°(DBC case)
+        /// </summary>
+        /// <param name="input">ä»»æ„å­—ç¬¦ä¸²</param>
+        /// <returns>åŠè§’å­—ç¬¦ä¸²</returns>
+        ///<remarks>
+        ///å…¨è§’ç©ºæ ¼ä¸º12288ï¼ŒåŠè§’ç©ºæ ¼ä¸º32
+        ///å…¶ä»–å­—ç¬¦åŠè§’(33-126)ä¸å…¨è§’(65281-65374)çš„å¯¹åº”å…³ç³»æ˜¯ï¼šå‡ç›¸å·®65248
+        ///</remarks>
+        public static string ToDBC(string input)
+        {
+            char[] c = input.ToCharArray();
+            for (int i = 0; i < c.Length; i++)
             {
-               c[i] = (char)32;
-               continue;
+                if (c[i] == 12288)
+                {
+                    c[i] = (char)32;
+                    continue;
+                }
+                if (c[i] > 65280 && c[i] < 65375)
+                    c[i] = (char)(c[i] - 65248);
             }
-            if (c[i] > 65280 && c[i] < 65375)
-               c[i] = (char)(c[i] - 65248);
-         }
-         return new string(c);
-      }
+            return new string(c);
+        }
 
-      #endregion
+        #endregion
 
-      public static string Traditional2Simplified(string s)
-      {
-         StringBuilder sb = new StringBuilder();
+        public static string Traditional2Simplified(string s)
+        {
+            StringBuilder sb = new StringBuilder();
 
-         string simp = "ï¹°¨°ª°­°®àÈæÈè¨êÓö°ÚÏï§ğÆ°¹°À°ÂæÁæñ÷¡°Ó°ÕîÙ°Ú°ÜßÂ°ä°ì°íîÓ°ï°ó°÷°ù°ş±¥±¦±¨±«ğ±öµ±²±´±µ±·±¸±¹ğÇêÚï¼±Á±Ê±Ï±Ğ±Ò±ÕÜêßÙääîéóÙõÏ±ß±à±á±ä±ç±èÜĞçÂóÖ±êæôì©ì­ïÚïğ÷§±î±ğ±ñ±ô±õ±ö±÷ÙÏçÍéÄéëë÷ïÙ÷Æ÷Ş±ıÙ÷²¦²§²¬²µâÄîàğ¾²¹îß²Æ²Î²Ï²Ğ²Ñ²Ò²Óæî÷õ²Ô²Õ²Ö²×²Ş²à²á²ââü²ã²ïïÊÙ­îÎ²ó²ô²õ²ö²÷²ø²ù²ú²û²üÙæÚÆÚßİÛâãæ¿æöêèìøïâ³¡³¢³¤³¥³¦³§³©ØöÜÉâêãÑöğ³®³µ³¹íº³¾³Â³ÄØ÷ÚÈé´í×ö³³Å³Æ³Í³Ï³ÒèÇèßîñîõ³Õ³Ù³Û³Ü³İ³ãâÁğ·³å³å³æ³èï¥³ë³ì³ï³ñÙ±àüöÅ³÷³ø³ú³û´¡´¢´¥´¦Û»ç©õé´«îË´¯´³´´âë´¸ç¶´¿ğÈ´Âê¡öº´Ç´Ê´ÍğË´Ï´Ğ´Ñ´Ó´ÔÜÊæõèÈ´Õê£´Ú´Üß¥´íï±õº´ïßÕ÷²´ø´ûææçªµ£µ¥µ¦µ§µ¨µ¬µ®µ¯ééêæğ÷óìµ±µ²µ³µ´µµÚÔí¸ñÉµ·µºµ»µ¼µÁìâµÆµËïëµĞµÓµİµŞÙáÚ®ÚĞç°êëïáµßµãµæµçáÛîäñ²µöµ÷ï¢öôµıµşöø¶¤¶¥¶§¶©îú¶ªîû¶«¶¯¶°¶³á´ğ´ñ¼¶¿¶À¶Á¶Ä¶ÆäÂèüë¹óÆ÷ò¶Í¶Ï¶Ğóı¶Ò¶Ó¶Ôí¡ïæ¶Ö¶Ù¶ÛìÀõ»¶á¶éîì¶ì¶î¶ï¶ñ¶öÚÌÛÑãÕéîï°ïÉğÊò¦ò§öùÚÀ¶ù¶û¶ü·¡åÇîïğ¹öÜ·¢·£·§·©·¯·°·³···¹·Ã·ÄîÕöĞ·É·Ì·Ï·Ñç³ïĞöî·×·Ø·Ü·ß·àÙÇ·á·ã·æ·ç·è·ë·ì·í·ïãã·ô·ø¸§¸¨¸³¸´¸º¸¼¸¾¸¿Ùìæâç¦ç¨êçôïöÖöûîÅ¸Ã¸Æ¸Çêà¸Ë¸Ï¸Ñ¸ÓŞÏß¦ç¤¸Ô¸Õ¸Ö¸Ù¸Úí°¸äØºÚ¾çÉï¯¸é¸ë¸ó¸õ¸öæüïÓò£¸øØ¨âÙç®öá¹¨¹¬¹®¹±¹³¹µ¹¶¹¹¹º¹»Ú¸çÃêí¹Æ¹ËÚ¬ì±îÜïÀğ³ğÀ÷½¹Ğ¹Òğ»Şâ¹Ø¹Û¹İ¹ß¹áÚ´ŞèğÙ÷¤¹ãáî¹æ¹é¹ê¹ë¹ì¹î¹ó¹ôØĞØÛæ£èíöÙ÷¬¹õ¹öÙòçµöç¹ø¹ú¹ıÛößÃàşé¤òåîşº§º«ººãÛç¬ò¡ºÅå°ò«ºÒº×ºØÚ­ãØòÃºáºäºèºìÙäÚ§İ¦ãÈö×ºø»¤»¦»§ä°ğÉ»©»ª»­»®»°æèèëîü»³»µ»¶»·»¹»º»»»½»¾»À»ÁÛ¼çÙïÌöé»Æ»Ñöü»Ó»Ô»Ù»ß»à»á»â»ã»ä»å»æÚ¶ÜößÜä«çÀçõêÍ»ç»ëÚ»âÆãÔ»ñ»õ»öîØïì»÷»ú»ı¼¢¼£¼¥¼¦¼¨¼©¼«¼­¼¶¼·¼¸¼»¼Á¼Ã¼Æ¼Ç¼Ê¼Ì¼ÍÚ¦ÚµÜùß´ßâæ÷çáêéì´í¶î¿ò²õÒö«öİöê¼Ğ¼Ô¼Õ¼Ö¼Ø¼Û¼İÛ£ä¤îòïØòÍ¼ß¼à¼á¼ã¼ä¼è¼ê¼ë¼ì¼î¼ï¼ğ¼ñ¼ò¼ó¼õ¼ö¼÷¼ø¼ù¼ú¼û¼ü½¢½£½¤½¥½¦½§ÚÉçÌê§ê¯íúğÏóÈöä÷µ½«½¬½¯½°½±½²½´ç­çÖ½º½½½¾½¿½Á½Â½Ã½Ä½Å½È½É½Ê½Î½ÏŞØá½ğÔöŞ½×½Ú½à½á½ë½ìğÜò¢öÚ½ô½õ½ö½÷½ø½ú½ı¾¡¾¢¾£¾¥Úáİ£âËçÆêáêî¾¨¾ª¾­¾±¾²¾µ¾¶¾·¾º¾»ØÙãşåÉåòëÖö¦¾À¾Ç¾ÉãÎğ¯ğÕ¾Ô¾Ù¾İ¾â¾å¾çÚªåğé·ì«îÒï¸ñÀö´¾é¾îïÃïÔöÁ¾õ¾ö¾øÚÜçå¾û¾ü¿¥ñä¿ª¿­ØÜÛîâéâıîøïÇíèãÊîÖîí¿Å¿Ç¿Îæìç¼éğîİï¾ò¥¿Ñ¿Òö¸ï¬¿Ù¿â¿ãà·¿é¿ëÛ¦ßàëÚ¿íáö÷Å¿ó¿õ¿öÚ²Ú¿Ú÷ÛÛæşêÜ¿÷¿ù¿úÀ¡À£ØÑİŞã´ñùóñãÍï¿öïÀ©À«òÓÀ¯À°À³À´ÀµáÁáâäµäşêãíùïªñ®ô¥À¶À¸À¹ÀºÀ»À¼À½À¾À¿ÀÀÀÁÀÂÀÃÀÄá°é­ìµïçñÜÀÅãÏï¶ÀÌÀÍÀÔßëáÀîîï©ğìÀÖ÷¦ÀØÀİÀàÀáÚ³çĞÀéÀêÀëÀğÀñÀöÀ÷ÀøÀùÀúÁ¤Á¥Ù³ÛªÛŞÜÂİ°İñß¿åÎæêçÊèÀèİéöíÂï®ğ¿ğİôÏõÈö¨öâ÷¯Á©ÁªÁ«Á¬Á­Á¯Á°Á±Á²Á³Á´ÁµÁ¶Á·İüŞÆäòçöéçñÍñÏöãÁ¸Á¹Á½Á¾ÁÂ÷ËÁÆÁÉÁÍçÔîÉğÓÁÔÁÙÁÚÁÛÁİÁŞİşâŞéİê¥õïÁäÁåÁéÁëÁìç±èùòÉöìÁóÁõä¯æòç¸ïÖğÒÁúÁûÁüÁıÂ¢Â£Â¤Ü×ãñççèĞëÊíÃÂ¥Â¦Â§Â¨ÙÍİäà¶áĞïÎğüñïò÷÷ÃÂ«Â¬Â­Â®Â¯Â°Â±Â²Â³Â¸Â»Â¼Â½Ûäß£ààãÌãòäËèÓéÖéñéûê¤ëªëÍğµğØôµöÔÂÍÂÎÂÏÂĞÂÒÙõæ®èïğ½öÇÂÕÂÖÂ×ÂØÂÙÂÚÂÛàğÂÜÂŞÂßÂàÂáÂâÂæÂçÜıâ¤ãøé¡ëáïİÂ¿ÂÀÂÁÂÂÂÅÂÆÂÇÂËÂÌéµñÚï²ß¼ÂèÂêÂëÂìÂíÂîÂğßéæÖè¿ÂòÂóÂôÂõÂöÛ½Â÷ÂøÂùÂúÃ¡çÏïÜòª÷©Ã¨ÃªÃ­Ã³÷áÃ»Ã¾ÃÅÃÆÃÇŞÑìËí¯îÍÃÌÃÎÃĞÃÕÃÖÃÙÃİØÂÚ×â¨ìòÃàÃåäÅëïö¼Ãíç¿çÑÃğÃõÃöãÉçÅÃùÃúÃıÚÓİëâÉéâïÒÄ±Ä¶îâÄÅÄÆÄÉÄÑÄÓÄÔÄÕÄÖîóÚ«ÄÙÄÚÄâÄåîêöòÄìéıöóÄğÄñÜàôÁÄôÄöÄ÷ÄøÚíŞÁà¿ò©õæÄûÄüÄşÅ¡Å¢ÜÑßÌñ÷Å¥Å¦Å§Å¨Å©Ù¯ßææåîÏÅµÙĞÅ±Å·Å¸Å¹Å»Å½Ú©âæê±ÅÌõçÅÓÅ×ğåÅâàÎÅçÅôç¢î¼îëÆ­ÚÒæéÆ®çÎÆµÆ¶æÉÆ»Æ¾ÆÀÆÃÆÄîÇÆËÆÌÆÓÆ×ïäïèÆÜÆêÆëÆïÆñÆôÆøÆúÆıŞ­æëç²èçíÓñıñş÷¢Ç£Ç¥Ç¦Ç¨Ç©Ç«Ç®Ç¯Ç±Ç³Ç´ÇµÙİİ¡ã¥å¹ç×èıîÔÇ¹ÇºÇ½Ç¾Ç¿ÇÀæÍéÉê¨ìÁïºïÏïêôÇõÄÇÂÇÅÇÇÇÈÇÌÇÏÚ½ÚÛÜñçØíÍõÎÇÔã«ïÆóæÇÕÇ×ÇŞï·ÇáÇâÇãÇêÇëÇìŞìöëÇíÇîÜäòÌÛÏêäò±öúÇ÷ÇøÇûÇıÈ£Ú°á«ãÖêïğ¶È§È¨È°Ú¹ç¹éúîıÈ´ÈµÈ·ã×ãÚí¨ÈÃÈÄÈÅÈÆÜéæ¬èãÈÈÈÍÈÏÈÒâ¿éíÈÙÈŞáÉòîçÈï¨ò­ÈíÈñò¹ÈòÈóÈ÷ÈøìªÈúÈüÉ¡ë§ôÖÉ¥É§É¨çÒÉ¬ØÄï¤ğ£É±É²É´ï¡öèÉ¸É¹õ§É¾ÉÁÉÂÉÄÉÉÚ¨æ©æóîÌ÷­ÉÊÉËÉÍÛğéäõüÉÕÉÜÉŞÉãÉåÉèØÇäÜî´ÉğÉóÉôÉöÉøÚ·ÚÅäÉÉùÉşÊ¤Ê¦Ê¨ÊªÊ«Ê±Ê´ÊµÊ¶Ê»ÊÆÊÊÊÍÊÎÊÓÊÔÚÖÛõİªß±éøêÛîæöåÊÙÊŞç·ÊàÊäÊéÊêÊôÊõÊ÷ÊúÊıŞóç£Ë§ãÅË«Ë­Ë°Ë³ËµË¶Ë¸îåË¿ËÇØËæáçÁïÈğ¸ËÊËËËÌËÏËĞËÓŞ´âÈì¬ïËËÕËßËàÚÕöÕËäËæËçËêÚÇËïËğËñİ¥áøËõËöËøßïíüÌ¡Ì¢ãËîè÷£Ì¨Ì¬îÑöØÌ¯Ì°Ì±Ì²Ì³Ì·Ì¸Ì¾ê¼îãïÄñüÌÀÌÌÙÎâ¼ï¦ïÛÌÎÌĞÌÖèºï«ÌÚÌÜÌàÌâÌåÌëç¾ğÃãÙÌõôĞö¶öæÌùÌúÌüÌıÌşÍ­Í³âúÍ·î×ÍºÍ¼îÊÍÅŞÒÍÇÍÉâ½ÍÑÍÒÍÔÍÕÍÖóêö¾Íàæ´ëğÍäÍåÍçÍòæıçºÍøéşÎ¤Î¥Î§ÎªÎ«Î¬Î­Î°Î±Î³Î½ÎÀÚÃàøãÇãíä¶çâè¸ì¿öÛÎÂÎÅÎÆÎÈÎÊãÓÎÍÎÎÎÏÎĞÎÑÎÔİ«ö»ÎØÎÙÎÚÎÜÎŞÎßÎâÎëÎíÎñÎóÚùâĞâäåüæğğÄğÍÎıÎşÏ®Ï°Ï³Ï·Ï¸â¾ãÒçôêêÏºÏ½Ï¿ÏÀÏÁÏÃÏÅíÌÏÊÏËÏÍÏÎÏĞÏÔÏÕÏÖÏ×ÏØÏÚÏÛÏÜÏßÜÈİ²Şºá­áıæµğÂğïòºôÌõÑÏáÏâÏçÏêÏìÏîÜ¼âÃæøç½÷ÏÏôÏùÏúÏşĞ¥ßØäìæçç¯èÉóïĞ­Ğ®Ğ¯Ğ²Ğ³Ğ´ĞºĞ»Ùôß¢ç¥çÓĞ¿ĞÆĞËÚêÜşĞ×ĞÚĞâĞåâÊğ¼ĞéĞêĞëĞíĞğĞ÷ĞøÚ¼çïĞùĞüÑ¡Ñ¢Ñ¤ÚÎîçïàÑ§ÚÊí´÷¨Ñ«Ñ¯Ñ°Ñ±ÑµÑ¶Ñ·Û÷ä±öàÑ¹Ñ»Ñ¼ÑÆÑÇÑÈÛëæ«èâë²ÑËÑÌÑÎÑÏÑÒÑÕÑÖÑŞÑáÑâÑåÑèÑéØÉØÍÙ²ÙğÚİâûãÆõ¦÷Ê÷Ğ÷úÑìÑîÑïÑñÑôÑ÷ÑøÑùì¾ÑşÒ¡Ò¢Ò£Ò¤Ò¥Ò©é÷ğÎ÷¥Ò¯Ò³ÒµÒ¶ØÌÚËÚşêÊìÇÒ½Ò¿ÒÃÒÅÒÇÒÏÒÕÒÚÒäÒåÒèÒéÒêÒëÒìÒïÚ±ß½á»âÂâøæäçËéóêİîÆï×ïîğùô¯ÒñÒõÒøÒûÒşî÷ñ«Ó£Ó¤Ó¥Ó¦Ó§Ó¨Ó©ÓªÓ«Ó¬Ó®Ó±ÜãİºİÓİöŞüàÓäŞäëè¬ğĞñ¨ò¤ó¿Ó´ÓµÓ¶Ó¸Ó»Ó½ïŞÓÅÓÇÓÊÓËÓÌÓÕİµîğöÏÓßÓãÓæÓéÓëÓìÓïÓüÓşÔ¤Ô¦ØñÙ¶ÚÄÚÍİ÷áÎâÀãĞåıæúêìì£îÚğÁğÖö¹Ô§Ô¨Ô¯Ô°Ô±Ô²ÔµÔ¶éÚğ°ö½Ô¼Ô¾Ô¿ÔÁÔÃÔÄîáÔÇÔÈÔÉÔËÔÌÔÍÔÎÔÏÛ©Ü¿ã¢ã³ç¡è¹éæëµÔÓÔÖÔØÔÜÔİÔŞè¶ôõöÉÔßÔàæàÔäÔæÔğÔñÔòÔóØÓßõàıóåÔôÚÚÔù×ÛçÕÔşÕ¡Õ¢Õ¤Õ©Õ«Õ®Õ±ÕµÕ¶Õ·Õ¸Õ»Õ½ÕÀÚŞÕÅÕÇÕÊÕËÕÍÕÔÚ¯îÈÕİÕŞÕàÕâÚØéüğÑÕêÕëÕìÕïÕòÕóä¥çÇèåéôêâìõğ²ÕõÕöÕøÕùÖ¡Ö¢Ö£Ö¤Úºá¿îÛï£óİÖ¯Ö°Ö´Ö½Ö¿ÖÀÖÄÖÊÖÍæïèÎèÙéòéùêŞğºòÏôêõÙõÜö£ÖÓÖÕÖÖÖ×ÖÚïñÖßÖáÖåÖçÖèæûç§ÖíÖîÖïÖòÖõÖöÖüÖı×¤ØùéÆîù×¨×©×ª×¬ßùâÍò¨×®×¯×°×±×³×´×¶×¸×¹×ºæíçÄ×»×¼×Å×ÇÚÂïí×È×Ê×ÕÚÑç»ê¢êßíöïÅö·öö×Ù×Ü×İÙÌ×ŞÚÁæãöí×ç×éïß×êçÚõò÷®°¿²¢²·³Á³óµíµü¶··¶¸É¸Ş¹è¹ñºó»ï½Õ½Ü¾÷¿äÀïÁèÃ´Ã¹ÄíÆàÇ¤Ê¥Ê¬Ì§Í¿ÍİÎ¹ÎÛÏÇÏÌĞ«ÒÍÓ¿ÓÎÓõÓùÔ¸ÔÀÔÆÔîÔúÔıÖşÓÚÖ¾×¢µòÚ¥ÚÙÛ§ÛÂÛÊÛàÛâÛñÛûÛşÜÜİ¤İ§İ¯İ»İÔŞ»Şêß¸ßÄßÇßĞßÔàÙàèàëá¥á®áÕáİáèáïáóâÅâÇâÌâÎã¶ãÀãÁãÜäÓäÙäãäíäóå£å¸æùç«ç´çëèÅèğèñéÀéÍéïéõêåëÉëËì®ìÎìÑìÖíªíµí¿íŞíîîĞîŞîôîöï­ï³ï´ïµï»ï½ïÁïÂïÍïÑïÕïãïåïéïïïùğÅğÌğ×ğßğâğéñ³ñĞñßñìò¬òıôğöÑöÒöÓößöñöõö÷öıöş÷ª÷«÷³÷¹÷ş";
-         string trad = "åH°}Ì@µKÛ‡†‹Ü­a•áì\ÖOä@ùgóaÒ\ŠW‹‹òˆö—‰ÎÁTâZ”[”¡†hîCŞk½OâkÍ½‰æ^Ör„ƒï–ŒšˆóõUødı_İ…Øä^ªN‚ä‘vùlÙSåQ¿‡¹P®…”ÀÅé]Éœ†ô§ãGº`Û‹ß…¾ÙH×ƒŞqŞpÆS¾œ»e˜ËòŠïRïjçSès÷B÷M„e°TlIÙe”Pƒ†À_™‰š›Äœè\óxôWï·A“ÜÀãKñgğGâ“ùPÑaâ˜Ø”…¢ĞQšˆ‘M‘K Nò‰üoÉnÅ“‚}œæú‚ÈƒÔœyÅŒÓÔŒåšƒŠâO”v“½Ïsğ’×‹ÀpçP®aêUî‡ÏÕ~×Êr‘Ô‹Èò–Ò—¶Uç†ˆö‡LéLƒ”ÄcS•³‚tÈOé‹öKânÜ‡Ø³Œ‰mêÒr‚áÖR™Â´~ıZ“Î·Q‘ÍÕ\òG—–™fä…èK°VßtñYuıXŸëï†ø|›_ĞnÏxŒ™ã|® ÜP»I¾Iƒ‰Î×‡™»NäzërµAƒ¦Ó|ÌÆc½IÜX‚÷âA¯êJ„“íåN¾E¼ƒù‡¾bİzıpŞoÔ~Ùnú\Â”Ê[‡èÄ…²Éò‹˜ºœİÜf¸Z”xåeäSûzß_‡}í^§ÙJñ~½H“ú†Îà“ÛÄ‘‘„ÕQ—š—Ùy°Dº„®”“õühÊ™n×•´XÒd“vu¶\Œ§±I cŸôà‡ç‹”³œìßf¾†¼eÔgÖB½Ó]çCîüc‰|ëŠpâš°dáÕ{ã“õ Õ™¯Bölá”í”åVÓ†äbGäA–|„Ó—ƒö–ù…¸] Ùªš×xÙ€åƒ^™³ ©ºVütå‘”à¾„»fƒ¶ê Œ¦‘»ç…‡îDâgŸõÜOŠZ‰™èIùZî~ÓºğIÖ@ˆ×é‘Ü—ä~åŠù˜î€î…÷{ÕOƒº –ğDÙEßƒãsøõb°lÁPéy¬mµ\âCŸ©ØœïˆÔL¼â[ô™ïwÕuUÙM¾pçšöE¼Š‰Š^‘¼SƒfØS—÷ähïL¯‚ñT¿pÖSøP–Äwİ—“áİoÙxÍØ“Ó‡‹D¿`øDñ€¼›½EÙûŸõVöváÔ“â}ÉwÙW—UÚs¶’ÚMŒÀ“{½CŒù„‚ä“¾V‘ßæ€²GÕa¿cä†”Røéwãt‚€¼væk}½oƒÙs½õ†ıŒmì–Ø•ã^œÏÆˆ˜‹Ù‰òÔ¾—ÓMĞMî™Ôbİâ’ådøù]úX„’ìø“êPÓ^ğ^‘TØÔŸ“¥ûXöŠV«EÒšwı”é|Ü‰ÔÙF„£…Q„¥‹‚™uõq÷ZİLĞ–¾iõ…å‡øß^ˆå†J½˜¡ÏXãxñ”ínhêR½WîRÌ–®î—éuúQÙRÔXêHÏ ™MŞZø™¼tüZÓÈ‡éb÷c‰Ø×oœû‘ôGù–‡WÈA®‹„Ô’ò‘˜åçf‘Ñ‰Äšg­hß€¾“Q†¾¯ˆŸ¨œoŠJÀQæDõŒüSÖeöm“]İxš§ÙV·x•ş Z…RÖMÕdÀLÔœËC‡‚ÒÀD¬q•ŸÈœ†ÕŸğQé’«@Ø›µœâ€èZ“ô™C·eğ‡ÛE×Iëu¿ƒ¾ƒ˜Oİ‹¼‰”D×ËE„©úÓ‹Ó›ëHÀ^¼oÓ“Ô‘Ëj‡\‡óK­^ÓJıW´‰ÁbÏŠÜQìV÷qöaŠAÇvîaÙZâ›ƒrñ{àP›Ñäeæ‰Ïuš±OˆÔ¹{égÆD¾}ÀO™z‰Aû|’ş“ìº†ƒ€œpË]™‘èbÛ`ÙvÒŠæIÅ„¦ğTuR¾ÖG¿V‘â‘ì²€úY¹aöídŒ¢{ÊY˜ªª„Öváu½{í\Äz²òœ‹É”‡ãq³CƒeÄ_ïœÀU½gŞIİ^“×şú„õoëA¹½YÕ]ŒÃ°XîMõ^¾oå\ƒHÖ”ßM•x a±M„ÅÇGÇo„Ë|ğ~¿NÚBÓPöLó@½›îiìoçR½¯d¸‚ƒô„q›ÜŞŸ†Ã„ìn¼mıÅfôbøFúñxÅe“şä‘Ö„¡ÔnŒÕ™ÎïZâ ä|¸MıeùN½äŸçëhÓX›Q½^×H«kâxÜŠòE°—é_„P„’‰N÷ğæzå|ıé`â‚äDîwš¤ÕnòS¾~İVâä˜îh‰¨‘©ılçH“¸ìÑ‡¿‰Kƒ~à”‡ˆÄ’Œ’ªœóyµV•ç›rÕEÕNà—‰¿ÀkÙLÌh¸Qğ¢…TÊ‰‘|Â˜ºˆé€åKöH”UéŸÏ“ÏÅDÈRíÙ‡ˆÆœZ|Ùl²Aån°]»[Ë{™Ú”r»@ê@Ìm‘×”ˆÓ[‘ĞÀ| €E¹™ì”Ìè|Òh¬˜éäZ“Æ„Ú³‡Z÷ã™ç„°A˜·ö˜èD‰¾îœIÕC¿w»hØ‚ëxõ¶Yû…–„îµ[švrë`ƒ«áB‰ÈËÉWÌy‡³ßŠóP¿r™À™µŞ]µZä‡ûZ°O¼cÜVìZ÷~÷k‚zÂ“ÉßBç ‘ziºŸ”¿Ä˜æœ‘ÙŸ’¾šÌ`ŠY‡­IššÑÒcö–¼Z›öƒÉİvÕôu¯Ÿß|ç‚¿á‘ú«CÅRà÷[„CÙUÌA[™_ŞOÜkıgâì`XîI¾c™ôÏ|öNğs„¢gòt¾^æyúwıˆÃ@‡µ»\‰Å”në]Ìd{­‡™É–Vµa˜ÇŠä“§ºtƒEÊV‡DâçU¯›ÂeÏNótÌJ±RïB] t“ïûuÌ”ô”ÙTµ“ä›ê‘‰À”]‡£é‚oœO™¾™©Ş_İ`ŞAšÚÅFûRú˜ÆA÷|n”Œ\´yÅLŒD™èû[è’àİ†‚öœS¾]Õ“‡÷Ì}Á_ß‰èŒ»jò…ñ˜½j Î«MT™åÄTæ óH…ÎäX‚HŒÒ¿|‘]V¾G™°Ò@äs‡`‹Œ¬”´aÎ›ñRÁR†á‡O‹ß˜qÙIûœÙuß~Ã}„ê²mğzĞUMÖ™¿zçNî‹ö Øˆå^ãTÙQüN›]æVéT‚ƒ’Ğ F‘¿å{åi‰ô²[Öi›Ò’ƒçÁdÖk«J¶[¾d¾’ÆìtüwR¾˜¿Šœç‘‘é}éh¾‡øQã‘Ö‡Öƒò‡ğxš{æŸÖ\®€ãf…Èâc¼{ëy“ÏÄXÀô[çtÔGğHƒÈ”MÄâ‰öF”fİ‚öTá„øBÊ\ÑUÂ™‡§è‡æ‡êŸÌY‡Ëî”Üb™ªŸŒ”QôÆr‡“Âœâo¼~Ä“âŞrƒz‡ñwâSÖZƒ®¯‘šWútšª‡IaÖ‘Y®T±PÛ˜ı‹’°’ÙrŞ\‡Šùi¼„Á`â”ò_Õ›ñ‰ïh¿~îlØš‹åÌO‘{ÔuŠîHá•“ää˜ã×Vçhç’—«ÄšıRòTØM†¢šâ—‰Ó™ÌIòU¾_˜´ƒí î@ö’ ¿âFãUßwºÖtåXãQ“œ\×l‰qƒLÊn‘aòqÀ`˜ âj˜Œ†Ü‰¦ËNŠ“Œ‹Ô™{‘êŸÍäçIçjÁuÛ„æ@˜ò†ÌƒSÂN¸[ÕV×SÊwÀR´“ÜE¸`Üå›ºDšJÓHŒ‹äuİpšäƒAí•Õˆ‘c“åõ›­‚¸FŸ¦Í€ÙgÏlöqÚ……^Ü|òŒıxÔxçé˜ÓUøzïE™à„ñÔ¾JİbãŒ…sùo´_é êIâ×Œğˆ”_À@Ê‹Æ˜ïŸáígÕJ¼xïƒÜ˜s½qVÏ”¿dãœïAÜ›äJÍ˜éc™¢Ë_ïSöwÙ‚ãšĞ¼R†Êò}’ß¿‰­†İäC·wš¢„x¼†æ|õºY•ñá‡„héWêƒÙ ¿˜Ó˜Š™ò~áŸ÷X‰„‚ûÙpˆsš‘ÓxŸı½BÙd”z‘ØÔO…‡—®Œ¼Œ‹ğÄIBÔ–Õ”cÂ•ÀK„ÙŸª{ñÔŠ•rÎgŒ×Rñ‚„İßmáŒï—Ò•Ô‡Öu‰PÉPsİYÙBâ‹öˆ‰Û«F¾R˜Ğİ”•øÚHŒÙĞg˜äØQ”µ”d¼‚›éVëpÕl¶í˜Õf´T qèp½zï•Pñ†¾ŒæJúƒÂ–‘ZíÔAÕb”\Ë’ğtï`æ}ÌKÔVÃCÖq·dëmëS½—šqÕrŒO“p¹SÉpªs¿s¬æi†îÃ«H“éêYãBöÅ_‘BâõT”‚Ø°c©‰¯×TÕ„‡@•ÒãgåUí™œ« Cƒ¯ğhç|çMı½{Ó‘íwäˆòvÖ`äRî}ówŒÏ¾ŸùYêD—l¼gıföœÙNèFdÂ ŸNã~½y‘Qî^â^¶dˆDâQˆF“»îjÍ‘ï‚Ã“ørñWñ„™E»XüƒÒm‹zÄe³îBÈf¼w¾U¾Wİyífß`‡úéH¾SÈ”‚¥‚Î¾•Ö^ĞlÕ†®éœ¿¬¬|ítŸ˜õnœØÂ„¼y·€†–é”®Y“ëÎœu¸CÅPÈnı}†èæuõÕ_ŸoÊ…Ç‰]ìF„ÕÕ`àwT‘“‹³ò\ù^úFåa ŞÒuÁ•ãŠ‘ò¼šğqô]­tÒ Îrİ {‚bªMB‡˜³ˆõrÀwÙtã•éeï@ëU¬F«I¿hğWÁw‘—¾€Ç{ËWÌ\sª‹¹ú’°BÏ–¶iÜ]ûè‚àlÔ”í‘í—ËGğAóJ¾|ğ‹Ê’‡ÌäN•Ô‡[‡^tò”½‹—nº…f’¶”yÃ{ÖCŒ‘aÖxÒC”X¼œÀiä\á…Ådê€œîƒ´›°äPÀCğ}ø Ì“‡uíšÔS”¢¾wÀmÔ‚íœÜ‘Òßx°_½kÖXãCæ›ŒWÖoÍ÷L„×ÔƒŒ¤ñZÓ–Óßd‰_¡÷\‰ºøfø††¡†Ó ˆº‹I—¿šåéŸŸû}‡ÀrîéÆG…’³©ÖVò…˜ÚIƒ°ƒ¼×—‘ÃéZá‰ô|ğıBø„—î“P¯ƒê–°WğB˜ÓŸ¬¬“uˆòßb¸GÖ{ËİUú_ö ”í“˜IÈ~ìvÖ]à’•ÏŸîátãîUßzƒxÏË‡ƒ|‘›ÁxÔ„×hÕx×g®À[Ôr‡ÒFï‘«óA¿OİWÙOáæ„èO¯ÅœÊaêãyï‹ë[ãŸ°a™Ñ‹ëú—‘ªÀt¬“Î IŸÉÏ‰ÚA·f‰LúL¿Mæv”t‡Â]u­‹ûW°`îWÀ›†Ñ“í‚ò°bÛxÔçOƒ‘nà]â™ªqÕTÊ~äBôœİ›ô~OŠÊÅcZÕZªz×uîAñS‚ø‚RÕ˜ÖIÊš£ï„é“‹¼uÓDšeâ•ùOú–ırøxœYŞ@ˆ@†TˆA¾‰ßh™´øSüx¼sÜSè€»›‚é†ãXày„òëEß\ÌNáj•íàiÊ|Á‘C¼‹íyšŒšèësÄİd”€•ºÙ­‘ÚçYÚEÅKñzè——ØŸ“ñ„tÉÙ‘‡K¾ºjÙ\×PÙ›¾C¿•Üˆåél–ÅÔpıS‚ùšÖ±K”Øİšä—£‘ğ¾`×dˆq¤Ù~Ã›ÚwÔtá“ÏUŞHæNß@Ö†İmúpØ‘á˜‚ÉÔ\æ‚ê‡œ¿b˜EİFÙcµøc’ê± ªb ¬°Yà×CÕŠ˜ã`åP¹~¿—ÂšˆÌ¼ˆ“´”SÃÙ|œşòs™±—dİTİeÙ—úvÎ‡¿{ÜWÜUÓzçŠ½K·NÄ[±ŠæRÖaİS°™•ƒóE¼q¿UØiÖTÕD T²š‡ÚÙAèTñvĞ™½ãŒ£´uŞDÙ‡Êğ‚ïD˜¶ÇfÑbŠy‰Ñ îåFÙ˜‰‹¾YòK¿PÕœÊÖøáÕèCÆÙYnÖJ¾lİwÙD±{åOıbõ™Û™¿‚¿v‚ôàuÕŒò|öOÔ{½Mæ—ã@ÀyÜg÷VÂOKÊNÉòáhÕµşôY¹ ÖÅVÎù™™ááâ··M‚ÜÔEÕFÑYœR÷áüq“ÓœD’LÂ}ŒÆ”E‰T¸Dğj›@åvûyÏ¤œ¥ß[»n¶RîŠ[ë…¸^¼™„ºBì¶ÕIÔ]µñÓ…×vàSÃÍšëÚæ‰Åˆßˆ‰|™”Ê{È’É‰ÉO¹½éÂ“«ßå†w†U‡z‡j¾ïÅüÖoÒLS¼¹·ÂƒeªwûƒğNğlğ€ğ–Àãâğ‘¬ãİs¹»ìEzµ­Œôé½f¾y¬z—g—¨°¸™R™ÁİMÜ Ù}ÄdÄLïlºıŸÁïœ¡Ãì´^L²gâbãOäyäHä{äç˜ç™åŸåuåxäæXæ[æ“çèuè‰èd·„ù‘úBûI°[åí¯{ÄŸÒM¿‹ÂgîÏ\üDõEõGõRõœöAöX÷aöcö…öš÷IíXíxıO";
+            string simp = "é”•çš‘è”¼ç¢çˆ±å—³å«’ç‘·æš§éœ­è°™é“µé¹Œè‚®è¢„å¥¥åªªéªœé³Œåç½¢é’¯æ‘†è´¥å‘—é¢åŠç»Šé’£å¸®ç»‘é•‘è°¤å‰¥é¥±å®æŠ¥é²é¸¨é¾…è¾ˆè´é’¡ç‹ˆå¤‡æƒ«é¹è´²é”›ç»·ç¬”æ¯•æ¯™å¸é—­èœå“”æ»—é“‹ç­šè·¸è¾¹ç¼–è´¬å˜è¾©è¾«è‹„ç¼ç¬¾æ ‡éª é£‘é£™é•–é•³é³”é³–åˆ«ç˜ªæ¿’æ»¨å®¾æ‘ˆå‚§ç¼¤æ§Ÿæ®¡è†‘é•”é«Œé¬“é¥¼ç¦€æ‹¨é’µé“‚é©³é¥½é’¹é¹è¡¥é’¸è´¢å‚èš•æ®‹æƒ­æƒ¨ç¿éª–é»ªè‹èˆ±ä»“æ²§å•ä¾§å†Œæµ‹æ»å±‚è¯§é”¸ä¾ªé’—æ€æºè‰é¦‹è°—ç¼ é“²äº§é˜é¢¤å†è°„è°¶è’‡å¿å©µéª£è§‡ç¦…é•¡åœºå°é•¿å¿è‚ å‚ç•…ä¼¥è‹Œæ€…é˜Šé²³é’è½¦å½»ç —å°˜é™ˆè¡¬ä¼§è°Œæ¦‡ç¢œé¾€æ’‘ç§°æƒ©è¯šéª‹æ¨æŸ½é“–é“›ç—´è¿Ÿé©°è€»é½¿ç‚½é¥¬é¸±å†²å†²è™«å® é“³ç•´è¸Œç­¹ç»¸ä¿¦å¸±é› æ©±å¨é”„é›ç¡€å‚¨è§¦å¤„åˆç»Œè¹°ä¼ é’ç–®é—¯åˆ›æ€†é”¤ç¼çº¯é¹‘ç»°è¾é¾Šè¾è¯èµé¹šèªè‘±å›±ä»ä¸›è‹éª¢æå‡‘è¾è¹¿çªœæ’ºé”™é”‰é¹¾è¾¾å“’é‘å¸¦è´·éª€ç»æ‹…å•éƒ¸æ¸èƒ†æƒ®è¯å¼¹æ®šèµ•ç˜…ç®ªå½“æŒ¡å…šè¡æ¡£è° ç €è£†æ£å²›ç¥·å¯¼ç›—ç„˜ç¯é‚“é•«æ•Œæ¶¤é€’ç¼”ç±´è¯‹è°›ç»¨è§Œé•é¢ ç‚¹å«ç”µå·…é’¿ç™«é’“è°ƒé“«é²·è°å é²½é’‰é¡¶é”­è®¢é“¤ä¸¢é“¥ä¸œåŠ¨æ ‹å†»å²½é¸«çª¦çŠŠç‹¬è¯»èµŒé•€æ¸æ¤Ÿç‰ç¬ƒé»©é”»æ–­ç¼ç°–å…‘é˜Ÿå¯¹æ€¼é•¦å¨é¡¿é’ç‚–è¶¸å¤ºå •é“é¹…é¢è®¹æ¶é¥¿è°”å©é˜è½­é”‡é”·é¹—é¢šé¢›é³„è¯¶å„¿å°”é¥µè´°è¿©é“’é¸¸é²•å‘ç½šé˜€ççŸ¾é’’çƒ¦è´©é¥­è®¿çººé’«é²‚é£è¯½åºŸè´¹ç»¯é•„é²±çº·åŸå¥‹æ„¤ç²ªå¾ä¸°æ«é”‹é£ç–¯å†¯ç¼è®½å‡¤æ²£è‚¤è¾æŠšè¾…èµ‹å¤è´Ÿè®£å¦‡ç¼šå‡«é©¸ç»‚ç»‹èµ™éº¸é²‹é³†é’†è¯¥é’™ç›–èµ…æ†èµ¶ç§†èµ£å°´æ“€ç»€å†ˆåˆšé’¢çº²å²—æˆ†é•ç¾è¯°ç¼Ÿé”†æé¸½é˜é“¬ä¸ªçº¥é•‰é¢ç»™äº˜èµ“ç» é² é¾šå®«å·©è´¡é’©æ²Ÿè‹Ÿæ„è´­å¤Ÿè¯Ÿç¼‘è§è›Šé¡¾è¯‚æ¯‚é’´é”¢é¸ªé¹„é¹˜å‰æŒ‚é¸¹æ´å…³è§‚é¦†æƒ¯è´¯è¯–æ¼é¹³é³å¹¿çŠ·è§„å½’é¾Ÿé—ºè½¨è¯¡è´µåˆ½åŒ¦åˆ¿å¦«æ¡§é²‘é³œè¾Šæ»šè¡®ç»²é²§é”…å›½è¿‡åŸšå‘™å¸¼æ¤èˆé“ªéª‡éŸ©æ±‰é˜šç»—é¢‰å·çé¢¢é˜‚é¹¤è´ºè¯ƒé˜–è›æ¨ªè½°é¸¿çº¢é»‰è®§è­é—³é²å£¶æŠ¤æ²ªæˆ·æµ’é¹•å“—åç”»åˆ’è¯éª…æ¡¦é“§æ€€åæ¬¢ç¯è¿˜ç¼“æ¢å”¤ç—ªç„•æ¶£å¥‚ç¼³é”¾é²©é»„è°é³‡æŒ¥è¾‰æ¯è´¿ç§½ä¼šçƒ©æ±‡è®³è¯²ç»˜è¯™èŸå“•æµç¼‹ç²æ™–è¤æµ‘è¯¨é¦„é˜è·è´§ç¥¸é’¬é•¬å‡»æœºç§¯é¥¥è¿¹è®¥é¸¡ç»©ç¼‰æè¾‘çº§æŒ¤å‡ è“Ÿå‰‚æµè®¡è®°é™…ç»§çºªè®¦è¯˜è å½å“œéª¥ç‘è§Šé½‘çŸ¶ç¾è™¿è·»éœé²šé²«å¤¹èšé¢Šè´¾é’¾ä»·é©¾éƒæµƒé“—é•“è›²æ­¼ç›‘åšç¬ºé—´è‰°ç¼„èŒ§æ£€ç¢±ç¡·æ‹£æ¡ç®€ä¿­å‡èæ§›é‰´è·µè´±è§é”®èˆ°å‰‘é¥¯æ¸æº…æ¶§è°ç¼£æˆ‹æˆ¬ç‘é¹£ç¬•é²£é¯å°†æµ†è’‹æ¡¨å¥–è®²é…±ç»›ç¼°èƒ¶æµ‡éª„å¨‡æ…é“°çŸ«ä¾¥è„šé¥ºç¼´ç»è½¿è¾ƒæŒ¢å³¤é¹ªé²›é˜¶èŠ‚æ´ç»“è¯«å±Šç––é¢Œé²’ç´§é”¦ä»…è°¨è¿›æ™‹çƒ¬å°½åŠ²è†èŒåºè©é¦‘ç¼™èµ†è§é²¸æƒŠç»é¢ˆé™é•œå¾„ç—‰ç«å‡€åˆ­æ³¾è¿³å¼ªèƒ«é“çº å©æ—§é˜„é¸ é¹«é©¹ä¸¾æ®é”¯æƒ§å‰§è®µå±¦æ¦‰é£“é’œé””çª­é¾ƒé¹ƒç»¢é”©é•Œéš½è§‰å†³ç»è°²çé’§å†›éªçš²å¼€å‡¯å‰€å²å¿¾æºé“ é”´é¾›é—¶é’ªé“é¢—å£³è¯¾éª’ç¼‚è½²é’¶é”é¢”å¦æ³é¾ˆé“¿æŠ åº“è£¤å–¾å—ä¾©éƒå“™è„å®½ç‹¯é«‹çŸ¿æ—·å†µè¯“è¯³é‚åœ¹çº©è´¶äºå²¿çª¥é¦ˆæºƒåŒ®è’‰æ„¦è©ç¯‘é˜ƒé”Ÿé²²æ‰©é˜”è›´èœ¡è…Šè±æ¥èµ–å´ƒå¾•æ¶æ¿‘èµ‰çé“¼ç™ç±è“æ æ‹¦ç¯®é˜‘å…°æ¾œè°°æ½è§ˆæ‡’ç¼†çƒ‚æ»¥å²šæ¦„æ–“é•§è¤´ç…é˜†é”’æåŠ³æ¶å” å´‚é“‘é“¹ç—¨ä¹é³“é•­å’ç±»æ³ªè¯”ç¼§ç¯±ç‹¸ç¦»é²¤ç¤¼ä¸½å‰åŠ±ç ¾å†æ²¥éš¶ä¿ªéƒ¦åœè‹ˆè…è“ å‘–é€¦éªŠç¼¡æ¥æ è½¹ç ºé”‚é¹‚ç– ç²è·é›³é²¡é³¢ä¿©è”è²è¿é•°æ€œæ¶Ÿå¸˜æ•›è„¸é“¾æ‹ç‚¼ç»ƒè”¹å¥æ½‹çæ®“è£¢è££é²¢ç²®å‡‰ä¸¤è¾†è°…é­‰ç–—è¾½é•£ç¼­é’Œé¹©çŒä¸´é‚»é³å‡›èµè”ºå»ªæª©è¾šèºé¾„é“ƒçµå²­é¢†ç»«æ£‚è›é²®é¦åˆ˜æµéªç»ºé•é¹¨é¾™è‹å’™ç¬¼å„æ‹¢é™‡èŒæ³·ç‘æ Šèƒ§ç »æ¥¼å¨„æ‚ç¯“å»è’Œå–½åµé•‚ç˜˜è€§è¼é«…èŠ¦å¢é¢…åºç‚‰æ³å¤è™é²èµ‚ç¦„å½•é™†å†æ’¸å™œé—¾æ³¸æ¸Œæ Œæ©¹è½³è¾‚è¾˜æ°‡èƒªé¸¬é¹­èˆ»é²ˆå³¦æŒ›å­ªæ»¦ä¹±è„”å¨ˆæ ¾é¸¾éŠ®æŠ¡è½®ä¼¦ä»‘æ²¦çº¶è®ºå›µèç½—é€»é”£ç®©éª¡éª†ç»œè¦çŒ¡æ³ºæ¤¤è„¶é•™é©´å•é“ä¾£å±¡ç¼•è™‘æ»¤ç»¿æ¦ˆè¤›é”Šå‘’å¦ˆç›ç èš‚é©¬éª‚å—å”›å¬·æ©ä¹°éº¦å–è¿ˆè„‰åŠ¢ç’é¦’è›®æ»¡è°©ç¼¦é•˜é¢¡é³—çŒ«é”šé“†è´¸éº½æ²¡é•é—¨é—·ä»¬æ‰ªç„–æ‡‘é’”é”°æ¢¦çœ¯è°œå¼¥è§…å¹‚èŠˆè°§çŒ•ç¥¢ç»µç¼…æ¸‘è…¼é»¾åº™ç¼ˆç¼ªç­æ‚¯é—½é—µç¼—é¸£é“­è°¬è°Ÿè“¦é¦æ®é•†è°‹äº©é’¼å‘é’ çº³éš¾æŒ è„‘æ¼é—¹é“™è®·é¦å†…æ‹Ÿè…»é“Œé²µæ’µè¾‡é²¶é…¿é¸ŸèŒ‘è¢…è‚å•®é•Šé•é™§è˜–å—«é¢Ÿè¹‘æŸ ç‹å®æ‹§æ³è‹å’›èé’®çº½è„“æµ“å†œä¾¬å“é©½é’•è¯ºå‚©ç–Ÿæ¬§é¸¥æ®´å‘•æ²¤è®´æ€„ç“¯ç›˜è¹’åºæŠ›ç–±èµ”è¾”å–·é¹çº°ç½´é“éª—è°éªˆé£˜ç¼¥é¢‘è´«å«”è‹¹å‡­è¯„æ³¼é¢‡é’‹æ‰‘é“ºæœ´è°±é•¤é•¨æ –è„é½éª‘å²‚å¯æ°”å¼ƒè®«è•²éªç»®æ¡¤ç¢›é¢€é¢ƒé³ç‰µé’é“…è¿ç­¾è°¦é’±é’³æ½œæµ…è°´å ‘ä½¥è¨æ‚­éªç¼±æ¤ é’¤æªå‘›å¢™è”·å¼ºæŠ¢å«±æ¨¯æˆ—ç‚é”–é”µé•ªç¾Ÿè·„é”¹æ¡¥ä¹”ä¾¨ç¿˜çªè¯®è°¯èç¼²ç¡—è··çªƒæƒ¬é”²ç®§é’¦äº²å¯é”“è½»æ°¢å€¾é¡·è¯·åº†æ¿é²­ç¼ç©·èŒ•è›±å·¯èµ‡è™®é³…è¶‹åŒºèº¯é©±é¾‹è¯å²–é˜’è§‘é¸²é¢§æƒåŠè¯ ç»»è¾é“¨å´é¹Šç¡®é˜•é˜™æ‚«è®©é¥¶æ‰°ç»•è›å¨†æ¡¡çƒ­éŸ§è®¤çº«é¥ªè½«è£ç»’åµ˜è¾ç¼›é“·é¢¦è½¯é”èš¬é—°æ¶¦æ´’è¨é£’é³ƒèµ›ä¼æ¯µç³ä¸§éªšæ‰«ç¼«æ¶©å•¬é“¯ç©‘æ€åˆ¹çº±é“©é²¨ç­›æ™’é…¾åˆ é—ªé™•èµ¡ç¼®è®ªå§—éªŸé’é³å¢’ä¼¤èµå§æ®‡è§çƒ§ç»èµŠæ‘„æ…‘è®¾åæ» ç•²ç»…å®¡å©¶è‚¾æ¸—è¯œè°‚æ¸–å£°ç»³èƒœå¸ˆç‹®æ¹¿è¯—æ—¶èš€å®è¯†é©¶åŠ¿é€‚é‡Šé¥°è§†è¯•è°¥åŸ˜è³å¼‘è½¼è´³é“ˆé²¥å¯¿å…½ç»¶æ¢è¾“ä¹¦èµå±æœ¯æ ‘ç«–æ•°æ‘…çº¾å¸…é—©åŒè°ç¨é¡ºè¯´ç¡•çƒé“„ä¸é¥²å®é©·ç¼Œé”¶é¸¶è€¸æ€‚é¢‚è®¼è¯µæ“è–®é¦Šé£•é”¼è‹è¯‰è‚ƒè°¡ç¨£è™½éšç»¥å²è°‡å­™æŸç¬‹èªç‹²ç¼©çé”å”¢çƒç­æŒé—¼é“Šé³å°æ€é’›é²æ‘Šè´ªç˜«æ»©å›è°­è°ˆå¹æ˜™é’½é”¬é¡¸æ±¤çƒ«å‚¥é¥§é“´é•—æ¶›ç»¦è®¨éŸ¬é“½è…¾èªŠé”‘é¢˜ä½“å±‰ç¼‡é¹ˆé˜—æ¡ç²œé¾†é²¦è´´é“å…å¬çƒƒé“œç»Ÿæ¸å¤´é’­ç§ƒå›¾é’å›¢æŠŸé¢“èœ•é¥¨è„±é¸µé©®é©¼æ¤­ç®¨é¼è¢œå¨²è…½å¼¯æ¹¾é¡½ä¸‡çº¨ç»¾ç½‘è¾‹éŸ¦è¿å›´ä¸ºæ½ç»´è‹‡ä¼Ÿä¼ªçº¬è°“å«è¯¿å¸é—±æ²©æ¶ ç®éŸªç‚œé²”æ¸©é—»çº¹ç¨³é—®é˜Œç“®æŒèœ—æ¶¡çªå§è´é¾Œå‘œé’¨ä¹Œè¯¬æ— èŠœå´åé›¾åŠ¡è¯¯é‚¬åº‘æ€ƒå¦©éª›é¹‰é¹œé”¡ç‰ºè¢­ä¹ é“£æˆç»†é¥©é˜‹çºè§‹è™¾è¾–å³¡ä¾ ç‹­å¦å“ç¡–é²œçº¤è´¤è¡”é—²æ˜¾é™©ç°çŒ®å¿é¦…ç¾¡å®ªçº¿è‹‹è¶è—“å²˜çŒƒå¨´é¹‡ç—«èšç±¼è·¹å¢é•¶ä¹¡è¯¦å“é¡¹èŠ—é¥·éª§ç¼ƒé£¨è§åš£é”€æ™“å•¸å““æ½‡éªç»¡æ­ç®«åæŒŸæºèƒè°å†™æ³»è°¢äºµæ’·ç»ç¼¬é”Œè¡…å…´é™‰è¥å‡¶æ±¹é”ˆç»£é¦é¸ºè™šå˜˜é¡»è®¸å™ç»ªç»­è¯©é¡¼è½©æ‚¬é€‰ç™£ç»šè°–é“‰é•Ÿå­¦è°‘æ³¶é³•å‹‹è¯¢å¯»é©¯è®­è®¯é€ŠåŸ™æµ”é²Ÿå‹é¸¦é¸­å“‘äºšè®¶å­å¨…æ¡ æ°©é˜‰çƒŸç›ä¸¥å²©é¢œé˜è‰³åŒç šå½¦è°šéªŒå£èµä¿¨å…–è°³æ¹é—«é…½é­‡é¤é¼¹é¸¯æ¨æ‰¬ç–¡é˜³ç—’å…»æ ·ç‚€ç‘¶æ‘‡å°§é¥çª‘è°£è¯è½ºé¹é³çˆ·é¡µä¸šå¶é¥è°’é‚ºæ™”çƒ¨åŒ»é“±é¢é—ä»ªèšè‰ºäº¿å¿†ä¹‰è¯£è®®è°Šè¯‘å¼‚ç»è¯’å‘“å³„é¥´æ€¿é©¿ç¼¢è½¶è´»é’‡é•’é•±ç˜—èˆ£è«é˜´é“¶é¥®éšé“Ÿç˜¾æ¨±å©´é¹°åº”ç¼¨è¹è¤è¥è§è‡èµ¢é¢–èŒ”èºè¦è“¥æ’„å˜¤æ»¢æ½†ç’é¹¦ç˜¿é¢ç½‚å“Ÿæ‹¥ä½£ç—ˆè¸Šå’é•›ä¼˜å¿§é‚®é“€çŠ¹è¯±è¸é“•é±¿èˆ†é±¼æ¸”å¨±ä¸å±¿è¯­ç‹±èª‰é¢„é©­ä¼›ä¿£è°€è°•è“£åµ›é¥«é˜ˆå¦ªçº¡è§æ¬¤é’°é¹†é¹¬é¾‰é¸³æ¸Šè¾•å›­å‘˜åœ†ç¼˜è¿œæ©¼é¸¢é¼‹çº¦è·ƒé’¥ç²¤æ‚¦é˜…é’ºéƒ§åŒ€é™¨è¿è•´é…æ™•éŸµéƒ“èŠ¸æ½æ„ çº­éŸ«æ®’æ°²æ‚ç¾è½½æ”’æš‚èµç“’è¶±éŒ¾èµƒè„é©µå‡¿æ£è´£æ‹©åˆ™æ³½èµœå•§å¸»ç®¦è´¼è°®èµ ç»¼ç¼¯è½§é“¡é—¸æ …è¯ˆæ–‹å€ºæ¯¡ç›æ–©è¾—å´­æ ˆæˆ˜ç»½è°µå¼ æ¶¨å¸è´¦èƒ€èµµè¯é’Šè›°è¾™é”—è¿™è°ªè¾„é¹§è´é’ˆä¾¦è¯Šé•‡é˜µæµˆç¼œæ¡¢è½¸èµˆç¥¯é¸©æŒ£çç‹°äº‰å¸§ç—‡éƒ‘è¯è¯¤å³¥é’²é“®ç­ç»‡èŒæ‰§çº¸æŒšæ·å¸œè´¨æ»éª˜æ ‰æ €è½µè½¾è´½é¸·è›³çµ·è¸¬è¸¯è§¯é’Ÿç»ˆç§è‚¿ä¼—é”ºè¯Œè½´çš±æ˜¼éª¤çº£ç»‰çŒªè¯¸è¯›çƒ›ç©å˜±è´®é“¸é©»ä¼«æ§ é“¢ä¸“ç –è½¬èµšå•­é¦”é¢æ¡©åº„è£…å¦†å£®çŠ¶é”¥èµ˜å ç¼€éª“ç¼’è°†å‡†ç€æµŠè¯¼é•¯å…¹èµ„æ¸è°˜ç¼è¾èµ€çœ¦é”±é¾‡é²»è¸ªæ€»çºµå¬é‚¹è¯¹é©ºé²°è¯…ç»„é•é’»ç¼µèºœé³Ÿç¿±å¹¶åœæ²‰ä¸‘æ·€è¿­æ–—èŒƒå¹²çš‹ç¡…æŸœåä¼™ç§¸æ°è¯€å¤¸é‡Œå‡Œä¹ˆéœ‰æ»å‡„æ‰¦åœ£å°¸æŠ¬æ¶‚æ´¼å–‚æ±¡é”¨å’¸èå½æ¶Œæ¸¸åå¾¡æ„¿å²³äº‘ç¶æ‰æœ­ç­‘äºå¿—æ³¨å‡‹è® è°«éƒ„å‹å‡¼å‚å…å´åŸ¯åŸè‹˜è¬è®èœè¼è°è—æ¸å’å£å’”å’å’´å™˜å™¼åš¯å¹å²™åµ´å½·å¾¼çŠ¸ç‹é¦€é¦‡é¦“é¦•æ„£æ†·æ‡”ä¸¬æº†æ»Ÿæº·æ¼¤æ½´æ¾¹ç”¯çºŸç»”ç»±ç‰æ§æ¡Šæ¡‰æ§”æ©¥è½±è½·èµè‚·èƒ¨é£šç…³ç……ç†˜æ„æ·¼ç œç£™çœé’šé’·é“˜é“é”ƒé”é”é”é”˜é”é”ªé”«é”¿é•…é•é•¢é•¥é•©é•²ç¨†é¹‹é¹›é¹±ç–¬ç–´ç—–ç™¯è£¥è¥è€¢é¢¥è¨éº´é²…é²†é²‡é²é²´é²ºé²¼é³Šé³‹é³˜é³™é’é´é½„";
+            string trad = "éŒ’çššè—¹ç¤™æ„›å™¯å¬¡ç’¦æ›–é„è«³éŠ¨éµªéª¯è¥–å¥§åª¼é©é°²å£©ç½·éˆ€æ“ºæ•—å”„é ’è¾¦çµ†éˆ‘å¹«ç¶éŠè¬—å‰é£½å¯¶å ±é®‘é´‡é½™è¼©è²é‹‡ç‹½å‚™æ†Šéµ¯è³éŒ›ç¹ƒç­†ç•¢æ–ƒå¹£é–‰è“½å—¶æ½·é‰ç¯³è¹•é‚Šç·¨è²¶è®Šè¾¯è¾®èŠç·¶ç±©æ¨™é©ƒé¢®é£†é¢é‘£é°¾é±‰åˆ¥ç™Ÿç€•æ¿±è³“æ“¯å„ç¹½æª³æ®¯è‡é‘Œé«•é¬¢é¤…ç¨Ÿæ’¥ç¼½é‰‘é§é¤‘éˆ¸éµ“è£œéˆ½è²¡åƒè ¶æ®˜æ…šæ…˜ç‡¦é©‚é»²è’¼è‰™å€‰æ»„å»å´å†Šæ¸¬æƒ»å±¤è©«é¤å„•é‡µæ”™æ‘»èŸ¬é¥è®’çºéŸç”¢é—¡é¡«å›…è«‚è®–è•†æ‡ºå¬‹é©è¦˜ç¦ªé”å ´å˜—é•·å„Ÿè…¸å» æš¢å€€è‡æ‚µé–¶é¯§éˆ”è»Šå¾¹ç¡¨å¡µé™³è¥¯å‚–è«¶æ«¬ç££é½”æ’ç¨±æ‡²èª é¨æ£–æª‰é‹®éºç™¡é²é¦³æ¥é½’ç†¾é£­é´Ÿæ²–è¡èŸ²å¯µéŠƒç–‡èºŠç±Œç¶¢å„”å¹¬è®æ«¥å»šé‹¤é››ç¤å„²è§¸è™•èŠ»çµ€èº•å‚³é‡§ç˜¡é—–å‰µæ„´éŒ˜ç¶ç´”é¶‰ç¶½è¼Ÿé½ªè¾­è©è³œé¶¿è°è”¥å›ªå¾å¢è“¯é©„æ¨…æ¹Šè¼³èº¥ç«„æ”›éŒ¯éŠ¼é¹ºé”å™ éŸƒå¸¶è²¸é§˜ç´¿æ“”å–®é„²æ’£è†½æ†šèª•å½ˆæ®«è³§ç™‰ç°ç•¶æ“‹é»¨è•©æª”è®œç¢­è¥ æ—å³¶ç¦±å°ç›œç‡¾ç‡ˆé„§é™æ•µæ»Œéç· ç³´è©†è«¦ç¶ˆè¦¿é‘é¡›é»å¢Šé›»å·”éˆ¿ç™²é‡£èª¿éŠšé¯›è«œç–Šé°ˆé‡˜é ‚éŒ è¨‚é‹Œä¸ŸéŠ©æ±å‹•æ£Ÿå‡å´ é¶‡ç«‡çŠ¢ç¨è®€è³­éç€†æ«ç‰˜ç¯¤é»·é›æ–·ç·ç±ªå…ŒéšŠå°æ‡Ÿé“å™¸é “éˆç‡‰èº‰å¥ªå¢®é¸éµé¡è¨›æƒ¡é¤“è«¤å Šé–¼è»›é‹¨é”é¶šé¡é¡“é±·èª’å…’çˆ¾é¤Œè²³é‚‡é‰ºé´¯é®ç™¼ç½°é–¥çºç¤¬é‡©ç…©è²©é£¯è¨ªç´¡éˆé­´é£›èª¹å»¢è²»ç·‹é¨é¯¡ç´›å¢³å¥®æ†¤ç³åƒ¨è±æ¥“é‹’é¢¨ç˜‹é¦®ç¸«è«·é³³çƒè†šè¼»æ’«è¼”è³¦å¾©è² è¨ƒå©¦ç¸›é³§é§™ç´±ç´¼è³»éº©é®’é°’é‡“è©²éˆ£è“‹è³…æ¡¿è¶•ç¨ˆè´›å°·æŸç´ºå²¡å‰›é‹¼ç¶±å´—æˆ‡é¬çªèª¥ç¸é‹¯æ“±é´¿é–£é‰»å€‹ç´‡é˜æ½çµ¦äº™è³¡ç¶†é¯é¾”å®®éè²¢é‰¤æºèŒæ§‹è³¼å¤ è©¬ç·±è¦¯è ±é¡§è©è½‚éˆ·éŒ®é´£éµ é¶»å‰®æ›é´°æ‘‘é—œè§€é¤¨æ…£è²«è©¿æ‘œé¸›é°¥å»£ç·è¦æ­¸é¾œé–¨è»Œè©­è²´åŠŠåŒ­åŠŒåª¯æªœé®­é±–è¼¥æ»¾è¢ç·„é¯€é‹åœ‹éå å’¼å¹—æ§¨èŸˆé‰¿é§­éŸ“æ¼¢é—çµé ¡è™Ÿçé¡¥é–¡é¶´è³€è¨¶é—”è £æ©«è½Ÿé´»ç´…é»Œè¨Œè‘’é–é±Ÿå£ºè­·æ»¬æˆ¶æ»¸é¶˜å˜©è¯ç•«åŠƒè©±é©Šæ¨ºéµæ‡·å£æ­¡ç’°é‚„ç·©æ›å–šç˜“ç…¥æ¸™å¥ç¹¯é°é¯‡é»ƒè¬Šé°‰æ®è¼æ¯€è³„ç©¢æœƒç‡´åŒ¯è«±èª¨ç¹ªè©¼è–ˆå™¦æ¾®ç¹¢ç¿æš‰è‘·æ¸¾è«¢é¤›é–½ç²è²¨ç¦éˆ¥é‘Šæ“Šæ©Ÿç©é¥‘è·¡è­é›ç¸¾ç·æ¥µè¼¯ç´šæ“ å¹¾è–ŠåŠ‘æ¿Ÿè¨ˆè¨˜éš›ç¹¼ç´€è¨è©°è–ºå˜°åšŒé©¥ç’£è¦¬é½ç£¯ç¾ˆè †èº‹éœ½é±­é¯½å¤¾è¢é °è³ˆé‰€åƒ¹é§•éƒŸæµ¹é‹éµèŸ¯æ®²ç›£å …ç®‹é–“è‰±ç·˜ç¹­æª¢å ¿é¹¼æ€æ’¿ç°¡å„‰æ¸›è–¦æª»é‘’è¸è³¤è¦‹éµè‰¦åŠé¤æ¼¸æ¿ºæ¾—è««ç¸‘æˆ”æˆ©ç¼é¶¼ç­§é°¹éŸ‰å°‡æ¼¿è”£æ§³çè¬›é†¬çµ³éŸè† æ¾†é©•å¬Œæ”ªé‰¸çŸ¯åƒ¥è…³é¤ƒç¹³çµè½è¼ƒæ’Ÿå¶ é·¦é®«éšç¯€æ½”çµèª¡å±†ç™¤é œé®šç·ŠéŒ¦åƒ…è¬¹é€²æ™‰ç‡¼ç›¡å‹èŠè–å·¹è—é¥‰ç¸‰è´è¦²é¯¨é©šç¶“é ¸éœé¡å¾‘ç—™ç«¶å‡ˆå‰„æ¶‡é€•å¼³è„›éšç³¾å»„èˆŠé¬®é³©é·²é§’èˆ‰æ“šé‹¸æ‡¼åŠ‡è©å±¨æ«¸é¢¶é‰…é‹¦çª¶é½Ÿéµ‘çµ¹éŒˆé«é›‹è¦ºæ±ºçµ•è­ç¨éˆè»é§¿çš¸é–‹å‡±å‰´å¡æ„¾æ„·é§é‡é¾•é–Œéˆ§éŠ¬é¡†æ®¼èª²é¨ç·™è»»éˆ³éŒé ·å¢¾æ‡‡é½¦é—æ‘³åº«è¤²åš³å¡Šå„ˆé„¶å™²è†¾å¯¬çªé«–ç¤¦æ› æ³èª†èª‘é„ºå£™çºŠè²ºè™§å·‹çªºé¥‹æ½°åŒ±è•¢æ†’èµç°£é–«éŒ•é¯¤æ“´é—Šè è Ÿè‡˜èŠä¾†è³´å´å¾ æ·¶ç€¨è³šçéŒ¸ç™©ç±Ÿè—æ¬„æ””ç±ƒé—Œè˜­ç€¾è®•æ”¬è¦½æ‡¶çºœçˆ›æ¿«åµæ¬–æ–•é‘­è¥¤ç‘¯é–¬é‹ƒæ’ˆå‹æ¾‡å˜®å¶—éŠ é’ç™†æ¨‚é°³é³å£˜é¡æ·šèª„ç¸²ç±¬è²é›¢é¯‰ç¦®éº—å²å‹µç¤«æ­·ç€éš¸å„·é…ˆå£¢è—¶è’è˜ºåš¦é‚é©ªç¸­æ«ªæ«Ÿè½¢ç¤ªé‹°é¸ç™˜ç³²èº’é‚é±ºé±§å€†è¯è“®é€£é®æ†æ¼£ç°¾æ–‚è‡‰éˆæˆ€ç…‰ç·´è˜å¥©ç€²ç’‰æ®®è¤³è¥é°±ç³§æ¶¼å…©è¼›è«’é­ç™‚é¼éç¹šé‡•é·¯çµè‡¨é„°é±—å‡œè³ƒè—ºå»©æªè½”èºªé½¡éˆ´éˆå¶ºé ˜ç¶¾æ¬èŸ¶é¯ªé¤¾åŠ‰ç€é¨®ç¶¹é¦é·šé¾è¾åš¨ç± å£Ÿæ”éš´è˜¢ç€§ç“æ«³æœ§ç¤±æ¨“å©æ‘Ÿç°åƒ‚è”å˜å¶é¤ç˜ºè€¬è»é«è˜†ç›§é¡±å»¬çˆæ“„é¹µè™œé­¯è³‚ç¥¿éŒ„é™¸å£šæ“¼åš•é–­ç€˜æ·¥æ«¨æ«“è½¤è¼…è½†æ°Œè‡šé¸•é·ºè‰«é±¸å·’æ”£å­¿ç¤äº‚è‡ å­Œæ¬’é¸é‘¾æ„è¼ªå€«ä¾–æ·ªç¶¸è«–åœ‡è˜¿ç¾…é‚é‘¼ç±®é¨¾é§±çµ¡çŠ–ç€æ¿¼æ¬è…¡éé©¢å‘‚é‹ä¾¶å±¢ç¸·æ…®æ¿¾ç¶ æ«šè¤¸é‹å˜¸åª½ç‘ªç¢¼èé¦¬ç½µå—å˜œå¬¤æ¦ªè²·éº¥è³£é‚è„ˆå‹±çé¥…è »æ»¿è¬¾ç¸µéé¡™é°»è²“éŒ¨é‰šè²¿éº¼æ²’é‚é–€æ‚¶å€‘æ«ç‡œæ‡£é†éŒ³å¤¢ç‡è¬å½Œè¦“å†ªç¾‹è¬ç¼ç¦°ç¶¿ç·¬æ¾ é¦é»½å»Ÿç·²ç¹†æ»…æ†«é–©é–”ç·¡é³´éŠ˜è¬¬è¬¨é©€é¥ƒæ­¿éŒè¬€ç•é‰¬å¶éˆ‰ç´é›£æ’“è…¦æƒ±é¬§éƒè¨¥é¤’å…§æ“¬è†©éˆ®é¯¢æ”†è¼¦é¯°é‡€é³¥è”¦è£Šè¶åš™é‘·é³éš‰è˜—å›é¡¢èº¡æª¸ç°å¯§æ“°æ¿˜è‹§åš€è¹éˆ•ç´è†¿æ¿ƒè¾²å„‚å™¥é§‘é‡¹è«¾å„ºç˜§æ­é·—æ¯†å˜”æ¼šè¬³æ…ªç”Œç›¤è¹£é¾æ‹‹çš°è³ è½¡å™´éµ¬ç´•ç¾†éˆ¹é¨™è«é§¢é£„ç¸¹é »è²§å¬ªè˜‹æ†‘è©•æ½‘é —é‡™æ’²é‹ªæ¨¸è­œé·é æ£²è‡é½Šé¨è±ˆå•Ÿæ°£æ£„è¨–è˜„é¨ç¶ºæ¦¿ç£§é é é°­ç‰½é‡¬é‰›é·ç°½è¬™éŒ¢é‰—æ½›æ·ºè­´å¡¹åƒ‰è•æ…³é¨«ç¹¾æ§§éˆæ§å—†å¢»è–”å¼·æ¶å¬™æª£æˆ§ç†—éŒ†é˜é¹ç¾¥è¹Œé¬æ©‹å–¬åƒ‘ç¿¹ç«…èªšè­™è•ç¹°ç£½è¹ºç«Šæ„œé¥ç¯‹æ¬½è¦ªå¯¢é‹Ÿè¼•æ°«å‚¾é ƒè«‹æ…¶æ’³é¯–ç“Šçª®ç…¢è›ºå·°è³•èŸ£é°è¶¨å€è»€é©…é½²è©˜å¶‡é—ƒè¦·é´é¡´æ¬Šå‹¸è©®ç¶£è¼‡éŠ“å»éµ²ç¢ºé—‹é—•æ„¨è®“é¥’æ“¾ç¹è•˜å¬ˆæ©ˆç†±éŸŒèªç´‰é£ªè»”æ¦®çµ¨å¶¸è ‘ç¸ŸéŠ£é¡°è»ŸéŠ³èœ†é–æ½¤ç‘è–©é¢¯é°“è³½å‚˜æ¯¿ç³å–ªé¨·æƒç¹…æ¾€å—‡éŠ«ç©¡æ®ºå‰ç´—é©é¯Šç¯©æ›¬é‡ƒåˆªé–ƒé™œè´ç¹•è¨•å§é¨¸é‡¤é±”å¢‘å‚·è³å°æ®¤è§´ç‡’ç´¹è³’æ”æ‡¾è¨­å™ç„ç•¬ç´³å¯©å¬¸è…æ»²è©µè«—ç€‹è²ç¹©å‹å¸«ç…æ¿•è©©æ™‚è•å¯¦è­˜é§›å‹¢é©é‡‹é£¾è¦–è©¦è¬šå¡’è’”å¼’è»¾è²°éˆ°é°£å£½ç¸ç¶¬æ¨è¼¸æ›¸è´–å±¬è¡“æ¨¹è±æ•¸æ”„ç´“å¸¥é–‚é›™èª°ç¨…é †èªªç¢©çˆé‘ çµ²é£¼å»é§Ÿç·¦é¶é·¥è³æ…«é Œè¨Ÿèª¦æ“»è—ªé¤¿é¢¼éªè˜‡è¨´è‚…è¬–ç©Œé›–éš¨ç¶æ­²èª¶å­«æç­è“€çŒ»ç¸®ç‘£é–å—©è„§çºæ’»é—¥é‰ˆé°¨è‡ºæ…‹éˆ¦é®æ”¤è²ªç™±ç˜å£‡è­šè«‡å˜†æ›‡é‰­éŒŸé ‡æ¹¯ç‡™å„»é¤³é‹éœæ¿¤çµ³è¨éŸœé‹±é¨°è¬„éŠ»é¡Œé«”å±œç·¹éµœé—æ¢ç³¶é½ é°·è²¼éµå»³è½çƒ´éŠ…çµ±æ…Ÿé ­éˆ„ç¦¿åœ–é‡·åœ˜æ‘¶é ¹è›»é£©è„«é´•é¦±é§æ©¢ç±œé¼‰è¥ªåª§è†ƒå½ç£é ‘è¬ç´ˆç¶°ç¶²è¼éŸ‹é•åœç‚ºæ¿°ç¶­è‘¦å‰å½ç·¯è¬‚è¡›è«‰å¹ƒé—ˆæºˆæ½¿ç‘‹éŸ™ç…’é®ªæº«èç´‹ç©©å•é–¿ç”•æ’¾è¸æ¸¦çª©è‡¥èµé½·å—šé¢çƒèª£ç„¡è•ªå³å¡¢éœ§å‹™èª¤é„”å»¡æ†®å«µé¨–éµ¡é¶©éŒ«çŠ§è¥²ç¿’éŠ‘æˆ²ç´°é¤¼é¬©ç’½è¦¡è¦è½„å³½ä¿ ç‹¹å»ˆåš‡ç¡¤é®®çº–è³¢éŠœé–‘é¡¯éšªç¾ç»ç¸£é¤¡ç¾¨æ†²ç·šè§è–Ÿè˜šå³´ç«å«»é·´ç™‡è ”ç§ˆèºšå»‚é‘²é„‰è©³éŸ¿é …è–Œé¤‰é©¤ç·—é¥—è•­å›‚éŠ·æ›‰å˜¯å˜µç€Ÿé©ç¶ƒæ¢Ÿç°«å”æŒ¾æ”œè„…è«§å¯«ç€‰è¬è¤»æ“·ç´²çºˆé‹…é‡èˆˆé™˜æ»å…‡æ´¶éŠ¹ç¹¡é¥ˆéµ‚è™›å™“é ˆè¨±æ•˜ç·’çºŒè©¡é Šè»’æ‡¸é¸ç™¬çµ¢è«¼é‰‰é‡å­¸è¬”æ¾©é±ˆå‹›è©¢å°‹é¦´è¨“è¨Šéœå¡¤æ½¯é±˜å£“é´‰é´¨å•äºè¨åŸ¡å©­æ¤æ°¬é–¹ç…™é¹½åš´å·–é¡é–»è‰·å­ç¡¯å½¥è«ºé©—å´è´—å„¼å…—è®æ‡¨é–†é‡…é­˜é¥œé¼´é´¦æ¥Šæšç˜é™½ç™¢é¤Šæ¨£ç…¬ç‘¤æ–å ¯é™çª¯è¬ è—¥è»ºé·‚é°©çˆºé æ¥­è‘‰é¨è¬é„´æ›„ç‡é†«éŠ¥é ¤éºå„€èŸ»è—å„„æ†¶ç¾©è©£è­°èª¼è­¯ç•°ç¹¹è©’å›ˆå¶§é£´æ‡Œé©›ç¸Šè»¼è²½é‡”é°é¿ç˜è‰¤è”­é™°éŠ€é£²éš±éŠ¦ç™®æ«»å¬°é·¹æ‡‰çº“ç‘©è¢ç‡Ÿç†’è …è´ç©å¡‹é¶¯ç¸ˆé£æ”–åš¶ç€…ç€ ç“”é¸šç™­é ¦ç½Œå–²æ“å‚­ç™°è¸´è© éå„ªæ†‚éƒµéˆ¾çŒ¶èª˜è••éŠªé­·è¼¿é­šæ¼å¨›èˆ‡å¶¼èªç„è­½é é¦­å‚´ä¿è«›è«­è•·å´³é£«é–¾å«—ç´†è¦¦æ­Ÿéˆºéµ’é·¸é½¬é´›æ·µè½…åœ’å“¡åœ“ç·£é æ«é³¶é»¿ç´„èºé‘°ç²µæ‚…é–±é‰é„–å‹»éš•é‹è˜Šé†æšˆéŸ»é„†è•“æƒ²æ…ç´œéŸæ®æ°³é›œç½è¼‰æ”¢æš«è´Šç“šè¶²é¨è´“è‡Ÿé§”é‘¿æ£—è²¬æ“‡å‰‡æ¾¤è³¾å˜–å¹˜ç°€è³Šè­–è´ˆç¶œç¹’è»‹é˜é–˜æŸµè©é½‹å‚µæ°ˆç›æ–¬è¼¾å¶„æ£§æˆ°ç¶»è­«å¼µæ¼²å¸³è³¬è„¹è¶™è©”é‡—èŸ„è½éºé€™è¬«è¼’é·“è²é‡åµè¨ºé®é™£æ¹ç¸æ¥¨è»«è³‘ç¦é´†æ™çœçŒ™çˆ­å¹€ç™¥é„­è­‰è«å´¢é‰¦éŒšç®ç¹”è·åŸ·ç´™æ‘¯æ“²å¹Ÿè³ªæ»¯é¨­æ«›æ¢”è»¹è¼Šè´„é·™è„ç¸¶èº“èº‘è§¶é˜çµ‚ç¨®è…«çœ¾é¾è¬…è»¸çšºæ™é©Ÿç´‚ç¸è±¬è«¸èª…ç‡­çŸšå›‘è²¯é‘„é§ä½‡æ«§éŠ–å°ˆç£šè½‰è³ºå›€é¥Œé¡³æ¨èŠè£å¦å£¯ç‹€éŒè´…å¢œç¶´é¨…ç¸‹è«„æº–è‘—æ¿è«‘é²èŒ²è³‡æ¼¬è«®ç·‡è¼œè²²çœ¥éŒ™é½œé¯”è¹¤ç¸½ç¸±å‚¯é„’è«é¨¶é¯«è©›çµ„éƒé‰†çº˜èº¦é±’ç¿ºä¸¦è””æ²ˆé†œæ¾±å é¬¥ç¯„å¹¹è‡¯çŸ½æ«ƒå¾Œå¤¥ç¨­å‚‘è¨£èª‡è£æ·©éº½é»´æ’šæ·’æ‰¡è–å±æ“¡å¡—çªªé¤µæ±™éé¹¹è å½œæ¹§éŠç±²ç¦¦é¡˜å¶½é›²ç«ˆç´®åŠ„ç¯‰æ–¼èªŒè¨»é›•è¨è­¾éƒ¤çŒ›æ°¹é˜ªå£Ÿå –åµå¢Šæª¾è•’è‘¤è“§è’“è‡æ§æ‘£å’¤å”šå“¢å™å™…æ’…åŠˆè¬”è¥†å¶´è„Šä»¿åƒ¥çéº…é¤˜é¤·é¥Šé¥¢æ¥æ€µæ‡çˆ¿æ¼µç©æ··æ¿«ç€¦æ·¡å¯§ç³¸çµç·”ç‘‰æ¢˜æ£¬æ¡ˆæ©°æ««è»²è»¤è³«è†è…–é£ˆç³Šç…†æºœæ¹£æ¸ºç¢¸æ»¾ç˜éˆˆé‰•é‹£éŠ±é‹¥é‹¶é¦é§é©é€éƒéŒ‡é„é‡é¿éé‘¥é‘¹é‘”ç©­é¶“é¶¥é¸Œç™§å±™ç˜‚è‡’è¥‡ç¹ˆè€®é¡¬èŸéº¯é®é®ƒé®é¯—é¯é¯´é±é¯¿é° é°µé±…é½éŸé½‡";
 
-         char[] sArray = s.ToCharArray();
+            char[] sArray = s.ToCharArray();
 
-         foreach (char c in sArray)
-         {
-            if (trad.IndexOf(c) >= 0)
-               sb.Append(simp.Substring(trad.IndexOf(c), 1));
-            else
-               sb.Append(c);
-         }
-         return sb.ToString();
-      }
+            foreach (char c in sArray)
+            {
+                if (trad.IndexOf(c) >= 0)
+                    sb.Append(simp.Substring(trad.IndexOf(c), 1));
+                else
+                    sb.Append(c);
+            }
+            return sb.ToString();
+        }
 
-      /*======= ICTCLAS ÖĞÓĞ£¬µ«´ÓÎ´ÓÃµ½µÄ·½·¨£¬Ä¿Ç°ÉĞ´ıÊµÏÖ ============
+        /*======= ICTCLAS ä¸­æœ‰ï¼Œä½†ä»æœªç”¨åˆ°çš„æ–¹æ³•ï¼Œç›®å‰å°šå¾…å®ç° ============
       
-      //Get the max Prefix string made up of Chinese Char
-      public static uint GetCCPrefix(string sSentence)
-      {
-         return 0;
-      }
+        //Get the max Prefix string made up of Chinese Char
+        public static uint GetCCPrefix(string sSentence)
+        {
+           return 0;
+        }
 
-      //Judge the string is all made up of non-Chinese Char
-      public static bool IsAllNonChinese(string sString)
-      {
-         return true;
-      }
+        //Judge the string is all made up of non-Chinese Char
+        public static bool IsAllNonChinese(string sString)
+        {
+           return true;
+        }
 
-      //Judge the string is all made up of Single Byte Char
-      public static bool IsAllSingleByte(string sString)
-      {
-         return true;
-      }
+        //Judge the string is all made up of Single Byte Char
+        public static bool IsAllSingleByte(string sString)
+        {
+           return true;
+        }
 
 
 
-      //Judge the string is all made up of Index Num Char
-      public static bool IsAllIndex(string sString)
-      {
-         return true;
-      }
+        //Judge the string is all made up of Index Num Char
+        public static bool IsAllIndex(string sString)
+        {
+           return true;
+        }
 
-      //Judge the string is all made up of Delimiter
-      public static bool IsAllDelimiter(string sString)
-      {
-         return true;
-      }
+        //Judge the string is all made up of Delimiter
+        public static bool IsAllDelimiter(string sString)
+        {
+           return true;
+        }
 
-      //sWord maybe is a foreign translation
-      public static bool IsForeign(string sWord)
-      {
-         return true;
-      }
+        //sWord maybe is a foreign translation
+        public static bool IsForeign(string sWord)
+        {
+           return true;
+        }
 
-      //Decide whether the word is all  foreign translation
-      public static bool IsAllForeign(string sWord)
-      {
-         return true;
-      }
+        //Decide whether the word is all  foreign translation
+        public static bool IsAllForeign(string sWord)
+        {
+           return true;
+        }
 
-      //Return the foreign type 
-      public static int GetForeignType(string sWord)
-      {
-         return 0;
-      }
+        //Return the foreign type 
+        public static int GetForeignType(string sWord)
+        {
+           return 0;
+        }
 
-      //Get the postfix
-      public static bool PostfixSplit(string sWord, string sWordRet, string sPostfix)
-      {
-         return true;
-      }
+        //Get the postfix
+        public static bool PostfixSplit(string sWord, string sWordRet, string sPostfix)
+        {
+           return true;
+        }
 
-      //Judge whether it's a num
-      public static bool IsSingleByteDelimiter(char cByteChar)
-      {
-         return true;
-      }
+        //Judge whether it's a num
+        public static bool IsSingleByteDelimiter(char cByteChar)
+        {
+           return true;
+        }
 
-      ================================================================*/
+        ================================================================*/
 
-   }
+        /// <summary>
+        /// åˆ¤æ–­ s æ˜¯å¦å‡ºç°åœ¨ orgstrçš„å¼€å¤´ 
+        /// </summary>
+        /// <param name="orgstr"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool StartsWith(string orgstr, string s)
+        {
+            bool deffret = false;
+            int l = s.Length;
+            if (orgstr.Length < l)
+            {
+                return false;
+            }
+            if (l == 0)
+            {
+                return true;
+            }
+            for (int i = 0; i < l; i++)
+            {
+                if (orgstr[i] != s[i])
+                {
+                    return false;
+                }
+                else
+                {
+                    deffret = true;
+                }
+            }
+            return deffret;
+            //bool ss = indexTable[nFirstCharId].WordItems[i].sWord.StartsWith(sWordGet);
+            //if (us != ss)
+            //{
+
+            //}
+        }
+    }
 }
