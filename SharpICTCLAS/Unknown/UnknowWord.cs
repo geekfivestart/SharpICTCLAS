@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æžç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓÐ£ºÖÐÎÄ·Ö´Ê£»´ÊÐÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ð¡£
- *              ·Ö´ÊÕýÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ðÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖÐÖÐ¹úÈËÃûµÄÊ¶±ðÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖÐ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ð­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ðí¿ÉÖ¤1.0
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®çŽ‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æžœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›žçŽ‡å‡é«˜äºŽ90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›žçŽ‡æŽ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åŽå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕðÓî¸ù¾ÝFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓÐ´úÂë×öÁË²¿·ÖÖØÐ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŽŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸Žè°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -113,11 +113,11 @@ namespace SharpICTCLAS
             case TAG_TYPE.TT_TRANS_PERSON:
                //Set the special flag for transliterations
                m_nPOS = -28274; //-'n'*256-'r';
-               m_sUnknownFlags = "Î´##ÈË";
+               m_sUnknownFlags = "æœª##äºº";
                break;
             case TAG_TYPE.TT_PLACE:
                m_nPOS = -28275; //-'n'*256-'s';
-               m_sUnknownFlags = "Î´##µØ";
+               m_sUnknownFlags = "æœª##åœ°";
                break;
             default:
                m_nPOS = 0;
@@ -160,7 +160,7 @@ namespace SharpICTCLAS
             - Math.Log(m_roleTag.m_context.GetFrequency(0, 1) + 1.0);
 
          if (dSingleNamePossibility >= dGivenNamePossibility)
-            //ÕÅÕð||m_dict.GetFrequency(sFirstChar,1)/m_dict.GetFrequency(sFirstChar,2)>=10
+            //å¼ éœ‡||m_dict.GetFrequency(sFirstChar,1)/m_dict.GetFrequency(sFirstChar,2)>=10
             //The possibility being a single given name is more than being a 2-char given name
             return false;
          return true;

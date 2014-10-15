@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓĞ£ºÖĞÎÄ·Ö´Ê£»´ÊĞÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ğ¡£
- *              ·Ö´ÊÕıÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ğÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖĞÖĞ¹úÈËÃûµÄÊ¶±ğÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖĞ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ğ­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ğí¿ÉÖ¤1.0
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®ç‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›ç‡å‡é«˜äº90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›ç‡æ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕğÓî¸ù¾İFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓĞ´úÂë×öÁË²¿·ÖÖØĞ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸è°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -70,7 +70,7 @@ namespace SharpICTCLAS
 
       #endregion
 
-      #region ¹¹Ôìº¯Êı
+      #region æ„é€ å‡½æ•°
 
       public Span()
       {
@@ -139,7 +139,7 @@ namespace SharpICTCLAS
       {
          if (!bContinue)
          {
-            //||CC_Find("¡££¡¡±¡³¡µ¡·¡¹¡½¡¿",m_sWords[m_nCurLength-1])
+            //||CC_Find("ã€‚ï¼â€ã€•ã€‰ã€‹ã€ã€—ã€‘",m_sWords[m_nCurLength-1])
             if (m_tagType != TAG_TYPE.TT_NORMAL)
                //Get the last POS in the last sentence
                m_nTags[0, 0] = 100;
@@ -232,21 +232,21 @@ namespace SharpICTCLAS
          XD    926      0.009735
 
          The person recognition patterns set
-         BBCD:ĞÕ+ĞÕ+Ãû1+Ãû2;
-         BBE: ĞÕ+ĞÕ+µ¥Ãû;
-         BBZ: ĞÕ+ĞÕ+Ë«Ãû³É´Ê;
-         BCD: ĞÕ+Ãû1+Ãû2;
-         BE:  ĞÕ+µ¥Ãû;
-         BEE: ĞÕ+µ¥Ãû+µ¥Ãû;º«ÀÚÀÚ
-         BG:  ĞÕ+ºó×º
-         BXD: ĞÕ+ĞÕË«ÃûÊ××Ö³É´Ê+Ë«ÃûÄ©×Ö
-         BZ:  ĞÕ+Ë«Ãû³É´Ê;
-         B:   ĞÕ
-         CD:  Ãû1+Ãû2;
-         EE:  µ¥Ãû+µ¥Ãû;
-         FB:  Ç°×º+ĞÕ
-         XD:  ĞÕË«ÃûÊ××Ö³É´Ê+Ë«ÃûÄ©×Ö
-         Y:   ĞÕµ¥Ãû³É´Ê
+         BBCD:å§“+å§“+å1+å2;
+         BBE: å§“+å§“+å•å;
+         BBZ: å§“+å§“+åŒåæˆè¯;
+         BCD: å§“+å1+å2;
+         BE:  å§“+å•å;
+         BEE: å§“+å•å+å•å;éŸ©ç£Šç£Š
+         BG:  å§“+åç¼€
+         BXD: å§“+å§“åŒåé¦–å­—æˆè¯+åŒåæœ«å­—
+         BZ:  å§“+åŒåæˆè¯;
+         B:   å§“
+         CD:  å1+å2;
+         EE:  å•å+å•å;
+         FB:  å‰ç¼€+å§“
+         XD:  å§“åŒåé¦–å­—æˆè¯+åŒåæœ«å­—
+         Y:   å§“å•åæˆè¯
          ------------------------------------*/
 
          int[] nPatternLen = { 4, 3, 3, 3, 3, 3, 2, 2, 3, 2, 4, 2, 2, 2, 1, 2, 0 };
@@ -267,23 +267,23 @@ namespace SharpICTCLAS
             for (k = 0; !bMatched && nPatternLen[k] > 0; k++)
             {
                if (string.Compare(sPatterns[k], 0, sPOS, j, nPatternLen[k]) == 0 &&
-                  string.Compare(m_sWords[j - 1], "¡¤") != 0 && string.Compare(m_sWords[j + nPatternLen[k]], "¡¤") != 0)
+                  string.Compare(m_sWords[j - 1], "Â·") != 0 && string.Compare(m_sWords[j + nPatternLen[k]], "Â·") != 0)
                {
                   //Find the proper pattern k
                   if (string.Compare(sPatterns[k], "FB") == 0 && (sPOS[j + 2] == 'E' || sPOS[j + 2] == 'C' || sPOS[j + 2] == 'G'))
                   {
-                     //Rule 1 for exclusion:Ç°×º+ĞÕ+Ãû1(Ãû2): ¹æÔò(Ç°×º+ĞÕ)Ê§Ğ§£»
+                     //Rule 1 for exclusion:å‰ç¼€+å§“+å1(å2): è§„åˆ™(å‰ç¼€+å§“)å¤±æ•ˆï¼›
                      continue;
                   }
 
                   /*			
                   if((strcmp(sPatterns[k],"BEE")==0||strcmp(sPatterns[k],"EE")==0)&&strcmp(m_sWords[j+nPatternLen[k]-1],m_sWords[j+nPatternLen[k]-2])!=0)
-                  {//Rule 2 for exclusion:ĞÕ+µ¥Ãû+µ¥Ãû:µ¥Ãû+µ¥Ãû ÈôEE¶ÔÓ¦µÄ×Ö²»Í¬£¬¹æÔòÊ§Ğ§.Èç£ºº«ÀÚÀÚ
+                  {//Rule 2 for exclusion:å§“+å•å+å•å:å•å+å•å è‹¥EEå¯¹åº”çš„å­—ä¸åŒï¼Œè§„åˆ™å¤±æ•ˆ.å¦‚ï¼šéŸ©ç£Šç£Š
                   continue;
                   }
 
                   if(strcmp(sPatterns[k],"B")==0&&m_nBestTag[j+1]!=12)
-                  {//Rule 3 for exclusion: ÈôĞÕºó²»ÊÇºó×º£¬¹æÔòÊ§Ğ§.Èç£º½­Ö÷Ï¯¡¢Áõ´óÄï
+                  {//Rule 3 for exclusion: è‹¥å§“åä¸æ˜¯åç¼€ï¼Œè§„åˆ™å¤±æ•ˆ.å¦‚ï¼šæ±Ÿä¸»å¸­ã€åˆ˜å¤§å¨˜
                   continue;
                   }
                    */
@@ -305,7 +305,7 @@ namespace SharpICTCLAS
                   /*
                   if(IsAllForeign(sPersonName)&&personDict.GetFrequency(m_sWords[j],1)<LITTLE_FREQUENCY)
                   {//Exclusion foreign name
-                  //Rule 2 for exclusion:Èô¾ùÎªÍâ¹úÈËÃûÓÃ×Ö ¹æÔò(Ãû1+Ãû2)Ê§Ğ§
+                  //Rule 2 for exclusion:è‹¥å‡ä¸ºå¤–å›½äººåç”¨å­— è§„åˆ™(å1+å2)å¤±æ•ˆ
                   j+=nPatternLen[k]-1;
                   continue;
                   }
@@ -313,9 +313,9 @@ namespace SharpICTCLAS
                   if (string.Compare(sPatterns[k], "CDCD") == 0)
                   {
                      //Rule for exclusion
-                     //¹æÔò(Ãû1+Ãû2+Ãû1+Ãû2)±¾ÉíÊÇÅÅ³ı¹æÔò:Å®¸ßÒô¸è³ª¼ÒµÏÀï°İ¶ûÑİ³ª
-                     //Rule 3 for exclusion:º¬Íâ¹úÈËÃûÓÃ×Ö ¹æÔòÊÊÓÃ
-                     //·ñÔò£¬ÅÅ³ı¹æÔòÊ§Ğ§:ºÚæ¤°×æ¤½ãÁ©°ÎÁËÍ·³ï¡£
+                     //è§„åˆ™(å1+å2+å1+å2)æœ¬èº«æ˜¯æ’é™¤è§„åˆ™:å¥³é«˜éŸ³æ­Œå”±å®¶è¿ªé‡Œæ‹œå°”æ¼”å”±
+                     //Rule 3 for exclusion:å«å¤–å›½äººåç”¨å­— è§„åˆ™é€‚ç”¨
+                     //å¦åˆ™ï¼Œæ’é™¤è§„åˆ™å¤±æ•ˆ:é»‘å¦ç™½å¦å§ä¿©æ‹”äº†å¤´ç­¹ã€‚
                      if (Utility.GetForeignCharCount(sPersonName) > 0)
                         j += nPatternLen[k] - 1;
                      continue;
@@ -327,7 +327,7 @@ namespace SharpICTCLAS
                   continue;
                   }
                   if(nLittleFreqCount==nPatternLen[k]||nLittleFreqCount==3)
-                  //Âí¹şµÙ¶û;Ğ¡ÔúÒ®µÂÓëËûµÄÖĞ¹ú°¢ÒÌºú²ÊÁáÊÜ»ªÀèÃ÷´óÊ¹Ö®Ñû£¬
+                  //é©¬å“ˆè’‚å°”;å°æ‰è€¶å¾·ä¸ä»–çš„ä¸­å›½é˜¿å§¨èƒ¡å½©ç²å—åé»æ˜å¤§ä½¿ä¹‹é‚€ï¼Œ
                   //The all roles appear with two lower frequecy,we will ignore them
                   continue;
                    */
@@ -359,12 +359,12 @@ namespace SharpICTCLAS
          switch (m_tagType)
          {
             case TAG_TYPE.TT_NORMAL:
-               m_nTags[i, j] = Utility.GetPOSValue("x"); //¶ÔÓÚÃ»ÓĞÈÎºÎ´ÊĞÔµÄ´ÊÈÏÎªÊÇ×Ö·û´®
+               m_nTags[i, j] = Utility.GetPOSValue("x"); //å¯¹äºæ²¡æœ‰ä»»ä½•è¯æ€§çš„è¯è®¤ä¸ºæ˜¯å­—ç¬¦ä¸²
                m_dFrequency[i, j++] = 0;
                break;
             case TAG_TYPE.TT_PERSON:
                j = 0;
-               if ("¡Á¡Á".IndexOf(m_sWords[nIndex]) != -1)
+               if ("Ã—Ã—".IndexOf(m_sWords[nIndex]) != -1)
                {
                   m_nTags[i, j] = 6;
                   m_dFrequency[i, j++] = 1.0 / (m_context.GetFrequency(0, 6) + 1);
@@ -571,7 +571,7 @@ namespace SharpICTCLAS
             {
                nStart = i;
                nEnd = nStart + 1;
-               //=========== by zhenyulu: ´Ë´¦nEnd = nStart + 1;ÓĞĞ©Ç¿ÆÈÖ®ÏÓ£¬Òò´ËºóÃæ´¦ÀíÁËÒ»ÏÂ
+               //=========== by zhenyulu: æ­¤å¤„nEnd = nStart + 1;æœ‰äº›å¼ºè¿«ä¹‹å«Œï¼Œå› æ­¤åé¢å¤„ç†äº†ä¸€ä¸‹
                while (m_nBestTag[nEnd] == 1)
                //
                {
@@ -610,7 +610,7 @@ namespace SharpICTCLAS
             }
             if (nEnd > nStart)
             {
-               //=========== by zhenyulu: ±ÜÃâÉÏÃæÇ¿ÆÈÖ®ÏÓ´øÀ´µÄ¸ºÃæÓ°Ïì
+               //=========== by zhenyulu: é¿å…ä¸Šé¢å¼ºè¿«ä¹‹å«Œå¸¦æ¥çš„è´Ÿé¢å½±å“
                if (m_sWords[nEnd] == null)
                   nEnd--;
 
@@ -676,7 +676,7 @@ namespace SharpICTCLAS
                   {
                      //Store the best POS tagging
                      pWordItems[j + nStartPos - 1].nPOS = m_nBestTag[j];
-                     //Let ¡£be 0
+                     //Let ã€‚be 0
                      if (pWordItems[j + nStartPos - 1].dValue > 0 && dictCore.IsExist(pWordItems[j + nStartPos - 1].sWord, -1))
                         //Exist and update its frequncy as a POS value
                         pWordItems[j + nStartPos - 1].dValue = dictCore.GetFrequency(pWordItems[j + nStartPos - 1].sWord, m_nBestTag[j]);
@@ -750,9 +750,9 @@ namespace SharpICTCLAS
                   Utility.charType(m_sWords[i - 1].ToCharArray()[0]) == Predefine.CT_CHINESE)
                {
                   if (m_sWords[i] == ".")
-                     sCurWord = "£®";
+                     sCurWord = "ï¼";
                   else if (m_sWords[i] == "-")
-                     sCurWord = "£­";
+                     sCurWord = "ï¼";
                }
 
                info = dictUnknown.GetWordInfo(sCurWord);
@@ -776,13 +776,13 @@ namespace SharpICTCLAS
                //Get the POS set of sCurWord in the core dictionary
                //We ignore the POS in the core dictionary and recognize them as other (0).
                //We add their frequency to get the possibility as POS 0
-               if (string.Compare(m_sWords[i], "Ê¼##Ê¼") == 0)
+               if (string.Compare(m_sWords[i], "å§‹##å§‹") == 0)
                {
                   m_nTags[i, j] = 100;
                   m_dFrequency[i, j] = 0;
                   j++;
                }
-               else if (string.Compare(m_sWords[i], "Ä©##Ä©") == 0)
+               else if (string.Compare(m_sWords[i], "æœ«##æœ«") == 0)
                {
                   m_nTags[i, j] = 101;
                   m_dFrequency[i, j] = 0;
@@ -873,7 +873,7 @@ namespace SharpICTCLAS
          if (m_nTags[i - 1, 1] != -1)
          //||m_sWords[i][0]==0
          {
-            //Set end for words like "ÕÅ/»ª/Æ½"
+            //Set end for words like "å¼ /å/å¹³"
             if (m_tagType != TAG_TYPE.TT_NORMAL)
                m_nTags[i, 0] = 101;
             else

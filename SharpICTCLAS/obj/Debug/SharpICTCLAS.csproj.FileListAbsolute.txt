@@ -12,3 +12,4 @@ D:\work14\ht\bin\SharpICTCLAS.dll
 D:\work14\ht\bin\SharpICTCLAS.pdb
 D:\work14\ht\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.dll
 D:\work14\ht\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.pdb
+D:\work14\ht\SharpICTCLAS\SharpICTCLAS\obj\Debug\SharpICTCLAS.csprojResolveAssemblyReference.cache

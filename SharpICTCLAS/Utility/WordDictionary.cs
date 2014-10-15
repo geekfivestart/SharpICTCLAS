@@ -1,12 +1,12 @@
-/***********************************************************************************
- * ICTCLAS¼ò½é£º¼ÆËãËùººÓï´Ê·¨·ÖÎöÏµÍ³ICTCLAS
+ï»¿/***********************************************************************************
+ * ICTCLASç®€ä»‹ï¼šè®¡ç®—æ‰€æ±‰è¯­è¯æ³•åˆ†æç³»ç»ŸICTCLAS
  *              Institute of Computing Technology, Chinese Lexical Analysis System
- *              ¹¦ÄÜÓĞ£ºÖĞÎÄ·Ö´Ê£»´ÊĞÔ±ê×¢£»Î´µÇÂ¼´ÊÊ¶±ğ¡£
- *              ·Ö´ÊÕıÈ·ÂÊ¸ß´ï97.58%(973×¨¼ÒÆÀ²â½á¹û)£¬
- *              Î´µÇÂ¼´ÊÊ¶±ğÕÙ»ØÂÊ¾ù¸ßÓÚ90%£¬ÆäÖĞÖĞ¹úÈËÃûµÄÊ¶±ğÕÙ»ØÂÊ½Ó½ü98%;
- *              ´¦ÀíËÙ¶ÈÎª31.5Kbytes/s¡£
- * Öø×÷È¨£º  Copyright(c)2002-2005ÖĞ¿ÆÔº¼ÆËãËù Ö°ÎñÖø×÷È¨ÈË£ºÕÅ»ªÆ½
- * ×ñÑ­Ğ­Òé£º×ÔÈ»ÓïÑÔ´¦Àí¿ª·Å×ÊÔ´Ğí¿ÉÖ¤1.0
+ *              åŠŸèƒ½æœ‰ï¼šä¸­æ–‡åˆ†è¯ï¼›è¯æ€§æ ‡æ³¨ï¼›æœªç™»å½•è¯è¯†åˆ«ã€‚
+ *              åˆ†è¯æ­£ç¡®ç‡é«˜è¾¾97.58%(973ä¸“å®¶è¯„æµ‹ç»“æœ)ï¼Œ
+ *              æœªç™»å½•è¯è¯†åˆ«å¬å›ç‡å‡é«˜äº90%ï¼Œå…¶ä¸­ä¸­å›½äººåçš„è¯†åˆ«å¬å›ç‡æ¥è¿‘98%;
+ *              å¤„ç†é€Ÿåº¦ä¸º31.5Kbytes/sã€‚
+ * è‘—ä½œæƒï¼š  Copyright(c)2002-2005ä¸­ç§‘é™¢è®¡ç®—æ‰€ èŒåŠ¡è‘—ä½œæƒäººï¼šå¼ åå¹³
+ * éµå¾ªåè®®ï¼šè‡ªç„¶è¯­è¨€å¤„ç†å¼€æ”¾èµ„æºè®¸å¯è¯1.0
  * Email: zhanghp@software.ict.ac.cn
  * Homepage:www.i3s.ac.cn
  * 
@@ -21,13 +21,13 @@
  * Institute of Computing Tech. and the posession or use of this file requires
  * a written license from the author.
  * Author:   Kevin Zhang
- *          (zhanghp@software.ict.ac.cn)¡¢
+ *          (zhanghp@software.ict.ac.cn)ã€
  * 
  *----------------------------------------------------------------------------------
  * 
- * SharpICTCLAS£º.netÆ½Ì¨ÏÂµÄICTCLAS
- *               ÊÇÓÉºÓ±±Àí¹¤´óÑ§¾­¹ÜÑ§ÔºÂÀÕğÓî¸ù¾İFree°æICTCLAS¸Ä±à¶ø³É£¬
- *               ²¢¶ÔÔ­ÓĞ´úÂë×öÁË²¿·ÖÖØĞ´Óëµ÷Õû
+ * SharpICTCLASï¼š.netå¹³å°ä¸‹çš„ICTCLAS
+ *               æ˜¯ç”±æ²³åŒ—ç†å·¥å¤§å­¦ç»ç®¡å­¦é™¢å•éœ‡å®‡æ ¹æ®Freeç‰ˆICTCLASæ”¹ç¼–è€Œæˆï¼Œ
+ *               å¹¶å¯¹åŸæœ‰ä»£ç åšäº†éƒ¨åˆ†é‡å†™ä¸è°ƒæ•´
  * 
  * Email: zhenyulu@163.com
  * Blog: http://www.cnblogs.com/zhenyulu
@@ -61,7 +61,7 @@ namespace SharpICTCLAS
         //====================================================================
         public bool Load(string sFilename, bool bReset)
         {
-            int frequency, wordLength, pos;   //ÆµÂÊ¡¢´Ê³¤¡¢¶ÁÈ¡´ÊĞÔ
+            int frequency, wordLength, pos;   //é¢‘ç‡ã€è¯é•¿ã€è¯»å–è¯æ€§
             bool isSuccess = true;
             FileStream fileStream = null;
             BinaryReader binReader = null;
@@ -79,7 +79,7 @@ namespace SharpICTCLAS
                 bReleased = false;
                 for (int i = 0; i < Predefine.CC_NUM; i++)
                 {
-                    //¶ÁÈ¡ÒÔ¸Ãºº×Ö´òÍ·µÄ´ÊÓĞ¶àÉÙ¸ö
+                    //è¯»å–ä»¥è¯¥æ±‰å­—æ‰“å¤´çš„è¯æœ‰å¤šå°‘ä¸ª
                     indexTable[i] = new IndexTableItem();
                     indexTable[i].nCount = binReader.ReadInt32();
 
@@ -93,9 +93,9 @@ namespace SharpICTCLAS
                     {
                         indexTable[i].WordItems[j] = new WordItem();
 
-                        frequency = binReader.ReadInt32();   //¶ÁÈ¡ÆµÂÊ
-                        wordLength = binReader.ReadInt32();  //¶ÁÈ¡´Ê³¤
-                        pos = binReader.ReadInt32();      //¶ÁÈ¡´ÊĞÔ
+                        frequency = binReader.ReadInt32();   //è¯»å–é¢‘ç‡
+                        wordLength = binReader.ReadInt32();  //è¯»å–è¯é•¿
+                        pos = binReader.ReadInt32();      //è¯»å–è¯æ€§
 
                         if (wordLength > 0)
                             indexTable[i].WordItems[j].sWord = Utility.ByteArray2String(binReader.ReadBytes(wordLength));
@@ -154,14 +154,14 @@ namespace SharpICTCLAS
 
                 writer = new BinaryWriter(outputFile, Encoding.GetEncoding("gb2312"));
 
-                //¶ÔÍ¼Ò»ÖĞËùÊ¾µÄ6768¸öÊı¾İ¿é½øĞĞ±éÀú
+                //å¯¹å›¾ä¸€ä¸­æ‰€ç¤ºçš„6768ä¸ªæ•°æ®å—è¿›è¡Œéå†
                 for (int i = 0; i < Predefine.CC_NUM; i++)
                 {
-                    //Èç¹û·¢ÉúÁËĞŞ¸Ä£¬ÔòÍê³ÉindexTableÓëmodifyTable¹é²¢ÅÅĞòÊ½µÄºÏ²¢¹¤×÷²¢´æÅÌ£¨ÅÅĞòÔ­ÔòÊÇÏÈ°²sWordÅÅ£¬È»ºóÔÙ°´´ÊĞÔÅÅ£©
+                    //å¦‚æœå‘ç”Ÿäº†ä¿®æ”¹ï¼Œåˆ™å®ŒæˆindexTableä¸modifyTableå½’å¹¶æ’åºå¼çš„åˆå¹¶å·¥ä½œå¹¶å­˜ç›˜ï¼ˆæ’åºåŸåˆ™æ˜¯å…ˆå®‰sWordæ’ï¼Œç„¶åå†æŒ‰è¯æ€§æ’ï¼‰
                     if (modifyTable != null)
                         MergeAndSaveIndexTableItem(writer, indexTable[i], modifyTable[i]);
                     else
-                        //·ñÔòÖ±½ÓĞ´ÈëindexTable
+                        //å¦åˆ™ç›´æ¥å†™å…¥indexTable
                         SaveIndexTableItem(writer, indexTable[i]);
                 }
             }
@@ -182,20 +182,20 @@ namespace SharpICTCLAS
 
         private void MergeAndSaveIndexTableItem(BinaryWriter writer, IndexTableItem item, ModifyTableItem modifyItem)
         {
-            int j, nCount;   //ÆµÂÊ¡¢´Ê³¤¡¢¶ÁÈ¡´ÊĞÔ
+            int j, nCount;   //é¢‘ç‡ã€è¯é•¿ã€è¯»å–è¯æ€§
             WordChain pCur;
 
-            //¼ÆËãĞŞ¸ÄºóÓĞĞ§´Ê¿éµÄÊıÄ¿
+            //è®¡ç®—ä¿®æ”¹åæœ‰æ•ˆè¯å—çš„æ•°ç›®
             nCount = item.nCount + modifyItem.nCount - modifyItem.nDelete;
             writer.Write(nCount);
 
             pCur = modifyItem.pWordItemHead;
 
             j = 0;
-            //¶ÔÔ­±íÖĞµÄ´Ê¿éºÍĞŞ¸Ä±íÖĞµÄ´Ê¿é½øĞĞ±éÀú,²¢°ÑĞŞ¸ÄºóµÄÌí¼Óµ½Ô­±íÖĞ
+            //å¯¹åŸè¡¨ä¸­çš„è¯å—å’Œä¿®æ”¹è¡¨ä¸­çš„è¯å—è¿›è¡Œéå†,å¹¶æŠŠä¿®æ”¹åçš„æ·»åŠ åˆ°åŸè¡¨ä¸­
             while (pCur != null && j < item.nCount)
             {
-                //Èç¹ûĞŞ¸Ä±íÖĞµÄ´ÊĞ¡ÓÚÔ­±íÖĞ¶ÔÓ¦Î»ÖÃµÄ´Ê»òÕß³¤¶ÈÏàµÈµ«nHandleÖµ±ÈÔ­±íÖĞµÄĞ¡,Ôò°ÑĞŞ¸Ä±íÖĞµÄĞ´Èëµ½´ÊµäÎÄ¼şµ±ÖĞ.
+                //å¦‚æœä¿®æ”¹è¡¨ä¸­çš„è¯å°äºåŸè¡¨ä¸­å¯¹åº”ä½ç½®çš„è¯æˆ–è€…é•¿åº¦ç›¸ç­‰ä½†nHandleå€¼æ¯”åŸè¡¨ä¸­çš„å°,åˆ™æŠŠä¿®æ”¹è¡¨ä¸­çš„å†™å…¥åˆ°è¯å…¸æ–‡ä»¶å½“ä¸­.
                 if (Utility.CCStringCompare(pCur.data.sWord, item.WordItems[j].sWord) < 0 ||
                    ((pCur.data.sWord == item.WordItems[j].sWord) &&
                    (pCur.data.nPOS < item.WordItems[j].nPOS)))
@@ -204,10 +204,10 @@ namespace SharpICTCLAS
                     SaveWordItem(writer, pCur.data);
                     pCur = pCur.next;
                 }
-                //Æµ¶ÈnFrequecyµÈÓÚ-1ËµÃ÷¸Ã´ÊÒÑ±»É¾³ı,Ìø¹ıËü
+                //é¢‘åº¦nFrequecyç­‰äº-1è¯´æ˜è¯¥è¯å·²è¢«åˆ é™¤,è·³è¿‡å®ƒ
                 else if (item.WordItems[j].nFrequency == -1)
                     j++;
-                //Èç¹ûĞŞ¸Ä±íÖĞµÄ´Ê³¤¶È±ÈÔ­±íÖĞµÄ³¤¶È´ó»ò  ³¤¶ÈÏàµÈµ«¾ä±úÖµÒª¶à,¾Í°ÑÔ­±íµÄ´ÊĞ´ÈëµÄ´ÊµäÎÄ¼şÖĞ
+                //å¦‚æœä¿®æ”¹è¡¨ä¸­çš„è¯é•¿åº¦æ¯”åŸè¡¨ä¸­çš„é•¿åº¦å¤§æˆ–  é•¿åº¦ç›¸ç­‰ä½†å¥æŸ„å€¼è¦å¤š,å°±æŠŠåŸè¡¨çš„è¯å†™å…¥çš„è¯å…¸æ–‡ä»¶ä¸­
                 else if (Utility.CCStringCompare(pCur.data.sWord, item.WordItems[j].sWord) > 0 ||
                    ((pCur.data.sWord == item.WordItems[j].sWord) &&
                    (pCur.data.nPOS > item.WordItems[j].nPOS)))
@@ -217,14 +217,14 @@ namespace SharpICTCLAS
                     j++;
                 }
             }
-            //Èç¹û¹é²¢½áÊøºóindexTableÓĞÊ£Óà£¬Ôò¼ÌĞøĞ´ÍêindexTableÖĞµÄÊı¾İ
+            //å¦‚æœå½’å¹¶ç»“æŸåindexTableæœ‰å‰©ä½™ï¼Œåˆ™ç»§ç»­å†™å®ŒindexTableä¸­çš„æ•°æ®
             if (j < item.nCount)
             {
                 for (int i = j; i < item.nCount; i++)
                     if (item.WordItems[j].nFrequency != -1)
                         SaveWordItem(writer, item.WordItems[i]);
             }
-            //·ñÔò¼ÌĞøĞ´ÍêmodifyTableÖĞµÄÊı¾İ
+            //å¦åˆ™ç»§ç»­å†™å®ŒmodifyTableä¸­çš„æ•°æ®
             else
                 while (pCur != null)
                 {
@@ -273,7 +273,7 @@ namespace SharpICTCLAS
             WordChain pRet, pTemp, pNext;
             string sWordAdd;
 
-            //Ô¤´¦Àí,È¥µô´ÊµÄÇ°ºóµÄ¿Õ¸ñ
+            //é¢„å¤„ç†,å»æ‰è¯çš„å‰åçš„ç©ºæ ¼
             if (!PreProcessing(ref sWord, out nPos, out sWordAdd))
                 return false;
 
@@ -523,7 +523,7 @@ namespace SharpICTCLAS
 
             sFirstChar = Utility.CC_ID2Char(nFirstCharId).ToString();
 
-            //ÔÚindexTableÖĞ¼ìË÷ÒÔsWordGet´òÍ·µÄÏîÄ¿
+            //åœ¨indexTableä¸­æ£€ç´¢ä»¥sWordGetæ‰“å¤´çš„é¡¹ç›®
             int i = 0;
             while (i < indexTable[nFirstCharId].nCount)
             {
@@ -536,7 +536,7 @@ namespace SharpICTCLAS
                 i++;
             }
 
-            //ÔÚindexTableÖĞÃ»ÄÜÕÒµ½£¬µ½modifyTableÖĞÈ¥ÕÒ
+            //åœ¨indexTableä¸­æ²¡èƒ½æ‰¾åˆ°ï¼Œåˆ°modifyTableä¸­å»æ‰¾
             if (modifyTable == null)
                 return false;
 
@@ -560,7 +560,7 @@ namespace SharpICTCLAS
         #region GetFrequency Method
 
         //====================================================================
-        // ²éÕÒ´ÊĞÔÎªnPOSµÄsWordµÄ´ÊÆµ
+        // æŸ¥æ‰¾è¯æ€§ä¸ºnPOSçš„sWordçš„è¯é¢‘
         //====================================================================
         public int GetFrequency(string sWord, int nPOS)
         {
@@ -693,9 +693,9 @@ namespace SharpICTCLAS
 
                 for (int j = 0; j < Predefine.CC_NUM; j++)
                 {
-                    writer.WriteLine("====================================\r\nºº×Ö:{0}, ID £º{1}\r\n", Utility.CC_ID2Char(j), j);
+                    writer.WriteLine("====================================\r\næ±‰å­—:{0}, ID ï¼š{1}\r\n", Utility.CC_ID2Char(j), j);
 
-                    writer.WriteLine("  ´Ê³¤  ÆµÂÊ  ´ÊĞÔ   ´Ê");
+                    writer.WriteLine("  è¯é•¿  é¢‘ç‡  è¯æ€§   è¯");
                     for (int i = 0; i < indexTable[j].nCount; i++)
                         writer.WriteLine("{0,5} {1,6} {2,5}  ({3}){4}",
                            indexTable[j].WordItems[i].nWordLen,
@@ -805,7 +805,7 @@ namespace SharpICTCLAS
         //Delete word item which
         //(1)frequency is 0
         //(2)word is same as following but the POS value is parent set of the following
-        //for example "½­ÔóÃñ/n/0" will deleted, because "½­ÔóÃñ/nr/0" is more detail and correct
+        //for example "æ±Ÿæ³½æ°‘/n/0" will deleted, because "æ±Ÿæ³½æ°‘/nr/0" is more detail and correct
         //====================================================================
         public bool Optimum()
         {
@@ -1067,7 +1067,7 @@ namespace SharpICTCLAS
         #region FindFirstMatchItemInOrgTbl Method
 
         //====================================================================
-        // ²éÕÒµÚÒ»¸öÂú×ã£¨int nInnerCode, string sWordFunc Name£©Ìõ¼şµÄÎ»ÖÃ
+        // æŸ¥æ‰¾ç¬¬ä¸€ä¸ªæ»¡è¶³ï¼ˆint nInnerCode, string sWordFunc Nameï¼‰æ¡ä»¶çš„ä½ç½®
         //====================================================================
         private bool FindFirstMatchItemInOrgTbl(int nInnerCode, string sWord, out int nPosRet)
         {
