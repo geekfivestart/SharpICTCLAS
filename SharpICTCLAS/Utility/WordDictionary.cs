@@ -87,6 +87,7 @@ namespace SharpICTCLAS
                         continue;
 
                     indexTable[i].WordItems = new WordItem[indexTable[i].nCount];
+                    indexTable[i].WordItemDict = new System.Collections.Generic.Dictionary<string, int>();
 
                     for (int j = 0; j < indexTable[i].nCount; j++)
                     {
@@ -100,6 +101,8 @@ namespace SharpICTCLAS
                             indexTable[i].WordItems[j].sWord = Utility.ByteArray2String(binReader.ReadBytes(wordLength));
                         else
                             indexTable[i].WordItems[j].sWord = "";
+
+                        indexTable[i].WordItemDict[indexTable[i].WordItems[j].sWord] = j;
 
                         //Reset the frequency
                         if (bReset)
@@ -464,10 +467,11 @@ namespace SharpICTCLAS
 
             if (FindFirstMatchItemInOrgTbl(nFirstCharId, sWordGet, out nFoundPos))
             {
-                while (nFoundPos < indexTable[nFirstCharId].nCount && string.Compare(indexTable[nFirstCharId].WordItems[nFoundPos].sWord, sWordGet) == 0)
+                var  itFcid = indexTable[nFirstCharId];
+                while (nFoundPos < itFcid.nCount && string.Compare(itFcid.WordItems[nFoundPos].sWord, sWordGet) == 0)
                 {
-                    info.POSs.Add(indexTable[nFirstCharId].WordItems[nFoundPos].nPOS);
-                    info.Frequencies.Add(indexTable[nFirstCharId].WordItems[nFoundPos].nFrequency);
+                    info.POSs.Add(itFcid.WordItems[nFoundPos].nPOS);
+                    info.Frequencies.Add(itFcid.WordItems[nFoundPos].nFrequency);
                     info.Count++;
 
                     nFoundPos++;
@@ -900,11 +904,12 @@ namespace SharpICTCLAS
             int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
             int nMid = (nStart + nEnd) / 2, nCmpValue;
 
-            while (nStart <= nEnd)
-            //Binary search
+
+            if (indexTable[nInnerCode].WordItemDict != null && indexTable[nInnerCode].WordItemDict.ContainsKey(sWord))
             {
-                nCmpValue = Utility.CCStringCompare(pItems[nMid].sWord, sWord);
-                if (nCmpValue == 0 && (pItems[nMid].nPOS == nPOS || nPOS == -1))
+                nMid = indexTable[nInnerCode].WordItemDict[sWord];
+
+                if ((pItems[nMid].nPOS == nPOS || nPOS == -1))
                 {
                     if (nPOS == -1)
                     //Not very strict match
@@ -919,15 +924,6 @@ namespace SharpICTCLAS
                     nPosRet = nMid;
                     return true;//find it
                 }
-                else if (nCmpValue < 0 || (nCmpValue == 0 && pItems[nMid].nPOS < nPOS && nPOS != -1))
-                {
-                    nStart = nMid + 1;
-                }
-                else if (nCmpValue > 0 || (nCmpValue == 0 && pItems[nMid].nPOS > nPOS && nPOS != -1))
-                {
-                    nEnd = nMid - 1;
-                }
-                nMid = (nStart + nEnd) / 2;
             }
 
             //Get the previous position
@@ -950,19 +946,11 @@ namespace SharpICTCLAS
             int nStart = 0, nEnd = indexTable[nInnerCode].nCount - 1;
             int nMid = (nStart + nEnd) / 2, nCmpValue;
 
-            //Binary search
-            while (nStart <= nEnd)
+            if (indexTable[nInnerCode].WordItemDict != null && indexTable[nInnerCode].WordItemDict.ContainsKey(sWord))
             {
-                nCmpValue = Utility.CCStringCompare(pItems[nMid].sWord, sWord);
-
-                if (nCmpValue == 0 && (pItems[nMid].nPOS == nPOS || nPOS == -1))
-                    return true;//find it
-                else if (nCmpValue < 0 || (nCmpValue == 0 && pItems[nMid].nPOS < nPOS && nPOS != -1))
-                    nStart = nMid + 1;
-                else if (nCmpValue > 0 || (nCmpValue == 0 && pItems[nMid].nPOS > nPOS && nPOS != -1))
-                    nEnd = nMid - 1;
-
-                nMid = (nStart + nEnd) / 2;
+                nMid = indexTable[nInnerCode].WordItemDict[sWord];
+                if ((pItems[nMid].nPOS == nPOS || nPOS == -1))
+                    return true;
             }
             return false;
         }

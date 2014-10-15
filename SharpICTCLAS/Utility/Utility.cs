@@ -120,7 +120,7 @@ namespace SharpICTCLAS
             return (Convert.ToInt32(b1) - 176) * 94 + (Convert.ToInt32(b2) - 161);
         }
 
-        static List<int> CC_ID_Dict = new List<int>();
+        static int[] CC_ID_Dict = new int[0xffff];
         private static void CC_ID_Init()
         {
             for (char i = (char)0; i < 0xffff; i++)
@@ -128,11 +128,11 @@ namespace SharpICTCLAS
                 byte[] b = gb2312.GetBytes(i.ToString());
                 if (b.Length != 2)
                 {
-                    CC_ID_Dict.Add(-1);
+                    CC_ID_Dict[i] = (-1);
                 }
                 else
                 {
-                    CC_ID_Dict.Add((Convert.ToInt32(b[0]) - 176) * 94 + (Convert.ToInt32(b[1]) - 161));
+                    CC_ID_Dict[i] = ((Convert.ToInt32(b[0]) - 176) * 94 + (Convert.ToInt32(b[1]) - 161));
                 }
             }
         }
@@ -142,11 +142,6 @@ namespace SharpICTCLAS
         public static int CC_ID(char c)
         {
             return CC_ID_Dict[c];
-            //byte[] b = gb2312.GetBytes(c.ToString());
-            //if (b.Length != 2)
-            //    return -1;
-            //else
-            //    return (Convert.ToInt32(b[0]) - 176) * 94 + (Convert.ToInt32(b[1]) - 161);
         }
 
         //====================================================================
@@ -412,8 +407,8 @@ namespace SharpICTCLAS
             for (int i = 0; i < minLength; i++)
             {
                 //假设都是全角字符
-                int cc1 = CC_ID(ca1[i]);
-                int cc2 = CC_ID(ca2[i]);
+                int cc1 = CC_ID_Dict[ca1[i]];
+                int cc2 = CC_ID_Dict[ca2[i]];
                 if (cc1 != -1 && cc2 != -1)
                 {
                     if (cc1 < cc2)

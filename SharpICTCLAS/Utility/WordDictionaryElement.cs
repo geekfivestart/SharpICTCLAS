@@ -81,6 +81,8 @@ namespace SharpICTCLAS
 
       //The  head of word items
       public WordItem[] WordItems;
+
+      public Dictionary<string, int> WordItemDict;
    }
 
    //--------------------------------------------------
